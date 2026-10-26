@@ -1,0 +1,527 @@
+import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/lib/db";
+import { StorageService } from "@/lib/services/storage.service";
+import fs from "fs";
+import path from "path";
+import { v4 as uuidv4 } from "uuid";
+
+export const dynamic = "force-dynamic";
+
+function formatDuration(seconds: number): string {
+  if (seconds < 0 || isNaN(seconds)) return "0s";
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  if (mins === 0) return `${secs}s`;
+  return `${mins}m ${secs.toString().padStart(2, "0")}s`;
+}
+
+export async function GET(req: NextRequest) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const phone = searchParams.get("phone");
+    const roleParam = (searchParams.get("role") || "").toUpperCase(); // "AGENT" or "SUPPORT"
+
+    // Fetch call recordings and logs strictly filtered by role action
+    const actionFilter =
+      roleParam === "SUPPORT"
+        ? ["SUPPORT_CALL_RECORDING", "SUPPORT_CALL_LOGGED"]
+        : roleParam === "AGENT"
+        ? ["AGENT_CALL_RECORDING", "AGENT_CALL_LOGGED"]
+        : [
+            "SUPPORT_CALL_RECORDING",
+            "SUPPORT_CALL_LOGGED",
+            "AGENT_CALL_RECORDING",
+            "AGENT_CALL_LOGGED",
+          ];
+
+    const logs = await prisma.auditLog.findMany({
+      where: {
+        action: { in: actionFilter },
+      },
+      select: {
+        id: true,
+        action: true,
+        actorRole: true,
+        newValuesJson: true,
+        createdAt: true,
+      },
+      orderBy: { createdAt: "desc" },
+      take: 300,
+    });
+
+    const isSupportPerson = (name: string = "", phoneNum: string = "") => {
+      const lower = name.toLowerCase();
+      return (
+        lower.includes("harshita") ||
+        lower.includes("sangeet") ||
+        phoneNum.includes("8981191734") ||
+        phoneNum.includes("6289477287")
+      );
+    };
+
+    const isAgentPerson = (name: string = "", notes: string = "") => {
+      const lower = name.toLowerCase();
+      const lowerNotes = notes.toLowerCase();
+      return (
+        lower.includes("arshad") ||
+        lower.includes("aman") ||
+        lower.includes("hyder") ||
+        lower.includes("ankit") ||
+        lowerNotes.includes("field agent") ||
+        lowerNotes.includes("agent app")
+      );
+    };
+
+    const recordings = logs
+      .map((log) => {
+        let data: any = {};
+        if (log.newValuesJson) {
+          try {
+            data = JSON.parse(log.newValuesJson);
+          } catch {}
+        }
+
+        let agentPhone = data.supportPersonPhone || "—";
+        const agentName = data.supportPersonName || (log.actorRole === "AGENT" ? "Field Agent" : "Support Agent");
+        if ((agentPhone === "—" || !agentPhone) && agentName.toLowerCase().includes("harshita")) {
+          agentPhone = "8981191734";
+        }
+
+        const callNotes =
+          data.callNotes ||
+          (log.action.includes("AGENT")
+            ? "Recorded via CashALL Field Agent App"
+            : "Recorded via CashALL Android Caller App.");
+
+        // Determine effective role: AGENT or SUPPORT
+        let effectiveRole: "AGENT" | "SUPPORT" = "SUPPORT";
+        if (
+          log.actorRole === "AGENT" ||
+          log.action.startsWith("AGENT_") ||
+          data.role === "AGENT" ||
+          data.actorRole === "AGENT" ||
+          isAgentPerson(agentName, callNotes)
+        ) {
+          effectiveRole = "AGENT";
+        }
+        if (isSupportPerson(agentName, agentPhone)) {
+          effectiveRole = "SUPPORT";
+        }
+
+        return {
+          id: log.id,
+          action: log.action,
+          role: effectiveRole,
+          actorRole: effectiveRole,
+          supportPersonName: agentName,
+          supportPersonPhone: agentPhone,
+          customerName: data.customerName || "Customer Lead",
+          customerPhone: data.customerPhone || "—",
+          deviceName: data.deviceName || "Mobile Device",
+          quoteId: data.quoteId || "N/A",
+          durationSeconds: Number(data.durationSeconds) || 0,
+          durationFormatted: data.durationFormatted || formatDuration(Number(data.durationSeconds) || 0),
+          audioUrl: data.audioUrl || "",
+          callOutcome: data.callOutcome || (log.action.includes("RECORDING") ? "CALL_COMPLETED" : "CALL_ATTEMPTED"),
+          callNotes,
+          callStartTime: data.callStartTime || log.createdAt.toISOString(),
+          createdAtIST: data.callTimeIST || new Date(log.createdAt).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+          callTimeIST: data.callTimeIST || new Date(log.createdAt).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+          createdAt: log.createdAt.toISOString(),
+        };
+      })
+      .filter((r) => {
+        // Strict separation:
+        if (roleParam === "AGENT") {
+          return r.role === "AGENT" && !isSupportPerson(r.supportPersonName, r.supportPersonPhone);
+        } else if (roleParam === "SUPPORT") {
+          return r.role === "SUPPORT" && !isAgentPerson(r.supportPersonName, r.callNotes);
+        }
+        return true;
+      });
+
+    const filtered = phone
+      ? recordings.filter((r) => r.supportPersonPhone === phone || r.customerPhone === phone)
+      : recordings;
+
+    // Filter out duplicate 0s logs if a valid call log exists for the same quote/phone within 60s, and prioritize real notes
+    const deduplicatedRecordings: any[] = [];
+    for (const rec of filtered) {
+      if (rec.durationSeconds === 0) {
+        const hasBetterEntry = filtered.some(
+          (other) =>
+            other.id !== rec.id &&
+            ((rec.quoteId !== "N/A" && other.quoteId === rec.quoteId) ||
+              (rec.customerPhone !== "—" && other.customerPhone === rec.customerPhone)) &&
+            other.durationSeconds > 0 &&
+            Math.abs(new Date(other.createdAt).getTime() - new Date(rec.createdAt).getTime()) < 60000
+        );
+        if (hasBetterEntry) {
+          continue; // Skip 0s duplicate
+        }
+      }
+      deduplicatedRecordings.push(rec);
+    }
+
+    return NextResponse.json({
+      success: true,
+      count: deduplicatedRecordings.length,
+      recordings: deduplicatedRecordings,
+      data: deduplicatedRecordings,
+      calls: deduplicatedRecordings,
+    });
+  } catch (error: any) {
+    console.error("Error fetching call recordings:", error);
+    return NextResponse.json(
+      { success: false, error: error.message || "Failed to fetch call recordings" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function POST(req: NextRequest) {
+  try {
+    const contentType = req.headers.get("content-type") || "";
+    let audioFile: File | null = null;
+    let supportPersonName = "Support Staff";
+    let supportPersonPhone = "";
+    let rawCustomerPhone = "";
+    let customerName = "";
+    let deviceName = "";
+    let quoteId = "";
+    let durationSeconds = 0;
+    let callOutcome = "CALL_COMPLETED";
+    let callNotes = "Recorded via CashALL Android Caller App.";
+    let callStartTime = new Date().toISOString();
+    let callEndTime = new Date().toISOString();
+    let roleInput = "";
+    let callType = "";
+
+    if (contentType.includes("application/json")) {
+      const json = await req.json().catch(() => ({}));
+      supportPersonName = json.supportPersonName || "Field Agent";
+      supportPersonPhone = json.supportPersonPhone || "";
+      rawCustomerPhone = json.customerPhone || "";
+      customerName = json.customerName || "";
+      deviceName = json.deviceName || "";
+      quoteId = json.quoteId || "";
+      durationSeconds = Number(json.durationSeconds) || 0;
+      callOutcome = json.callOutcome || "CALL_COMPLETED";
+      callNotes = json.callNotes || "Recorded via CashALL Agent App";
+      callStartTime = json.callStartTime || new Date().toISOString();
+      callEndTime = json.callEndTime || new Date().toISOString();
+      roleInput = (json.role || json.actorRole || "AGENT").toUpperCase();
+      callType = json.callType || "AGENT_PICKUP_CALL";
+    } else {
+      const formData = await req.formData();
+      audioFile = formData.get("audio") as File | null;
+      supportPersonName = (formData.get("supportPersonName") as string) || "Support Staff";
+      supportPersonPhone = (formData.get("supportPersonPhone") as string) || "";
+      rawCustomerPhone = (formData.get("customerPhone") as string) || "";
+      customerName = (formData.get("customerName") as string) || "";
+      deviceName = (formData.get("deviceName") as string) || "";
+      quoteId = (formData.get("quoteId") as string) || "";
+      durationSeconds = Number(formData.get("durationSeconds")) || 0;
+      callOutcome = (formData.get("callOutcome") as string) || "CALL_COMPLETED";
+      callNotes = (formData.get("callNotes") as string) || "Recorded via CashALL Android Caller App.";
+      callStartTime = (formData.get("callStartTime") as string) || new Date().toISOString();
+      callEndTime = (formData.get("callEndTime") as string) || new Date().toISOString();
+      roleInput = ((formData.get("role") as string) || (formData.get("actorRole") as string) || "").toUpperCase();
+      callType = (formData.get("callType") as string) || "";
+    }
+
+    let customerPhone = rawCustomerPhone.trim();
+    if (customerPhone.startsWith("+91")) customerPhone = customerPhone.replace("+91", "").trim();
+
+    // Automatic Quote & Customer Enrichment if not already provided
+    const cleanDigits = customerPhone.replace(/\D/g, "").slice(-10);
+    try {
+      let matchedQuote: any = null;
+      if (quoteId && quoteId !== "N/A") {
+        matchedQuote = await prisma.quote.findFirst({
+          where: { OR: [{ quoteNumber: quoteId }, { id: quoteId }] },
+          include: {
+            orders: { include: { user: true, address: true } },
+            variant: { include: { model: { include: { brand: true } } } },
+          },
+        });
+      }
+
+      if (!matchedQuote && cleanDigits) {
+        // Search quotes with this customer phone
+        const recentQuotes = await prisma.quote.findMany({
+          where: {
+            deletedAt: null,
+            OR: [
+              { breakdownJson: { contains: cleanDigits } },
+              { selectedAnswersJson: { contains: cleanDigits } },
+            ],
+          },
+          include: {
+            orders: { include: { user: true, address: true } },
+            variant: { include: { model: { include: { brand: true } } } },
+          },
+          orderBy: { createdAt: "desc" },
+          take: 1,
+        });
+
+        if (recentQuotes.length > 0) {
+          matchedQuote = recentQuotes[0];
+        }
+      }
+
+      if (matchedQuote) {
+        if (!quoteId || quoteId === "N/A") quoteId = matchedQuote.quoteNumber;
+        
+        if (!deviceName || deviceName === "Mobile Device") {
+          if (matchedQuote.variant) {
+            deviceName = `${matchedQuote.variant.model.brand.name} ${matchedQuote.variant.model.name} (${matchedQuote.variant.storage})`;
+          }
+          if (matchedQuote.breakdownJson) {
+            try {
+              const bd = JSON.parse(matchedQuote.breakdownJson);
+              if (bd.deviceName) deviceName = bd.deviceName;
+              if (!customerName && bd.customerName) customerName = bd.customerName;
+            } catch {}
+          }
+        }
+
+        if (!customerName) {
+          if (matchedQuote.selectedAnswersJson) {
+            try {
+              const sa = JSON.parse(matchedQuote.selectedAnswersJson);
+              if (sa.customerName) customerName = sa.customerName;
+            } catch {}
+          }
+          if (!customerName && matchedQuote.orders?.[0]?.user?.name) {
+            customerName = matchedQuote.orders[0].user.name;
+          }
+        }
+      }
+
+      // Comprehensive fallback: Search prisma.user & prisma.order by clean phone digits
+      if ((!customerName || customerName === "Customer Lead") && cleanDigits) {
+        const matchedUser = await prisma.user.findFirst({
+          where: { phone: { contains: cleanDigits } },
+          select: { name: true },
+        });
+        if (matchedUser?.name) {
+          customerName = matchedUser.name;
+        }
+
+        const matchedOrder = await prisma.order.findFirst({
+          where: {
+            OR: [
+              { user: { phone: { contains: cleanDigits } } },
+              { address: { phone: { contains: cleanDigits } } },
+            ],
+          },
+          include: {
+            user: true,
+            address: true,
+            quote: {
+              include: {
+                variant: { include: { model: { include: { brand: true } } } },
+              },
+            },
+          },
+          orderBy: { createdAt: "desc" },
+        });
+
+        if (matchedOrder) {
+          if (!customerName || customerName === "Customer Lead") {
+            if (matchedOrder.address?.fullName) customerName = matchedOrder.address.fullName;
+            else if (matchedOrder.user?.name) customerName = matchedOrder.user.name;
+          }
+          if ((!deviceName || deviceName === "Mobile Device") && matchedOrder.quote?.variant) {
+            deviceName = `${matchedOrder.quote.variant.model.brand.name} ${matchedOrder.quote.variant.model.name} (${matchedOrder.quote.variant.storage})`;
+          }
+          if ((!quoteId || quoteId === "N/A") && matchedOrder.quote?.quoteNumber) {
+            quoteId = matchedOrder.quote.quoteNumber;
+          }
+        }
+      }
+    } catch (e: any) {
+      console.warn("Could not enrich quote metadata:", e.message);
+    }
+
+    if (!customerName) customerName = "Customer Lead";
+    if (!deviceName) deviceName = "Mobile Device";
+    if (!quoteId) quoteId = "N/A";
+
+    const isAgent =
+      roleInput === "AGENT" ||
+      callType === "AGENT_PICKUP_CALL" ||
+      callNotes.toLowerCase().includes("field agent") ||
+      callNotes.toLowerCase().includes("agent app") ||
+      supportPersonName.toLowerCase().includes("arshad") ||
+      supportPersonName.toLowerCase().includes("aman") ||
+      supportPersonName.toLowerCase().includes("hyder") ||
+      supportPersonName.toLowerCase().includes("ankit");
+
+    const isSupport =
+      !isAgent &&
+      (supportPersonName.toLowerCase().includes("harshita") ||
+        supportPersonName.toLowerCase().includes("sangeet") ||
+        supportPersonPhone.includes("8981191734") ||
+        supportPersonPhone.includes("6289477287"));
+
+    let audioUrl = "";
+    let storageType = "none";
+
+    // ONLY process and upload audio for Support Staff desk. For Field Agents, audio recording is strictly disabled.
+    if (!isAgent && audioFile && typeof audioFile.arrayBuffer === "function") {
+      try {
+        const arrayBuffer = await audioFile.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+        const ext = audioFile.name?.split(".").pop() || "m4a";
+        const fileName = `rec_${Date.now()}_${uuidv4().slice(0, 8)}.${ext}`;
+        const mimeType = audioFile.type || "audio/m4a";
+
+        if (buffer.length > 0) {
+          // 1. Upload to Supabase Storage bucket 'support-recordings'
+          try {
+            const bucket = "support-recordings";
+            const storagePath = `${fileName}`;
+            await StorageService.uploadFile(bucket, storagePath, buffer, mimeType);
+            audioUrl = await StorageService.getSignedUrl(bucket, storagePath, 31536000);
+            storageType = "supabase";
+          } catch (storageErr: any) {
+            console.warn("Supabase upload failed, trying local fallback:", storageErr?.message);
+            // 2. Fallback to local disk (for local dev)
+            try {
+              const publicUploadsDir = path.join(process.cwd(), "public", "uploads", "recordings");
+              if (!fs.existsSync(publicUploadsDir)) {
+                fs.mkdirSync(publicUploadsDir, { recursive: true });
+              }
+              const localFilePath = path.join(publicUploadsDir, fileName);
+              fs.writeFileSync(localFilePath, buffer);
+              audioUrl = `/uploads/recordings/${fileName}`;
+              storageType = "local";
+            } catch (localErr: any) {
+              console.error("Local storage error:", localErr);
+            }
+          }
+        }
+      } catch (audioReadErr: any) {
+        console.error("Error reading audio stream:", audioReadErr);
+      }
+    }
+
+    const durationFormatted = formatDuration(durationSeconds);
+    const callTimeIST = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+
+    const finalActorRole: "AGENT" | "SUPPORT" = isAgent ? "AGENT" : "SUPPORT";
+    const finalAction = isAgent ? "AGENT_CALL_LOGGED" : "SUPPORT_CALL_RECORDING";
+
+    // Deduplication check within last 45 seconds
+    const fortyFiveSecondsAgo = new Date(Date.now() - 45000);
+    const recentLogs = await prisma.auditLog.findMany({
+      where: {
+        action: finalAction,
+        createdAt: { gte: fortyFiveSecondsAgo },
+      },
+      orderBy: { createdAt: "desc" },
+      take: 5,
+    });
+
+    for (const recent of recentLogs) {
+      let recentData: any = {};
+      try {
+        recentData = JSON.parse(recent.newValuesJson || "{}");
+      } catch {}
+
+      const isSameQuote = quoteId && quoteId !== "N/A" && recentData.quoteId === quoteId;
+      const isSamePhone = cleanDigits && recentData.customerPhone && recentData.customerPhone.includes(cleanDigits);
+
+      if (isSameQuote || isSamePhone) {
+        const prevDuration = Number(recentData.durationSeconds) || 0;
+
+        // If incoming is 0s and existing record already exists, discard 0s duplicate
+        if (durationSeconds === 0) {
+          console.log(`[Deduplication] Discarding duplicate 0s call event for ${customerPhone}`);
+          return NextResponse.json({
+            success: true,
+            message: "Duplicate 0s call event discarded",
+            recordingId: recent.id,
+            durationFormatted: recentData.durationFormatted,
+          });
+        }
+
+        // If incoming has valid duration and existing was 0s, update existing record with true duration
+        if (durationSeconds > 0 && prevDuration === 0) {
+          console.log(`[Deduplication] Updating existing 0s call event with true duration ${durationSeconds}s`);
+          recentData.durationSeconds = durationSeconds;
+          recentData.durationFormatted = durationFormatted;
+          if (supportPersonName && !supportPersonName.includes("Staff") && !supportPersonName.includes("Agent")) {
+            recentData.supportPersonName = supportPersonName;
+          }
+          if (audioUrl) {
+            recentData.audioUrl = audioUrl;
+            recentData.storageType = storageType;
+          }
+          recentData.role = finalActorRole;
+          recentData.actorRole = finalActorRole;
+
+          await prisma.auditLog.update({
+            where: { id: recent.id },
+            data: { newValuesJson: JSON.stringify(recentData) },
+          });
+          return NextResponse.json({
+            success: true,
+            message: "Existing call event updated with accurate duration",
+            recordingId: recent.id,
+            durationFormatted,
+          });
+        }
+      }
+    }
+
+    // Save into database
+    const record = await prisma.auditLog.create({
+      data: {
+        actorId: "00000000-0000-0000-0000-000000000000",
+        actorRole: finalActorRole,
+        action: finalAction,
+        tableName: isAgent ? "AgentCallRecord" : "SupportCallRecord",
+        recordId: "00000000-0000-0000-0000-000000000000",
+        newValuesJson: JSON.stringify({
+          role: finalActorRole,
+          actorRole: finalActorRole,
+          supportPersonName,
+          supportPersonPhone,
+          customerName,
+          customerPhone: customerPhone || "—",
+          deviceName,
+          quoteId,
+          durationSeconds,
+          durationFormatted,
+          audioUrl,
+          storageType,
+          callOutcome,
+          callNotes,
+          callStartTime,
+          callEndTime,
+          callTimeIST,
+        }),
+      },
+    });
+
+    return NextResponse.json({
+      success: true,
+      message: "Call recording & duration logged successfully",
+      recordingId: record.id,
+      audioUrl,
+      durationFormatted,
+      customerName,
+      deviceName,
+      quoteId,
+    });
+  } catch (error: any) {
+    console.error("Error saving call recording:", error);
+    return NextResponse.json(
+      { success: false, error: error.message || "Failed to save call recording" },
+      { status: 500 }
+    );
+  }
+}

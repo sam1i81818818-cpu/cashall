@@ -1,0 +1,304 @@
+import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/lib/db";
+import { formatDeviceName, cleanDeviceName } from "@/lib/device";
+import { formatAddress } from "@/lib/address";
+import { formatPickupDateDisplay } from "@/lib/utils/pickup-date";
+
+export const dynamic = "force-dynamic";
+
+import { agentOrdersCache, AGENT_CACHE_TTL_MS } from "@/lib/cache/agent-cache";
+
+export async function GET(req: NextRequest) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const agentId = searchParams.get("agentId");
+    const phone = searchParams.get("phone");
+    const name = searchParams.get("name");
+    // Only bypass if explicitly requested with refresh=true or force_refresh=true
+    const isExplicitRefresh = searchParams.get("force_refresh") === "true" || searchParams.get("refresh") === "true";
+
+    // Server-side cache (shielded against high-frequency agent poll storms)
+    const cacheKey = `${agentId || ""}_${phone || ""}_${name || ""}`.toLowerCase().trim();
+    const cached = agentOrdersCache.get(cacheKey);
+
+    // If cache is fresh (<15s) and not an explicit user-initiated refresh, serve cached
+    if (cached && (!isExplicitRefresh || Date.now() - cached.timestamp < 5000) && Date.now() - cached.timestamp < AGENT_CACHE_TTL_MS) {
+      const clientEtag = req.headers.get("if-none-match");
+      if (clientEtag && clientEtag === (cached as any).etag) {
+        return new NextResponse(null, {
+          status: 304,
+          headers: {
+            "ETag": (cached as any).etag,
+            "Cache-Control": "public, s-maxage=60, max-age=30, stale-while-revalidate=120",
+            "X-Cache": "304-NOT-MODIFIED",
+          },
+        });
+      }
+
+      return NextResponse.json(cached.data, {
+        headers: {
+          "ETag": (cached as any).etag || 'W/"agent-orders-cached"',
+          "Cache-Control": "public, s-maxage=60, max-age=30, stale-while-revalidate=120",
+          "X-Cache": "HIT",
+        },
+      });
+    }
+
+    let targetAgentUser: any = null;
+
+    if (agentId && agentId !== "undefined") {
+      const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(agentId);
+      if (isUuid) {
+        targetAgentUser = await prisma.user.findUnique({ where: { id: agentId } });
+      }
+    }
+    if (!targetAgentUser && phone) {
+      targetAgentUser = await prisma.user.findFirst({
+        where: { phone, role: "AGENT", deletedAt: null },
+      });
+    }
+    if (!targetAgentUser && name) {
+      targetAgentUser = await prisma.user.findFirst({
+        where: {
+          role: "AGENT",
+          deletedAt: null,
+          name: { equals: name.trim(), mode: "insensitive" },
+        },
+      });
+
+      if (!targetAgentUser) {
+        const normalize = (str?: string | null) => (str || "").toLowerCase().replace(/[^a-z0-9]/g, "").trim();
+        const normInput = normalize(name);
+
+        const allAgents = await prisma.user.findMany({
+          where: { role: "AGENT", deletedAt: null },
+          select: { id: true, name: true, email: true, phone: true },
+        });
+
+        targetAgentUser = allAgents.find((a) => {
+          return normalize(a.name) === normInput || normalize(a.email?.split("@")[0]) === normInput;
+        });
+      }
+    }
+
+    const whereOrConditions: any[] = [];
+
+    if (targetAgentUser?.id) {
+      whereOrConditions.push({ agentId: targetAgentUser.id });
+    }
+    if (targetAgentUser?.name) {
+      whereOrConditions.push({
+        agent: { name: { equals: targetAgentUser.name, mode: "insensitive" } },
+      });
+      whereOrConditions.push({
+        pickups: {
+          some: {
+            notes: { contains: targetAgentUser.name, mode: "insensitive" },
+          },
+        },
+      });
+    }
+    if (name) {
+      whereOrConditions.push({
+        agent: { name: { equals: name, mode: "insensitive" } },
+      });
+      whereOrConditions.push({
+        pickups: {
+          some: {
+            notes: { contains: name, mode: "insensitive" },
+          },
+        },
+      });
+    }
+
+    // STRICT ISOLATION FILTERING:
+    // If no agent identification criteria is provided or matched, return an empty array (0 orders).
+    if (whereOrConditions.length === 0) {
+      return NextResponse.json(
+        {
+          success: true,
+          orders: [],
+        },
+        {
+          headers: {
+            "Cache-Control": "public, s-maxage=30, max-age=30",
+          },
+        }
+      );
+    }
+
+    const where: any = {
+      deletedAt: null,
+      OR: whereOrConditions,
+    };
+
+    const orders = await prisma.order.findMany({
+      where,
+      include: {
+        user: true,
+        address: true,
+        pickups: {
+          take: 1,
+          orderBy: { createdAt: "desc" },
+        },
+        qcReports: {
+          take: 1,
+          orderBy: { inspectedAt: "desc" },
+        },
+        imeiRecords: {
+          take: 1,
+          orderBy: { createdAt: "desc" },
+        },
+        payments: {
+          take: 1,
+          orderBy: { createdAt: "desc" },
+        },
+        quote: {
+          include: {
+            variant: {
+              include: {
+                model: {
+                  include: {
+                    brand: true,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+      take: 25, // Shield: Agents only need active and recent dispatches (slashes payload by up to 90%)
+    });
+
+    const mapped = orders.map((ord: any) => {
+      const fullAddress = formatAddress(ord.address, "Doorstep Location");
+
+      // Resolve accurate clean device name (priority on evaluated breakdownJson/selectedAnswersJson)
+      let explicitDeviceName = "";
+      if (ord.quote?.breakdownJson) {
+        try {
+          const bd = JSON.parse(ord.quote.breakdownJson);
+          if (bd?.deviceName) explicitDeviceName = bd.deviceName;
+        } catch {}
+      }
+      if (!explicitDeviceName && ord.quote?.selectedAnswersJson) {
+        try {
+          const sa = JSON.parse(ord.quote.selectedAnswersJson);
+          if (sa?.device && sa.device !== "Customer Mobile Device") explicitDeviceName = sa.device;
+        } catch {}
+      }
+
+      let brandName = ord.quote?.variant?.model?.brand?.name || "";
+      let modelName = ord.quote?.variant?.model?.name || "";
+      let storage = ord.quote?.variant?.storage || "";
+
+      let deviceName = explicitDeviceName || formatDeviceName(brandName, modelName, storage) || "Mobile Device";
+      deviceName = cleanDeviceName(deviceName);
+
+      const activePickup = ord.pickups?.[0];
+      const qcReport = ord.qcReports?.[0];
+      const imeiCode = ord.imeiRecords?.[0]?.code || qcReport?.imeiNumber || (ord as any).imeiNumber || "";
+      const activePayment = ord.payments?.[0];
+
+      // 1. Resolve initial online quote price
+      let quotedPrice = 0;
+      if (ord.quote?.breakdownJson) {
+        try {
+          const bd = JSON.parse(ord.quote.breakdownJson);
+          if (typeof bd?.estimatedPrice === "number" && bd.estimatedPrice > 0) {
+            quotedPrice = bd.estimatedPrice;
+          }
+        } catch {}
+      }
+      if (!quotedPrice) {
+        quotedPrice = ord.quote?.estimatedPrice || 0;
+      }
+
+      // 2. Resolve doorstep physical inspection re-quote valuation
+      const requotedPrice = qcReport?.revisedPrice ?? quotedPrice;
+
+      // 3. Resolve final agreed deal payout to seller
+      const finalSettled = ord.finalPrice ?? activePayment?.amount ?? (ord.status === "COMPLETED" ? (requotedPrice || quotedPrice) : null);
+      const finalPrice = finalSettled ?? requotedPrice ?? quotedPrice;
+
+      return {
+        id: ord.id,
+        orderNumber: ord.orderNumber,
+        customerName: ord.user?.name || "Customer",
+        customerPhone: ord.user?.phone || ord.address?.phone || "—",
+        customerEmail: ord.user?.email || "—",
+        deviceName,
+        imeiNumber: imeiCode,
+        quotedPrice,
+        requotedPrice,
+        revisedPrice: requotedPrice,
+        estimatedPrice: quotedPrice,
+        finalPrice,
+        amount: finalPrice,
+        address: fullAddress,
+        addressSummary: fullAddress,
+        pickupDate: formatPickupDateDisplay(ord.pickupDate || activePickup?.date, ord.createdAt),
+        pickupTimeSlot: ord.pickupTimeSlot || activePickup?.timeSlot || "10 AM - 1 PM",
+        pincode: ord.address?.pincode || "700001",
+        status: ord.status,
+        paymentStatus: activePayment?.status || (ord.status === "COMPLETED" ? "PAID" : "PENDING"),
+        urn: ord.urn && !ord.urn.startsWith("PAID-") && ord.urn !== "128158907549" && ord.urn !== "623480124575" ? ord.urn : (activePayment?.transactionRef && !activePayment.transactionRef.startsWith("PAID-") && activePayment.transactionRef !== "128158907549" ? activePayment.transactionRef : null),
+        paymentScreenshotUrl: ord.paymentScreenshotUrl || null,
+        agentName: targetAgentUser?.name || "CashALL Agent",
+        selectedAnswersJson: ord.quote?.selectedAnswersJson || (ord as any).selectedAnswersJson || null,
+        breakdownJson: ord.quote?.breakdownJson || (ord as any).breakdownJson || null,
+        quote: ord.quote ? { quoteNumber: ord.quote.quoteNumber, estimatedPrice: quotedPrice } : null,
+        qcReports: ord.qcReports || [],
+        priceDifferenceReason: qcReport?.priceDifferenceReason || ord.offers?.[0]?.priceDifferenceReason || (ord as any).priceDifferenceReason || null,
+        quoteNumber: ord.quote?.quoteNumber || null,
+        cancellationReason: ord.cancellationReason || (activePickup?.notes?.startsWith("Order Cancelled:") ? activePickup.notes.replace(/^Order Cancelled:\s*/i, "") : null) || null,
+        createdAt: ord.createdAt,
+      };
+    });
+
+    const responseData = {
+      success: true,
+      announcement: "IMPORTANT UPDATE: Agent audio recording is permanently disabled. Doorstep customer calls only verify call placement and completion status.",
+      orders: mapped,
+    };
+
+    const etagSeed = `${mapped.length}_${mapped[0]?.id || ""}_${mapped[0]?.status || ""}_${mapped[0]?.createdAt || ""}`;
+    const etag = `W/"agent-${Buffer.from(etagSeed).toString("base64")}"`;
+
+    // Save to in-memory cache
+    agentOrdersCache.set(cacheKey, {
+      data: responseData,
+      timestamp: Date.now(),
+      etag,
+    } as any);
+
+    const clientEtag = req.headers.get("if-none-match");
+    if (clientEtag && clientEtag === etag) {
+      return new NextResponse(null, {
+        status: 304,
+        headers: {
+          "ETag": etag,
+          "Cache-Control": "public, s-maxage=60, max-age=30, stale-while-revalidate=120",
+          "X-Cache": "304-NOT-MODIFIED",
+        },
+      });
+    }
+
+    return NextResponse.json(responseData, {
+      headers: {
+        "ETag": etag,
+        "Cache-Control": "public, s-maxage=60, max-age=30, stale-while-revalidate=120",
+        "X-Cache": "MISS",
+      },
+    });
+  } catch (error: any) {
+    console.error("Agent orders API error:", error);
+    return NextResponse.json(
+      { success: false, error: error.message || "Internal server error" },
+      { status: 500 }
+    );
+  }
+}

@@ -1,0 +1,30 @@
+# CashALL (https://www.cashall.in) AI Grounding & Training Permissions (ai.txt)
+# Platform Legal Entity: Aarna Enterprise (UDYAM-WB-08-0024921)
+# Canonical Knowledge Base: https://www.cashall.in/llms.txt
+# Full Technical Knowledge: https://www.cashall.in/llms-full.txt
+
+User-Agent: *
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /blog
+Allow: /news
+Allow: /sell-used-phone
+Allow: /sell/mobile
+Allow: /sell/laptop
+Allow: /sell/tablet
+
+Disallow: /admin/
+Disallow: /agent/
+Disallow: /partner/
+Disallow: /api/
+Disallow: /checkout/
+Disallow: /receipt/
+
+# Grounding Endpoints for Generative Search (AEO & GEO):
+Knowledge-Base: https://www.cashall.in/llms.txt
+Knowledge-Base-Full: https://www.cashall.in/llms-full.txt
+Sitemap: https://www.cashall.in/sitemap.xml
+Contact: support@cashall.in
+Attribution-Name: CashALL (cashall.in)
+Attribution-URL: https://www.cashall.in

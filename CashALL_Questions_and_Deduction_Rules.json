@@ -1,0 +1,634 @@
+{
+  "metadata": {
+    "title": "CashALL Valuation Engine & Product Catalog Specification",
+    "version": "2.0.0",
+    "generatedAt": "2026-09-28T07:20:00.297Z",
+    "currency": "INR (₹)",
+    "minimumPayoutFloor": "Max of ₹500 or 15% of Base Price",
+    "valuationFormula": "Final Price = Max(Base Price - Sum(Base Price * DeductionPercent / 100), Max(500, Base Price * 0.15))"
+  },
+  "questionnaires": {
+    "mobile_and_tablet": [
+      {
+        "questionId": "q-warranty",
+        "title": "Is your device under manufacturer warranty?",
+        "subtitle": "You can get a better price for your device if it's under manufacturer warranty with a GST valid bill.",
+        "group": "BASIC",
+        "type": "SINGLE",
+        "sortOrder": 1,
+        "options": [
+          {
+            "optionId": "o-w-yes",
+            "label": "Under Manufacturer Warranty",
+            "description": "Less than 11 months old",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-w-no",
+            "label": "Out of Warranty",
+            "description": "More than 11 months old",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 5
+          }
+        ]
+      },
+      {
+        "questionId": "q-gst-bill",
+        "title": "Do you have GST valid bill with the same IMEI?",
+        "subtitle": "Make sure your bill has device IMEI mentioned on it.",
+        "group": "BASIC",
+        "type": "SINGLE",
+        "sortOrder": 2,
+        "options": [
+          {
+            "optionId": "o-gb-yes",
+            "label": "GST Valid Bill Available",
+            "description": "Matching IMEI bill included",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-gb-no",
+            "label": "No GST Bill / Lost",
+            "description": "Invoice not available",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 3
+          }
+        ]
+      },
+      {
+        "questionId": "q-power",
+        "title": "Does your phone switch on?",
+        "subtitle": "Check basic power status and startup",
+        "group": "BASIC",
+        "type": "SINGLE",
+        "sortOrder": 3,
+        "options": [
+          {
+            "optionId": "o-p-yes",
+            "label": "Turns ON normally",
+            "description": "Powers up to home screen fine",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-p-no",
+            "label": "Power / Boot Issue",
+            "description": "Does not turn on or gets stuck on boot logo",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 50
+          }
+        ]
+      },
+      {
+        "questionId": "q-calls",
+        "title": "Can you make and receive calls?",
+        "subtitle": "Check SIM network, earpiece speaker, and primary microphone",
+        "group": "BASIC",
+        "type": "SINGLE",
+        "sortOrder": 2,
+        "options": [
+          {
+            "optionId": "o-c-yes",
+            "label": "Calls work normally",
+            "description": "Able to make & receive calls",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-c-no",
+            "label": "Call / SIM / Mic issue",
+            "description": "Cannot place calls or mic/earpiece dead",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 12
+          }
+        ]
+      },
+      {
+        "questionId": "q-touch",
+        "title": "Is the touch screen fully working?",
+        "subtitle": "Test touch response across all screen edges and keyboard areas",
+        "group": "BASIC",
+        "type": "SINGLE",
+        "sortOrder": 3,
+        "options": [
+          {
+            "optionId": "o-t-yes",
+            "label": "Touch works perfectly",
+            "description": "Smooth response across full display",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-t-no",
+            "label": "Touch unresponsive / Dead spots",
+            "description": "Ghost touch or unresponsive screen sections",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 20
+          }
+        ]
+      },
+      {
+        "questionId": "q-screen-orig",
+        "title": "Is the screen original & unreplaced?",
+        "subtitle": "Factory fitted original display vs third-party repaired screen",
+        "group": "BASIC",
+        "type": "SINGLE",
+        "sortOrder": 4,
+        "options": [
+          {
+            "optionId": "o-so-yes",
+            "label": "Original OEM Screen",
+            "description": "Original factory fitted screen",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-so-no",
+            "label": "Replaced / Non-Original Screen",
+            "description": "Screen replaced by local technician or local LCD",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 15
+          }
+        ]
+      },
+      {
+        "questionId": "q-screen-defect",
+        "title": "What is the physical condition of the screen?",
+        "subtitle": "Inspect screen glass and active display under clear light",
+        "group": "SCREEN",
+        "type": "SINGLE",
+        "sortOrder": 5,
+        "options": [
+          {
+            "optionId": "o-s-flawless",
+            "label": "Flawless Screen (No Cracks / Lines)",
+            "description": "No glass cracks or display spots",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-s-cracked",
+            "label": "Glass Cracked / Broken Screen",
+            "description": "Visible glass cracks or chipped outer glass",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 25
+          },
+          {
+            "optionId": "o-s-lines",
+            "label": "Display Lines / Spots / Discoloration",
+            "description": "Vertical green/pink lines, black ink spots, or tint",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 18
+          },
+          {
+            "optionId": "o-s-backpanel",
+            "label": "Back Panel Glass Broken / Missing",
+            "description": "Cracked back glass panel or missing frame panel",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 10
+          }
+        ]
+      },
+      {
+        "questionId": "q-scratches",
+        "title": "Are there any screen scratches?",
+        "subtitle": "Examine screen glass under direct light for scuffs",
+        "group": "BODY",
+        "type": "SINGLE",
+        "sortOrder": 6,
+        "options": [
+          {
+            "optionId": "o-sc-none",
+            "label": "No Scratches (Flawless)",
+            "description": "Clean scratchless glass surface",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-sc-minor",
+            "label": "1-2 Light Surface Scratches",
+            "description": "Minor micro scuffs invisible when display is ON",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 5
+          },
+          {
+            "optionId": "o-sc-deep",
+            "label": "More than 2 Deep Scratches",
+            "description": "Multiple deep noticeable scratches",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 12
+          }
+        ]
+      },
+      {
+        "questionId": "q-dents",
+        "title": "What is the condition of the body & side frame?",
+        "subtitle": "Inspect side edges, metal frame, camera bump and corners",
+        "group": "BODY",
+        "type": "SINGLE",
+        "sortOrder": 7,
+        "options": [
+          {
+            "optionId": "o-d-none",
+            "label": "Flawless Body (No Dents)",
+            "description": "No paint wear, no corner dents",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-d-minor",
+            "label": "1-2 Minor Dents / Paint Scuffs",
+            "description": "Light corner scuffs or minor paint wear",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 8
+          },
+          {
+            "optionId": "o-d-major",
+            "label": "Major Dents / Bent Frame",
+            "description": "Noticeable deep dents or bent chassis frame",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 18
+          }
+        ]
+      },
+      {
+        "questionId": "q-func-camera",
+        "title": "Camera Functionality Status",
+        "subtitle": "Front selfie camera & rear main camera test",
+        "group": "FUNCTIONAL",
+        "type": "SINGLE",
+        "sortOrder": 8,
+        "options": [
+          {
+            "optionId": "o-fc-ok",
+            "label": "Cameras Work Perfectly",
+            "description": "Front & rear camera focus and capture clearly",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-fc-faulty",
+            "label": "Camera Blurry / Blurry Lens / Faulty",
+            "description": "Camera app crashes, lens blurry, or flash broken",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 10
+          }
+        ]
+      },
+      {
+        "questionId": "q-func-battery",
+        "title": "Battery Health Status",
+        "subtitle": "Battery backup, charging retention and health status",
+        "group": "FUNCTIONAL",
+        "type": "SINGLE",
+        "sortOrder": 9,
+        "options": [
+          {
+            "optionId": "o-fb-ok",
+            "label": "Normal Battery Health",
+            "description": "Holds charge well throughout the day",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-fb-weak",
+            "label": "Battery Drains Quickly / Service Warning",
+            "description": "Needs frequent charging or battery health below 80%",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 6
+          }
+        ]
+      },
+      {
+        "questionId": "q-func-biometric",
+        "title": "Biometric Security Status",
+        "subtitle": "Fingerprint scanner & Face ID recognition test",
+        "group": "FUNCTIONAL",
+        "type": "SINGLE",
+        "sortOrder": 10,
+        "options": [
+          {
+            "optionId": "o-fbio-ok",
+            "label": "Fingerprint / Face ID Works",
+            "description": "Unlocks device fast without errors",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-fbio-faulty",
+            "label": "Fingerprint / Face ID Failed",
+            "description": "Sensor unresponsive or disabled by system",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 8
+          }
+        ]
+      },
+      {
+        "questionId": "q-func-speaker",
+        "title": "Speaker & Audio Status",
+        "subtitle": "Main loudspeaker and earpiece clarity test",
+        "group": "FUNCTIONAL",
+        "type": "SINGLE",
+        "sortOrder": 11,
+        "options": [
+          {
+            "optionId": "o-fs-ok",
+            "label": "Speakers Play Clear Sound",
+            "description": "Loudspeaker & earpiece crystal clear",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-fs-faulty",
+            "label": "Muffled / Low Volume / Distortion",
+            "description": "Crackling sound or speaker dead",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 5
+          }
+        ]
+      },
+      {
+        "questionId": "q-func-connectivity",
+        "title": "Wireless Connectivity Status",
+        "subtitle": "Wi-Fi, Bluetooth, and cellular network reception",
+        "group": "FUNCTIONAL",
+        "type": "SINGLE",
+        "sortOrder": 12,
+        "options": [
+          {
+            "optionId": "o-fconn-ok",
+            "label": "Wi-Fi & Bluetooth Work Fine",
+            "description": "Connects smoothly to networks & devices",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-fconn-faulty",
+            "label": "Wi-Fi / Bluetooth / Network Faulty",
+            "description": "Wi-Fi greyed out or fails to connect",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 12
+          }
+        ]
+      },
+      {
+        "questionId": "q-acc-box",
+        "title": "Do you have the Original Device Box?",
+        "subtitle": "Matching IMEI box increases resale value",
+        "group": "ACCESSORIES",
+        "type": "SINGLE",
+        "sortOrder": 13,
+        "options": [
+          {
+            "optionId": "o-ab-yes",
+            "label": "Original Box Available",
+            "description": "Same IMEI box included",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-ab-no",
+            "label": "No Box Available",
+            "description": "Box not included",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 2
+          }
+        ]
+      },
+      {
+        "questionId": "q-acc-charger",
+        "title": "Do you have the Original Fast Charger?",
+        "subtitle": "Original inbox charging adapter & cable",
+        "group": "ACCESSORIES",
+        "type": "SINGLE",
+        "sortOrder": 14,
+        "options": [
+          {
+            "optionId": "o-ac-yes",
+            "label": "Original Charger Available",
+            "description": "Brand charger cable/adapter included",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-ac-no",
+            "label": "No Charger Available",
+            "description": "Charger not included",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 3
+          }
+        ]
+      },
+      {
+        "questionId": "q-acc-warranty",
+        "title": "Is the phone under valid Brand Warranty?",
+        "subtitle": "Must have valid GST invoice matching device details",
+        "group": "ACCESSORIES",
+        "type": "SINGLE",
+        "sortOrder": 15,
+        "options": [
+          {
+            "optionId": "o-aw-yes",
+            "label": "Under Brand Warranty (With Invoice)",
+            "description": "Device less than 11 months old with original bill",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-aw-no",
+            "label": "Out of Warranty / No Invoice",
+            "description": "Device more than 11 months old",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 3
+          }
+        ]
+      }
+    ],
+    "laptop": [
+      {
+        "questionId": "q-lap-power",
+        "title": "Does your laptop turn on and boot into Windows / macOS fine?",
+        "subtitle": "Check basic power status and operating system boot",
+        "group": "BASIC",
+        "type": "SINGLE",
+        "sortOrder": 1,
+        "options": [
+          {
+            "optionId": "o-lp-yes",
+            "label": "Turns ON normally",
+            "description": "Boots to desktop smoothly",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-lp-no",
+            "label": "Power / Motherboard Issue",
+            "description": "Does not turn on or gets stuck on logo",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 45
+          }
+        ]
+      },
+      {
+        "questionId": "q-lap-charger",
+        "title": "Do you have the original working laptop adapter & power cord?",
+        "subtitle": "Original OEM charger vs third party or missing adapter",
+        "group": "BASIC",
+        "type": "SINGLE",
+        "sortOrder": 2,
+        "options": [
+          {
+            "optionId": "o-lc-yes",
+            "label": "Original OEM Charger Available",
+            "description": "Original factory charger included",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-lc-no",
+            "label": "Missing / Non-Original Charger",
+            "description": "Adapter not available or local charger",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 8
+          }
+        ]
+      },
+      {
+        "questionId": "q-lap-warranty",
+        "title": "Is your laptop under manufacturer warranty?",
+        "subtitle": "Requires valid brand warranty invoice",
+        "group": "BASIC",
+        "type": "SINGLE",
+        "sortOrder": 3,
+        "options": [
+          {
+            "optionId": "o-lw-yes",
+            "label": "Under Manufacturer Warranty",
+            "description": "Less than 11 months old with bill",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-lw-no",
+            "label": "Out of Warranty",
+            "description": "More than 11 months old",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 5
+          }
+        ]
+      },
+      {
+        "questionId": "q-lap-screen",
+        "title": "What is the physical condition of the laptop screen display?",
+        "subtitle": "Inspect display panel glass, lines, and backlight bleed",
+        "group": "SCREEN",
+        "type": "SINGLE",
+        "sortOrder": 4,
+        "options": [
+          {
+            "optionId": "o-ls-flawless",
+            "label": "Flawless Display (No Cracks / Lines)",
+            "description": "Crystal clear display panel",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-ls-cracked",
+            "label": "Glass Cracked / Broken Panel",
+            "description": "Visible screen glass cracks",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 25
+          },
+          {
+            "optionId": "o-ls-lines",
+            "label": "Display Lines / Dead Pixels / Spots",
+            "description": "Vertical lines or dark spots on screen",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 30
+          }
+        ]
+      },
+      {
+        "questionId": "q-lap-keyboard",
+        "title": "Are all laptop keyboard keys & touchpad fully working?",
+        "subtitle": "Test every letter key, spacebar, and trackpad click",
+        "group": "FUNCTIONAL",
+        "type": "SINGLE",
+        "sortOrder": 5,
+        "options": [
+          {
+            "optionId": "o-lk-yes",
+            "label": "Keyboard & Touchpad Work Perfectly",
+            "description": "Smooth response across all keys",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-lk-no",
+            "label": "Sticky / Missing Keys or Unresponsive Touchpad",
+            "description": "Some keys dead or trackpad click issue",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 12
+          }
+        ]
+      },
+      {
+        "questionId": "q-lap-battery",
+        "title": "What is the battery backup health of your laptop?",
+        "subtitle": "Test battery runtime without plugging in charger",
+        "group": "FUNCTIONAL",
+        "type": "SINGLE",
+        "sortOrder": 6,
+        "options": [
+          {
+            "optionId": "o-lb-good",
+            "label": "Holds Charge (2+ Hours Backup)",
+            "description": "Normal battery health",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-lb-dead",
+            "label": "Battery Dead (Needs Direct AC Power)",
+            "description": "Laptop shuts off immediately if unplugged",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 15
+          }
+        ]
+      },
+      {
+        "questionId": "q-lap-body",
+        "title": "What is the physical condition of the laptop body & hinges?",
+        "subtitle": "Inspect top lid, palmrest, corner dents, and lid hinges",
+        "group": "BODY",
+        "type": "SINGLE",
+        "sortOrder": 7,
+        "options": [
+          {
+            "optionId": "o-lbody-flawless",
+            "label": "Flawless Body (No Scratches / Dents)",
+            "description": "Like-new laptop casing",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 0
+          },
+          {
+            "optionId": "o-lbody-scratches",
+            "label": "Minor Scratches & Normal Wear",
+            "description": "Light scratches on lid or base",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 5
+          },
+          {
+            "optionId": "o-lbody-dents",
+            "label": "Major Dents / Cracked Casing / Loose Hinge",
+            "description": "Corner dent, broken plastic or weak lid hinge",
+            "adjustmentType": "PERCENTAGE_DEDUCTION",
+            "deductionPercent": 18
+          }
+        ]
+      }
+    ]
+  }
+}

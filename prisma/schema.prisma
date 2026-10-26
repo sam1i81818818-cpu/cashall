@@ -1,0 +1,1149 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model User {
+  id                 String                  @id @default(uuid()) @db.Uuid
+  phone              String                  @unique
+  name               String?
+  email              String?                 @unique
+  role               Role                    @default(CUSTOMER)
+  status             String                  @default("ACTIVE")
+  firebaseUid        String                  @unique
+  lastLogin          DateTime?
+  createdAt          DateTime                @default(now())
+  updatedAt          DateTime                @updatedAt
+  deletedAt          DateTime?
+
+  // ── DEALER / SPAM BLOCK ──────────────────────────────────────────────
+  isBlocked          Boolean                 @default(false)
+  blockedAt          DateTime?
+  blockReason        String?
+  blockedByAdminId   String?                 // Admin User.id who triggered the block
+  // ─────────────────────────────────────────────────────────────────────
+
+  logs               ActivityLog[]
+  addresses          Address[]
+  customerDevices    CustomerDevice[]
+  OfferCalculation   OfferCalculation[]
+  orders             Order[]
+  assignedOrders     Order[]                 @relation("AgentOrders")
+  quotes             Quote[]
+  tickets            SupportTicket[]
+  notificationTokens UserNotificationToken[]
+  privacyRequests    DataPrivacyRequest[]
+  agentAppointment   AgentAppointmentRecord?
+
+  @@index([phone])
+  @@index([email])
+  @@index([role])
+  @@index([isBlocked])
+}
+
+model Address {
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String    @db.Uuid
+  fullName  String
+  phone     String
+  line1     String?
+  line2     String?
+  house     String?
+  street    String?
+  area      String?
+  landmark  String?
+  city      String?
+  state     String
+  pincode   String
+  latitude  Float?
+  longitude Float?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orders    Order[]
+
+  @@index([userId])
+  @@index([pincode])
+}
+
+model Category {
+  id        String    @id @default(uuid()) @db.Uuid
+  name      String
+  slug      String    @unique
+  active    Boolean   @default(true)
+  sortOrder Int       @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@index([slug])
+}
+
+model Brand {
+  id        String        @id @default(uuid()) @db.Uuid
+  name      String
+  slug      String        @unique
+  logoUrl   String?
+  category  String        @default("MOBILE")
+  active    Boolean       @default(true)
+  sortOrder Int           @default(0)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  deletedAt DateTime?
+  models    DeviceModel[]
+
+  @@index([slug])
+  @@index([category])
+}
+
+model DeviceModel {
+  id               String             @id @default(uuid()) @db.Uuid
+  brandId          String             @db.Uuid
+  questionSetId    String?            @db.Uuid
+  name             String
+  slug             String             @unique
+  category         String             @default("MOBILE")
+  imageUrl         String?
+  releaseYear      Int?
+  basePrice        Float?
+  description      String?
+  popular          Boolean            @default(false)
+  active           Boolean            @default(true)
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  deletedAt        DateTime?
+  ColorVariant     ColorVariant[]
+  DeviceImage      DeviceImage[]
+  brand            Brand              @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  QuestionSet      QuestionSet?       @relation(fields: [questionSetId], references: [id])
+  variants         DeviceVariant[]
+  OfferCalculation OfferCalculation[]
+  PricingRule      PricingRule[]
+
+  @@index([brandId])
+  @@index([slug])
+  @@index([category])
+  @@index([questionSetId])
+}
+
+model DeviceVariant {
+  id               String             @id @default(uuid()) @db.Uuid
+  modelId          String             @db.Uuid
+  ram              String?
+  storage          String
+  basePrice        Float
+  active           Boolean            @default(true)
+  sortOrder        Int                @default(0)
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  deletedAt        DateTime?
+  colorVariants    ColorVariant[]
+  model            DeviceModel        @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  OfferCalculation OfferCalculation[]
+  pricingRules     PricingRule[]
+  quotes           Quote[]
+
+  @@index([modelId])
+}
+
+model ColorVariant {
+  id          String         @id @default(uuid()) @db.Uuid
+  modelId     String?        @db.Uuid
+  variantId   String?        @db.Uuid
+  colorName   String
+  hexCode     String?
+  imageUrl    String?
+  active      Boolean        @default(true)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  deletedAt   DateTime?
+  DeviceModel DeviceModel?   @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  variant     DeviceVariant? @relation(fields: [variantId], references: [id], onDelete: Cascade)
+
+  @@index([variantId])
+  @@index([modelId])
+}
+
+model ConditionQuestion {
+  id            String            @id @default(uuid()) @db.Uuid
+  questionSetId String?           @db.Uuid
+  title         String
+  subtitle      String?
+  group         String
+  type          String            @default("SINGLE")
+  sortOrder     Int               @default(0)
+  isRequired    Boolean           @default(true)
+  active        Boolean           @default(true)
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  deletedAt     DateTime?
+  options       ConditionOption[]
+  QuestionSet   QuestionSet?      @relation(fields: [questionSetId], references: [id])
+  pricingRules  PricingRule[]
+
+  @@index([group])
+  @@index([questionSetId])
+}
+
+model ConditionOption {
+  id           String            @id @default(uuid()) @db.Uuid
+  questionId   String            @db.Uuid
+  label        String
+  description  String?
+  iconName     String?
+  sortOrder    Int               @default(0)
+  active       Boolean           @default(true)
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  deletedAt    DateTime?
+  question     ConditionQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  pricingRules PricingRule[]
+
+  @@index([questionId])
+}
+
+model PricingRule {
+  id              String            @id @default(uuid()) @db.Uuid
+  modelId         String?           @db.Uuid
+  variantId       String?           @db.Uuid
+  questionId      String            @db.Uuid
+  optionId        String            @db.Uuid
+  ruleType        String
+  adjustmentType  String            @default("PERCENTAGE_DEDUCTION")
+  adjustmentValue Float
+  minValue        Float?
+  maxValue        Float?
+  priority        Int               @default(0)
+  active          Boolean           @default(true)
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  deletedAt       DateTime?
+  PricingHistory  PricingHistory[]
+  DeviceModel     DeviceModel?      @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  option          ConditionOption   @relation(fields: [optionId], references: [id], onDelete: Cascade)
+  question        ConditionQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  variant         DeviceVariant?    @relation(fields: [variantId], references: [id], onDelete: Cascade)
+
+  @@index([variantId])
+  @@index([questionId])
+  @@index([optionId])
+  @@index([modelId])
+}
+
+model Quote {
+  id                  String        @id @default(uuid()) @db.Uuid
+  quoteNumber         String        @unique
+  variantId           String        @db.Uuid
+  selectedAnswersJson String
+  basePrice           Float
+  totalDeductions     Float
+  estimatedPrice      Float
+  breakdownJson       String
+  expiresAt           DateTime
+  status              String        @default("ACTIVE")
+  customerPhone       String?
+  customerName        String?
+  userId              String?       @db.Uuid
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+  deletedAt           DateTime?
+  orders              Order[]
+  user                User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+  variant             DeviceVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+
+  @@index([quoteNumber])
+  @@index([variantId])
+  @@index([customerPhone])
+  @@index([userId])
+}
+
+model Order {
+  id             String           @id @default(uuid()) @db.Uuid
+  orderNumber    String           @unique
+  quoteId        String           @db.Uuid
+  userId         String           @db.Uuid
+  addressId      String?          @db.Uuid
+  pickupDate     String
+  pickupTimeSlot String
+  status               OrderStatus      @default(QUOTE_CREATED)
+  finalPrice           Float?
+  agentId              String?          @db.Uuid
+  urn                  String?
+  paymentScreenshotUrl String?
+  cancellationReason   String?
+  createdAt            DateTime         @default(now())
+  updatedAt            DateTime         @updatedAt
+  deletedAt            DateTime?
+  imageRefs            ImageReference[]
+  imeiRecords          Imei[]
+  invoices             Invoice[]
+  offers               Offer[]
+  address              Address?         @relation(fields: [addressId], references: [id])
+  quote                Quote            @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  user                 User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  agent                User?            @relation("AgentOrders", fields: [agentId], references: [id])
+  payments             Payment[]
+  pickups              Pickup[]
+  qcReports            QcReport[]
+  legalAcceptance      SellerAgreementAcceptance?
+  kycVerification      KycVerificationRecord?
+  priceRevisions       PriceRevisionRecord[]
+
+  @@index([orderNumber])
+  @@index([userId])
+  @@index([quoteId])
+  @@index([agentId])
+  @@index([status])
+  @@index([createdAt])
+  @@index([deletedAt])
+}
+
+model Pickup {
+  id         String    @id @default(uuid()) @db.Uuid
+  orderId    String    @db.Uuid
+  partnerId  String?   @db.Uuid
+  date       String
+  timeSlot   String
+  status     String    @default("SCHEDULED")
+  notes      String?
+  assignedAt DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime?
+  order      Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  partner    Partner?  @relation(fields: [partnerId], references: [id])
+
+  @@index([orderId])
+  @@index([partnerId])
+}
+
+model QcReport {
+  id                    String    @id @default(uuid()) @db.Uuid
+  orderId               String    @db.Uuid
+  inspectorName         String
+  imeiNumber            String
+  declaredAnswersJson   String
+  physicalAnswersJson   String
+  revisedPrice          Float
+  priceDifferenceReason String?
+  status                String    @default("PENDING_APPROVAL")
+  photoUrlsJson         String?
+  inspectedAt           DateTime  @default(now())
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  deletedAt             DateTime?
+  order                 Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+}
+
+model Offer {
+  id                    String    @id @default(uuid()) @db.Uuid
+  orderId               String    @db.Uuid
+  originalPrice         Float
+  revisedPrice          Float
+  priceDifferenceReason String?
+  status                String    @default("PENDING")
+  customerResponseAt    DateTime?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  deletedAt             DateTime?
+  order                 Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+}
+
+model Payment {
+  id             String           @id @default(uuid()) @db.Uuid
+  orderId        String           @db.Uuid
+  amount         Float
+  method         PaymentMethod    @default(UPI)
+  status         PaymentStatus    @default(PENDING)
+  transactionRef String?
+  paidAt         DateTime?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  deletedAt      DateTime?
+  order          Order            @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  history        PaymentHistory[]
+
+  @@index([orderId])
+}
+
+model PaymentHistory {
+  id        String    @id @default(uuid()) @db.Uuid
+  paymentId String    @db.Uuid
+  event     String
+  details   String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  payment   Payment   @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+
+  @@index([paymentId])
+}
+
+model Invoice {
+  id            String    @id @default(uuid()) @db.Uuid
+  orderId       String    @db.Uuid
+  invoiceNumber String    @unique
+  pdfUrl        String
+  status        String    @default("ISSUED")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  deletedAt     DateTime?
+  order         Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+  @@index([invoiceNumber])
+}
+
+model ServiceArea {
+  id              String    @id @default(uuid()) @db.Uuid
+  pincode         String    @unique
+  city            String
+  state           String
+  active          Boolean   @default(true)
+  pickupAvailable Boolean   @default(true)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  deletedAt       DateTime?
+
+  @@index([pincode])
+}
+
+model Partner {
+  id               String        @id @default(uuid()) @db.Uuid
+  name             String
+  phone            String        @unique
+  email            String
+  businessName     String?
+  city             String
+  status           PartnerStatus @default(ACTIVE)
+  rating           Float         @default(5.0)
+  completedPickups Int           @default(0)
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  deletedAt        DateTime?
+  pickups          Pickup[]
+
+  @@index([phone])
+}
+
+model PartnerApplication {
+  id             String    @id @default(uuid()) @db.Uuid
+  name           String
+  phone          String
+  email          String
+  businessName   String
+  city           String
+  state          String
+  pincodesServed String
+  experience     String?
+  status         String    @default("PENDING")
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  deletedAt      DateTime?
+}
+
+model BulkLead {
+  id          String    @id @default(uuid()) @db.Uuid
+  name        String
+  company     String
+  phone       String
+  email       String
+  city        String
+  deviceCount String
+  deviceTypes String
+  message     String?
+  status      String    @default("NEW")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
+}
+
+model FAQ {
+  id        String    @id @default(uuid()) @db.Uuid
+  question  String
+  answer    String
+  category  String    @default("GENERAL")
+  sortOrder Int       @default(0)
+  active    Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model Imei {
+  id        String    @id @default(uuid()) @db.Uuid
+  code      String    @unique
+  status    String    @default("VERIFIED")
+  checkedAt DateTime  @default(now())
+  comments  String?
+  orderId   String?   @db.Uuid
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  order     Order?    @relation(fields: [orderId], references: [id])
+
+  @@index([code])
+}
+
+model Coupon {
+  id            String       @id @default(uuid()) @db.Uuid
+  code          String       @unique
+  discountType  DiscountType @default(FIXED)
+  discountValue Float
+  maxUsage      Int          @default(100)
+  usedCount     Int          @default(0)
+  active        Boolean      @default(true)
+  expiresAt     DateTime?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  deletedAt     DateTime?
+
+  @@index([code])
+}
+
+model Referral {
+  id           String    @id @default(uuid()) @db.Uuid
+  referrerId   String    @db.Uuid
+  refereeId    String    @db.Uuid
+  status       String    @default("PENDING")
+  rewardAmount Float
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  deletedAt    DateTime?
+
+  @@index([referrerId])
+  @@index([refereeId])
+}
+
+model SupportTicket {
+  id          String       @id @default(uuid()) @db.Uuid
+  userId      String?      @db.Uuid
+  name        String
+  email       String
+  subject     String
+  message     String
+  status      TicketStatus @default(OPEN)
+  repliesJson String       @default("[]")
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  deletedAt   DateTime?
+  user        User?        @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model SystemSetting {
+  id          String    @id @default(uuid()) @db.Uuid
+  key         String    @unique
+  value       String
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
+
+  @@index([key])
+}
+
+model ImageReference {
+  id         String    @id @default(uuid()) @db.Uuid
+  url        String
+  bucket     String
+  key        String
+  entityType String
+  entityId   String    @db.Uuid
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime?
+  order      Order     @relation(fields: [entityId], references: [id], onDelete: Cascade)
+
+  @@index([entityId])
+}
+
+model CustomerDevice {
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String    @db.Uuid
+  brand     String
+  model     String
+  storage   String
+  color     String?
+  imei      String?
+  status    String    @default("ACTIVE")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Notification {
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String    @db.Uuid
+  title     String
+  message   String
+  read      Boolean   @default(false)
+  type      String    @default("INFO")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@index([userId])
+}
+
+model EmailLog {
+  id        String    @id @default(uuid()) @db.Uuid
+  to        String
+  subject   String
+  body      String
+  status    String    @default("QUEUED")
+  error     String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@index([to])
+}
+
+model OtpLog {
+  id        String    @id @default(uuid()) @db.Uuid
+  phone     String
+  code      String
+  expiresAt DateTime
+  verified  Boolean   @default(false)
+  type      String    @default("LOGIN")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@index([phone])
+}
+
+model AdminLog {
+  id          String    @id @default(uuid()) @db.Uuid
+  adminUserId String    @db.Uuid
+  action      String
+  ipAddress   String?
+  details     String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
+
+  @@index([adminUserId])
+}
+
+model ActivityLog {
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String    @db.Uuid
+  action    String
+  details   String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model AuditLog {
+  id            String    @id @default(uuid()) @db.Uuid
+  actorId       String    @db.Uuid
+  actorRole     String
+  action        String
+  tableName     String
+  recordId      String    @db.Uuid
+  oldValuesJson String?
+  newValuesJson String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  deletedAt     DateTime?
+
+  @@index([recordId])
+  @@index([action, createdAt(sort: Desc)])
+}
+
+model UserNotificationToken {
+  id         String    @id @default(uuid()) @db.Uuid
+  userId     String    @db.Uuid
+  token      String    @unique
+  deviceType String    @default("UNKNOWN")
+  active     Boolean   @default(true)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime?
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([token])
+}
+
+model DeviceImage {
+  id          String      @id @db.Uuid
+  modelId     String      @db.Uuid
+  imageUrl    String
+  isPrimary   Boolean     @default(false)
+  caption     String?
+  sortOrder   Int         @default(0)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime
+  deletedAt   DateTime?
+  DeviceModel DeviceModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+
+  @@index([modelId])
+}
+
+model OfferCalculation {
+  id                    String         @id @db.Uuid
+  quoteNumber           String         @unique
+  modelId               String         @db.Uuid
+  variantId             String?        @db.Uuid
+  userId                String?        @db.Uuid
+  basePrice             Float
+  selectedAnswersJson   String
+  rulesAppliedJson      String
+  fixedAdjustments      Float
+  percentageAdjustments Float
+  finalOffer            Float
+  adminRuleVersion      String         @default("v1.0")
+  calculatedAt          DateTime       @default(now())
+  DeviceModel           DeviceModel    @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  User                  User?          @relation(fields: [userId], references: [id])
+  DeviceVariant         DeviceVariant? @relation(fields: [variantId], references: [id])
+
+  @@index([modelId])
+  @@index([quoteNumber])
+  @@index([userId])
+  @@index([variantId])
+}
+
+model PricingHistory {
+  id          String      @id @db.Uuid
+  ruleId      String      @db.Uuid
+  oldType     String?
+  oldValue    Float?
+  newType     String
+  newValue    Float
+  changedBy   String?
+  reason      String?
+  createdAt   DateTime    @default(now())
+  PricingRule PricingRule @relation(fields: [ruleId], references: [id], onDelete: Cascade)
+
+  @@index([ruleId])
+}
+
+model QuestionSet {
+  id                String              @id @db.Uuid
+  name              String
+  description       String?
+  deviceCategory    String              @default("MOBILE")
+  active            Boolean             @default(true)
+  sortOrder         Int                 @default(0)
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime
+  deletedAt         DateTime?
+  ConditionQuestion ConditionQuestion[]
+  DeviceModel       DeviceModel[]
+}
+
+enum Role {
+  CUSTOMER
+  ADMIN
+  SUPER_ADMIN
+  EMPLOYEE
+  AGENT
+}
+
+enum OrderStatus {
+  QUOTE_CREATED
+  PICKUP_SCHEDULED
+  PARTNER_ASSIGNED
+  PARTNER_ON_THE_WAY
+  INSPECTION_STARTED
+  FINAL_OFFER_PENDING
+  ACCEPTED
+  DECLINED
+  PAYMENT_PROCESSING
+  PAID
+  COMPLETED
+  CANCELLED
+}
+
+enum PartnerStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+}
+
+enum PaymentMethod {
+  UPI
+  BANK_TRANSFER
+  CASH
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  PAID
+  FAILED
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+enum DiscountType {
+  FIXED
+  PERCENTAGE
+}
+
+model Review {
+  id           String   @id @default(uuid()) @db.Uuid
+  name         String
+  phone        String?
+  rating       Int      @default(5)
+  headline     String?
+  comment      String
+  deviceModel  String?
+  location     String?
+  payout       Float?
+  verified     Boolean  @default(false)
+  helpfulCount Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([rating])
+  @@index([createdAt])
+}
+
+// ==========================================
+// LEGAL & COMPLIANCE INFRASTRUCTURE
+// ==========================================
+
+enum LegalDocumentType {
+  SELLER_PURCHASE_AGREEMENT
+  SELLER_TERMS
+  WEBSITE_TERMS
+  PRIVACY_POLICY
+  COOKIE_POLICY
+  INSPECTION_REVISION_POLICY
+  PICKUP_POLICY
+  CANCELLATION_POLICY
+  GRIEVANCE_POLICY
+  AGENT_ENGAGEMENT_AGREEMENT
+  AGENT_PICKUP_SOP
+}
+
+enum DocumentApprovalStatus {
+  DRAFT
+  INTERNAL_REVIEW
+  LAWYER_REVIEW
+  APPROVED
+  PUBLISHED
+  SUPERSEDED
+}
+
+model LegalDocument {
+  id                   String                 @id @default(uuid()) @db.Uuid
+  documentType         LegalDocumentType
+  title                String
+  version              String                 // e.g. "1.0", "1.1"
+  status               DocumentApprovalStatus @default(DRAFT)
+  content              String                 @db.Text
+  summaryOfChanges     String?                @db.Text
+  contentHash          String                 // SHA-256 of content
+  effectiveDate        DateTime               @default(now())
+  publishedAt          DateTime?
+  approvedByLawyerAt   DateTime?
+  lawyerReferenceNotes String?                @db.Text
+  createdById          String?
+  createdAt            DateTime               @default(now())
+  updatedAt            DateTime               @updatedAt
+
+  acceptances          SellerAgreementAcceptance[]
+
+  @@unique([documentType, version])
+  @@index([documentType, status])
+}
+
+enum AcceptanceMethod {
+  CHECKBOX_AFFIRMATIVE
+  OTP_VERIFIED
+  E_SIGN_CANVAS
+  PHYSICAL_PAPER
+}
+
+model SellerAgreementAcceptance {
+  id                       String           @id @default(uuid()) @db.Uuid
+  orderId                  String           @unique @db.Uuid
+  quoteId                  String?          @db.Uuid
+  documentId               String           @db.Uuid
+  documentVersion          String
+  documentHash             String           // SHA-256 of agreement snapshot
+  sellerName               String
+  sellerPhone              String
+  sellerEmail              String?
+  acceptanceMethod         AcceptanceMethod @default(CHECKBOX_AFFIRMATIVE)
+  otpReference             String?
+  otpVerifiedAt            DateTime?
+  signatureDataUrl         String?          @db.Text
+  clientIpAddress          String?
+  clientUserAgent          String?
+  acceptedDeclarationsJson String           @db.Text
+  deviceSnapshotJson       String           @db.Text
+  agreedFinalPrice         Float
+  pdfDocumentUrl           String?
+  acceptedAt               DateTime         @default(now())
+
+  order                    Order            @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  document                 LegalDocument    @relation(fields: [documentId], references: [id])
+
+  @@index([orderId])
+  @@index([sellerPhone])
+}
+
+enum KycIdType {
+  AADHAAR
+  PAN
+  VOTER_ID
+  DRIVING_LICENSE
+  PASSPORT
+}
+
+enum KycStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+  EXPIRED
+}
+
+model KycVerificationRecord {
+  id                   String      @id @default(uuid()) @db.Uuid
+  orderId              String      @unique @db.Uuid
+  idType               KycIdType
+  maskedIdNumber       String
+  idHash               String      // SHA-256(salt + rawId) for duplicate check
+  fullNameOnId         String
+  verificationStatus   KycStatus   @default(PENDING)
+  verificationProvider String
+  providerReferenceId  String?
+  agentId              String?     @db.Uuid
+  consentObtained      Boolean     @default(false)
+  consentTimestamp     DateTime?
+  verifiedAt           DateTime    @default(now())
+
+  order                Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+}
+
+enum CustomerRevisionDecision {
+  PENDING
+  ACCEPTED
+  DECLINED
+  EXPIRED
+}
+
+model PriceRevisionRecord {
+  id                     String                   @id @default(uuid()) @db.Uuid
+  orderId                String                   @db.Uuid
+  originalQuotePrice     Float
+  revisedPrice           Float
+  priceDifference        Float
+  reasonCode             String
+  detailedReason         String                   @db.Text
+  inspectionFindingsJson String                   @db.Text
+  revisedByAgentId       String?                  @db.Uuid
+  customerNotifiedAt     DateTime?
+  customerDecision       CustomerRevisionDecision @default(PENDING)
+  customerRespondedAt    DateTime?
+  customerResponseMethod String?
+  createdAt              DateTime                 @default(now())
+
+  order                  Order                    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+}
+
+enum PrivacyRequestType {
+  ACCESS_SUMMARY
+  CORRECTION
+  ERASURE_DELETION
+  NOMINATION
+  GRIEVANCE
+}
+
+enum PrivacyRequestStatus {
+  RECEIVED
+  UNDER_VERIFICATION
+  IN_REVIEW
+  FULFILLED
+  REJECTED
+  EXEMPTION_APPLIED
+}
+
+model DataPrivacyRequest {
+  id                   String               @id @default(uuid()) @db.Uuid
+  requestType          PrivacyRequestType
+  userId               String?              @db.Uuid
+  dataPrincipalName    String
+  dataPrincipalPhone   String
+  dataPrincipalEmail   String
+  identityVerified     Boolean              @default(false)
+  verificationMethod   String?
+  requestDetails       String               @db.Text
+  status               PrivacyRequestStatus @default(RECEIVED)
+  adminRemarks         String?              @db.Text
+  legalExemptionReason String?              @db.Text
+  completedAt          DateTime?
+  createdAt            DateTime             @default(now())
+  updatedAt            DateTime             @updatedAt
+
+  user                 User?                @relation(fields: [userId], references: [id])
+
+  @@index([dataPrincipalPhone])
+  @@index([status])
+}
+
+enum AgentEngagementStatus {
+  ACTIVE
+  SUSPENDED
+  TERMINATED
+}
+
+model AgentAppointmentRecord {
+  id                      String                @id @default(uuid()) @db.Uuid
+  agentId                 String                @unique @db.Uuid
+  agreementVersion        String
+  agreementContentHash    String
+  acceptedAt              DateTime
+  backgroundCheckStatus   String                @default("PENDING")
+  policeVerificationRef   String?
+  ndaSigned               Boolean               @default(true)
+  sopVersionAcknowledged  String
+  status                  AgentEngagementStatus @default(ACTIVE)
+  createdAt               DateTime              @default(now())
+  updatedAt               DateTime              @updatedAt
+
+  agent                   User                  @relation(fields: [agentId], references: [id])
+
+  @@index([agentId])
+}
+
+enum CallDirection {
+  OUTBOUND
+  INBOUND
+}
+
+enum CallStatus {
+  INITIATED
+  RINGING
+  IN_PROGRESS
+  COMPLETED
+  BUSY
+  NO_ANSWER
+  FAILED
+  CANCELLED
+}
+
+enum RecordingStatus {
+  NOT_ENABLED
+  PENDING
+  AVAILABLE
+  UNAVAILABLE
+  FAILED
+  EXPIRED
+}
+
+model TelephonyCall {
+  id                  String          @id @default(uuid()) @db.Uuid
+  callSid             String?         @unique
+  direction           CallDirection   @default(OUTBOUND)
+  status              CallStatus      @default(INITIATED)
+  providerStatus      String?         // raw status from Exotel
+  
+  // Participants & relations
+  initiatorUserId     String?         @db.Uuid
+  agentId             String?         @db.Uuid
+  customerId          String?         @db.Uuid
+  orderId             String?         @db.Uuid
+  orderNumber         String?
+  quoteId             String?
+  ticketId            String?         @db.Uuid
+  
+  // Phone numbers
+  callerId            String          // The ExoPhone used e.g. 09513886363
+  fromNumber          String          // Initiator / Agent phone
+  toNumber            String          // Customer phone
+  customerName        String?
+  agentName           String?
+  
+  // Metadata & Context
+  purpose             String          @default("ORDER_COORDINATION")
+  customField         String?
+  notes               String?         @db.Text
+  
+  // Timing & Billing
+  startTime           DateTime?
+  endTime             DateTime?
+  durationSeconds     Int             @default(0)
+  price               Float?          // Provider-reported charge in INR
+  currency            String          @default("INR")
+  
+  // Recording
+  recordingStatus     RecordingStatus @default(NOT_ENABLED)
+  recordingUrl        String?         @db.Text
+  recordingSid        String?
+  recordingDuration   Int?
+  
+  // Diagnostics & audit
+  failureReason       String?
+  metadataJson        String?         @db.Text
+  
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
+
+  @@index([callSid])
+  @@index([orderId])
+  @@index([orderNumber])
+  @@index([agentId])
+  @@index([customerId])
+  @@index([fromNumber])
+  @@index([toNumber])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model Ps5Rental {
+  id           String    @id @default(uuid())
+  orderId      String?   @map("order_id")
+  customerName String?   @map("customer_name")
+  phone        String?
+  plan         String?
+  startDate    DateTime? @map("start_date")
+  endDate      DateTime? @map("end_date")
+  amount       Int?
+  deposit      Int?
+  kycStatus    String?   @map("kyc_status")
+  status       String?
+  address      String?
+  notes        String?
+  createdAt    DateTime? @default(now()) @map("created_at")
+  updatedAt    DateTime? @updatedAt @map("updated_at")
+
+  @@map("ps5_rentals")
+}
+
+
+

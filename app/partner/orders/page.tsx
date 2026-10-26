@@ -1,0 +1,350 @@
+"use client";
+
+import React, { useState, useEffect, useCallback } from "react";
+import Link from "next/link";
+import { Badge } from "@/components/ui/Badge";
+import {
+  Truck,
+  Phone,
+  MapPin,
+  ClipboardCheck,
+  CreditCard,
+  FileCheck,
+  CheckCircle2,
+  AlertTriangle,
+  Loader2,
+  Search,
+  Calendar,
+} from "lucide-react";
+import { RescheduleModal } from "@/components/common/RescheduleModal";
+import { formatPickupDateDisplay } from "@/lib/utils/pickup-date";
+
+interface PartnerOrder {
+  id: string;
+  orderNumber: string;
+  customerName: string;
+  customerPhone: string;
+  addressText: string;
+  pickupDate: string;
+  pickupTimeSlot: string;
+  createdAt?: string;
+  deviceName: string;
+  storage: string;
+  estimatedPrice: number;
+  quotedPrice?: number;
+  requotedPrice?: number | null;
+  revisedPrice?: number | null;
+  finalPrice: number | null;
+  status: string;
+  identityStatus: string;
+  imeiStatus: string;
+  hasQcReport: boolean;
+  paymentStatus: string;
+  isSigned: boolean;
+  cancellationReason?: string | null;
+}
+
+export default function PartnerOrdersPage() {
+  const [orders, setOrders] = useState<PartnerOrder[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
+  const [partnerUser, setPartnerUser] = useState<any>(null);
+  const [rescheduleOrder, setRescheduleOrder] = useState<PartnerOrder | null>(null);
+
+  const fetchOrders = useCallback(async () => {
+    let partnerPhone = "";
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("cashall_partner_session");
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored);
+          setPartnerUser(parsed);
+          partnerPhone = parsed.phone || "";
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    }
+
+    try {
+      const queryUrl = partnerPhone
+        ? `/api/v1/partner/orders?phone=${encodeURIComponent(partnerPhone)}`
+        : "/api/v1/partner/orders";
+      const res = await fetch(queryUrl);
+      if (res.ok) {
+        const data = await res.json();
+        setOrders(data.orders || []);
+      }
+    } catch (err) {
+      console.error("Failed to load partner orders:", err);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchOrders();
+  }, [fetchOrders]);
+
+  const handleLogout = () => {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("cashall_partner_session");
+      window.location.href = "/partner";
+    }
+  };
+
+  const filteredOrders = orders.filter(
+    (o) =>
+      o.orderNumber.toLowerCase().includes(search.toLowerCase()) ||
+      o.customerName.toLowerCase().includes(search.toLowerCase()) ||
+      o.deviceName.toLowerCase().includes(search.toLowerCase())
+  );
+
+  return (
+    <div className="min-h-screen bg-neutral-950 text-white pb-12">
+      {/* Mobile Top Header */}
+      <div className="bg-neutral-900 border-b border-neutral-800 p-4 sticky top-0 z-30 flex items-center justify-between">
+        <div className="flex items-center gap-2.5">
+          <div className="w-9 h-9 rounded-xl bg-brand-yellow/20 flex items-center justify-center border border-brand-yellow/40">
+            <Truck className="w-4.5 h-4.5 text-brand-yellow" />
+          </div>
+          <div>
+            <h1 className="text-xs font-black text-white leading-tight">
+              {partnerUser?.name || "Partner Field Portal"}
+            </h1>
+            <p className="text-[10px] text-gray-400 font-mono">
+              {partnerUser?.phone ? `+91 ${partnerUser.phone}` : "Assigned Field Tasks"}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <Badge variant="yellow" className="text-[10px] font-bold">
+            {orders.length} Pickups
+          </Badge>
+
+          <button
+            onClick={handleLogout}
+            className="p-1.5 bg-neutral-800 hover:bg-neutral-700 text-gray-300 hover:text-white rounded-lg text-xs font-bold transition-colors"
+            title="Log Out"
+          >
+            Exit
+          </button>
+        </div>
+      </div>
+
+      {/* Search Input */}
+      <div className="p-4">
+        <div className="relative">
+          <Search className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5" />
+          <input
+            type="text"
+            placeholder="Search Order #, customer name, device..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full bg-neutral-900 border border-neutral-800 text-xs text-white placeholder-gray-500 rounded-2xl pl-10 pr-4 py-3 focus:outline-none focus:border-brand-yellow"
+          />
+        </div>
+      </div>
+
+      {/* Orders List */}
+      <div className="px-4 space-y-4">
+        {loading ? (
+          <div className="flex items-center justify-center py-16 text-xs text-gray-400">
+            <Loader2 className="w-5 h-5 animate-spin text-brand-yellow mr-2" />
+            <span>Loading assigned pickups...</span>
+          </div>
+        ) : filteredOrders.length === 0 ? (
+          <div className="text-center py-16 bg-neutral-900/50 rounded-3xl border border-neutral-800 p-6 text-gray-400 space-y-2">
+            <Truck className="w-10 h-10 mx-auto opacity-30 text-brand-yellow" />
+            <p className="text-xs font-bold text-white">No assigned pickups found</p>
+            <p className="text-[11px] text-gray-500">
+              When CashALL admin assigns doorstep pickups to you, they will appear here.
+            </p>
+          </div>
+        ) : (
+          filteredOrders.map((ord) => (
+            <div
+              key={ord.id}
+              className="bg-neutral-900 border border-neutral-800 rounded-3xl p-5 space-y-4 shadow-xl"
+            >
+              {/* Card Header */}
+              <div className="flex items-start justify-between border-b border-neutral-800 pb-3">
+                <div>
+                  <div className="text-xs font-black text-brand-yellow">#{ord.orderNumber}</div>
+                  <div className="text-sm font-extrabold text-white mt-0.5">{ord.deviceName} ({ord.storage})</div>
+                </div>
+                <Badge variant="yellow" className="text-[10px] uppercase font-black">
+                  {ord.status.replace(/_/g, " ")}
+                </Badge>
+              </div>
+
+              {/* Customer & Address */}
+              <div className="space-y-2 text-xs">
+                <div className="flex items-center justify-between text-gray-300 font-semibold">
+                  <span>{ord.customerName}</span>
+                  <a
+                    href={`tel:${ord.customerPhone}`}
+                    className="flex items-center gap-1 bg-brand-yellow/10 text-brand-yellow px-2.5 py-1 rounded-lg border border-brand-yellow/30 text-[11px] font-bold"
+                  >
+                    <Phone className="w-3 h-3" />
+                    <span>Call</span>
+                  </a>
+                </div>
+
+                <div className="flex items-start gap-1.5 text-gray-400 text-[11px]">
+                  <MapPin className="w-3.5 h-3.5 text-brand-yellow shrink-0 mt-0.5" />
+                  <span className="leading-snug">{ord.addressText}</span>
+                </div>
+              </div>
+
+              {/* Pickup Slot & Reschedule action */}
+              <div className="flex items-center justify-between bg-neutral-950 px-3.5 py-2.5 rounded-2xl border border-neutral-800">
+                <div className="flex items-center gap-2 text-xs">
+                  <Calendar className="w-4 h-4 text-brand-yellow shrink-0" />
+                  <div>
+                    <span className="font-extrabold text-white">{formatPickupDateDisplay(ord.pickupDate, ord.createdAt)}</span>
+                    <span className="text-gray-500 mx-1.5">•</span>
+                    <span className="text-gray-400 font-medium">{ord.pickupTimeSlot || "10 AM - 1 PM"}</span>
+                  </div>
+                </div>
+                {!["COMPLETED", "CANCELLED", "REJECTED"].includes(ord.status) && (
+                  <button
+                    onClick={() => setRescheduleOrder(ord)}
+                    className="text-[11px] font-black text-brand-yellow hover:text-white bg-brand-yellow/10 hover:bg-brand-yellow/20 border border-brand-yellow/30 px-3 py-1 rounded-xl transition cursor-pointer"
+                  >
+                    Reschedule
+                  </button>
+                )}
+              </div>
+
+              {/* Price & Status Tags */}
+              <div className="bg-neutral-950 rounded-2xl p-3 border border-neutral-850 space-y-1.5">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-gray-400 font-bold">Quoted Price:</span>
+                  <span className="font-bold text-yellow-400 font-price">
+                    ₹{(ord.quotedPrice || ord.estimatedPrice || 0).toLocaleString("en-IN")}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-gray-400 font-bold">Re-Quoted Price:</span>
+                  <span className="font-bold text-purple-300 font-price">
+                    ₹{(ord.requotedPrice || ord.revisedPrice || ord.finalPrice || ord.estimatedPrice || 0).toLocaleString("en-IN")}
+                  </span>
+                </div>
+                <div className="pt-1.5 border-t border-neutral-800 flex items-center justify-between">
+                  <span className="text-xs font-bold text-gray-300">Final Price:</span>
+                  <span className="text-base font-black text-green-400 font-price">
+                    ₹{(ord.finalPrice || ord.estimatedPrice || 0).toLocaleString("en-IN")}
+                  </span>
+                </div>
+
+                <div className="pt-1 border-t border-neutral-900 flex justify-end gap-1.5">
+                  <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${ord.identityStatus === "VERIFIED" ? "bg-green-950 text-green-400 border border-green-800" : "bg-neutral-800 text-gray-400"}`}>
+                    ID: {ord.identityStatus}
+                  </span>
+                  <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${ord.imeiStatus === "CLEAR" || ord.imeiStatus === "VERIFIED" ? "bg-green-950 text-green-400 border border-green-800" : ord.imeiStatus === "FLAGGED" ? "bg-red-950 text-red-400 border border-red-800" : "bg-neutral-800 text-gray-400"}`}>
+                    IMEI: {ord.imeiStatus}
+                  </span>
+                </div>
+              </div>
+
+              {/* Cancellation Reason Banner */}
+              {["CANCELLED", "REJECTED"].includes(ord.status) && (
+                <div className="bg-red-950/40 border border-red-800/60 rounded-2xl p-3 text-xs flex items-start gap-2.5 text-red-300">
+                  <AlertTriangle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold text-red-400">Order Cancelled</div>
+                    <div className="text-[11px] text-red-200 mt-0.5">
+                      <span className="font-semibold text-red-300">Reason: </span>
+                      {ord.cancellationReason || "Customer cancelled order / rejected offer."}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Action Buttons */}
+              {(() => {
+                if (["CANCELLED", "REJECTED"].includes(ord.status)) {
+                  return (
+                    <div className="grid grid-cols-2 gap-2 pt-1">
+                      <a
+                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ord.addressText)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="py-2.5 bg-neutral-800 hover:bg-neutral-700 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 transition-colors"
+                      >
+                        <MapPin className="w-3.5 h-3.5 text-brand-yellow" />
+                        <span>Google Maps</span>
+                      </a>
+                      <div className="py-2.5 bg-red-950/50 border border-red-850 text-red-400 font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 cursor-not-allowed">
+                        <AlertTriangle className="w-3.5 h-3.5" />
+                        <span>Cancelled</span>
+                      </div>
+                    </div>
+                  );
+                }
+
+                let targetHref = `/partner/orders/${ord.id}/inspection`;
+                let btnLabel = "Inspect Device";
+
+                if (["FINAL_OFFER", "CUSTOMER_ACCEPTED", "IDENTITY_VERIFICATION_PENDING"].includes(ord.status)) {
+                  targetHref = `/partner/orders/${ord.id}/verification`;
+                  btnLabel = ord.status === "FINAL_OFFER" ? "Offer Pending" : "Seller Verification";
+                } else if (["IDENTITY_VERIFIED", "ESIGN_PENDING"].includes(ord.status)) {
+                  targetHref = `/partner/orders/${ord.id}/signature`;
+                  btnLabel = "eSign Agreement";
+                } else if (["ESIGNED", "PAYMENT_PENDING", "PAYMENT_CONFIRMED", "DEVICE_RECEIVED"].includes(ord.status)) {
+                  targetHref = `/partner/orders/${ord.id}/payment`;
+                  btnLabel = ord.status === "PAYMENT_CONFIRMED" ? "Handover & Bill" : "UPI Payment";
+                } else if (ord.status === "COMPLETED") {
+                  targetHref = `/order/${ord.orderNumber}/bill`;
+                  btnLabel = "View Final Bill";
+                }
+
+                return (
+                  <div className="grid grid-cols-2 gap-2 pt-1">
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ord.addressText)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="py-2.5 bg-neutral-800 hover:bg-neutral-700 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 transition-colors"
+                    >
+                      <MapPin className="w-3.5 h-3.5 text-brand-yellow" />
+                      <span>Google Maps</span>
+                    </a>
+
+                    <Link
+                      href={targetHref}
+                      className="py-2.5 bg-brand-yellow hover:bg-brand-yellowHover text-brand-black font-extrabold text-xs rounded-xl flex items-center justify-center gap-1.5 shadow-yellowGlow transition-all"
+                    >
+                      <ClipboardCheck className="w-3.5 h-3.5" />
+                      <span>{btnLabel}</span>
+                    </Link>
+                  </div>
+                );
+              })()}
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* RESCHEDULE MODAL */}
+      {rescheduleOrder && (
+        <RescheduleModal
+          isOpen={!!rescheduleOrder}
+          onClose={() => setRescheduleOrder(null)}
+          orderId={rescheduleOrder.id}
+          orderNumber={rescheduleOrder.orderNumber}
+          currentDate={rescheduleOrder.pickupDate}
+          currentTimeSlot={rescheduleOrder.pickupTimeSlot}
+          actorRole="PARTNER"
+          actorName={partnerUser?.name || "Field Partner"}
+          onSuccess={() => {
+            fetchOrders();
+          }}
+        />
+      )}
+    </div>
+  );
+}

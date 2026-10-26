@@ -1,0 +1,131 @@
+import { NextRequest, NextResponse } from "next/server";
+import { apiWrapper } from "@/lib/utils/api-wrapper";
+import { verifyAuthToken, requireRole } from "@/lib/middlewares/auth";
+import { prisma } from "@/lib/db";
+import { AppError } from "@/lib/utils/AppError";
+import { logger } from "@/lib/utils/logger";
+import { z } from "zod";
+
+const saveInspectionSchema = z.object({
+  imei: z.string().optional().default("N/A"),
+  screenFinding: z.string().optional(),
+  bodyFinding: z.string().optional(),
+  revisedPrice: z.number().min(0, "Revised price must be a valid amount").optional(),
+  reason: z.string().optional(),
+  customerEmail: z.string().optional(),
+});
+
+export const POST = apiWrapper(async (req: NextRequest, { params }: { params: { id: string } }) => {
+  const decodedUser = await verifyAuthToken(req);
+  requireRole(["ADMIN", "SUPER_ADMIN", "EMPLOYEE"], decodedUser.role);
+
+  const orderIdentifier = params.id;
+  const body = await req.json().catch(() => ({}));
+  const validation = saveInspectionSchema.safeParse(body);
+
+  if (!validation.success) {
+    throw new AppError(validation.error.issues[0].message, 400);
+  }
+
+  const { imei, screenFinding, bodyFinding, revisedPrice, reason, customerEmail } = validation.data;
+
+  const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(orderIdentifier);
+  const cleanOrderNum = orderIdentifier.replace(/^#/, "");
+
+  const order = await prisma.order.findFirst({
+    where: {
+      OR: isUuid
+        ? [{ id: orderIdentifier }, { orderNumber: cleanOrderNum }]
+        : [{ orderNumber: cleanOrderNum }, { orderNumber: `#${cleanOrderNum}` }],
+      deletedAt: null,
+    },
+    include: { quote: true, user: true },
+  });
+
+  if (!order) {
+    throw new AppError("Order not found.", 404);
+  }
+
+  const effectiveRevisedPrice = revisedPrice ?? order.quote?.estimatedPrice ?? 0;
+
+  // 1. Update user email if provided
+  if (customerEmail && customerEmail.includes("@")) {
+    await prisma.user.update({
+      where: { id: order.userId },
+      data: { email: customerEmail.trim() },
+    }).catch(() => {});
+  }
+
+  // 2. Create or Update QC Report
+  const existingQc = await prisma.qcReport.findFirst({ where: { orderId: order.id } });
+  if (existingQc) {
+    await prisma.qcReport.update({
+      where: { id: existingQc.id },
+      data: {
+        inspectorName: decodedUser.email || "Inspector",
+        imeiNumber: imei.trim(),
+        physicalAnswersJson: JSON.stringify({ screenFinding, bodyFinding }),
+        revisedPrice: effectiveRevisedPrice,
+        priceDifferenceReason: reason || null,
+        status: "APPROVED",
+        inspectedAt: new Date(),
+      },
+    });
+  } else {
+    await prisma.qcReport.create({
+      data: {
+        orderId: order.id,
+        inspectorName: decodedUser.email || "Inspector",
+        imeiNumber: imei.trim(),
+        declaredAnswersJson: order.quote?.selectedAnswersJson || "{}",
+        physicalAnswersJson: JSON.stringify({ screenFinding, bodyFinding }),
+        revisedPrice: effectiveRevisedPrice,
+        priceDifferenceReason: reason || null,
+        status: "APPROVED",
+        inspectedAt: new Date(),
+      },
+    });
+  }
+
+  // 3. Record IMEI Record
+  const existingImei = await prisma.imei.findFirst({ where: { code: imei.trim() } });
+  if (!existingImei) {
+    await prisma.imei.create({
+      data: {
+        orderId: order.id,
+        code: imei.trim(),
+        status: "VERIFIED",
+      },
+    }).catch(() => {});
+  } else if (!existingImei.orderId) {
+    await prisma.imei.update({
+      where: { id: existingImei.id },
+      data: { orderId: order.id },
+    }).catch(() => {});
+  }
+
+  // 4. Update Order Status and Revised Final Price
+  const updatedOrder = await prisma.order.update({
+    where: { id: order.id },
+    data: {
+      status: "ACCEPTED",
+      finalPrice: effectiveRevisedPrice,
+    },
+    include: {
+      user: true,
+      address: true,
+      quote: true,
+      pickups: { include: { partner: true } },
+      qcReports: true,
+      imeiRecords: true,
+    },
+  });
+
+  logger.info(`[PHYSICAL INSPECTION] Saved for Order #${order.orderNumber} - IMEI: ${imei}, Revised Price: ₹${effectiveRevisedPrice}`);
+
+  return NextResponse.json({
+    success: true,
+    message: `Physical inspection saved and payout price locked at ₹${effectiveRevisedPrice.toLocaleString("en-IN")}.`,
+    data: updatedOrder,
+  });
+});

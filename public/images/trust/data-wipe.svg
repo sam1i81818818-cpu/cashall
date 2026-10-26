@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <defs>
+    <linearGradient id="wipeBg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ECFDF5" />
+      <stop offset="100%" stop-color="#D1FAE5" />
+    </linearGradient>
+    <linearGradient id="lockGrad" x1="20" y1="20" x2="44" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+  </defs>
+  <!-- Background Badge -->
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#wipeBg)" stroke="#A7F3D0" stroke-width="2" />
+  <!-- Silicon / Chip Base Plate -->
+  <rect x="15" y="16" width="34" height="34" rx="8" fill="#18181B" stroke="#27272A" stroke-width="1.5" />
+  <!-- Circuit Traces -->
+  <path d="M15 24H11M15 32H11M15 40H11M49 24H53M49 32H53M49 40H53M24 15V11M32 15V11M40 15V11M24 49V53M32 49V53M40 49V53" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" />
+  <!-- Lock Shackle -->
+  <path d="M26 27V23C26 19.686 28.686 17 32 17C35.314 17 38 19.686 38 23V27" stroke="#FFD400" stroke-width="2.5" stroke-linecap="round" fill="none" />
+  <!-- Lock Body Shield -->
+  <rect x="23" y="27" width="18" height="15" rx="4" fill="url(#lockGrad)" stroke="#34D399" stroke-width="1" />
+  <!-- Keyhole / Wipe Check -->
+  <path d="M29 34.5L31.5 37L35.5 32" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- Small Star Badge -->
+  <circle cx="47" cy="17" r="4.5" fill="#FFD400" />
+  <path d="M47 14.5L47.7 16.3L49.5 17L47.7 17.7L47 19.5L46.3 17.7L44.5 17L46.3 16.3Z" fill="#18181B" />
+</svg>

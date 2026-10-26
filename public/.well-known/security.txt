@@ -1,0 +1,8 @@
+Contact: mailto:support@cashall.in
+Contact: tel:+917604092333
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en, hi, bn
+Canonical: https://www.cashall.in/.well-known/security.txt
+Policy: https://www.cashall.in/privacy
+Acknowledgments: https://www.cashall.in/reviews
+Hiring: https://www.cashall.in/contact

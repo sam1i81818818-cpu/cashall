@@ -1,0 +1,397 @@
+import { Resend } from "resend";
+import nodemailer from "nodemailer";
+import { logger } from "../utils/logger";
+
+const resendApiKey = process.env.RESEND_API_KEY;
+export const resend = resendApiKey && !resendApiKey.startsWith("re_mock") ? new Resend(resendApiKey) : null;
+
+export class EmailService {
+  /**
+   * Verified Gmail Fallback Credentials from Environment
+   */
+  private static readonly BACKUP_GMAIL_USER = process.env.GMAIL_USER || "";
+  private static readonly BACKUP_GMAIL_PASS = process.env.GMAIL_APP_PASSWORD || "";
+
+  /**
+   * Helper to create SMTP transporters dynamically at runtime.
+   */
+  private static getTransporters() {
+    const list: Array<{ name: string; user: string; transporter: nodemailer.Transporter; from: string }> = [];
+
+    const envUser = process.env.SMTP_USER || process.env.GMAIL_USER;
+    const envPass = (process.env.SMTP_PASS || process.env.GMAIL_APP_PASSWORD || process.env.SMTP_PASSWORD || "").trim();
+    const envHost = process.env.SMTP_HOST || (envUser?.endsWith("@cashall.in") ? "smtp.hostinger.com" : undefined);
+    const envPort = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT, 10) : 465;
+
+    // 1. Primary Custom / Domain SMTP if explicitly configured and not default unauthenticated
+    if (envUser && envPass && envUser !== EmailService.BACKUP_GMAIL_USER) {
+      const config: any = envHost
+        ? {
+            host: envHost,
+            port: envPort,
+            secure: envPort === 465,
+            auth: { user: envUser, pass: envPass },
+            connectionTimeout: 10000,
+          }
+        : {
+            service: "gmail",
+            auth: { user: envUser, pass: envPass },
+            connectionTimeout: 10000,
+          };
+      list.push({
+        name: `Primary SMTP (${envUser} on ${envHost || "gmail"})`,
+        user: envUser,
+        from: process.env.EMAIL_FROM || `"CashALL Support" <support@cashall.in>`,
+        transporter: nodemailer.createTransport(config),
+      });
+    }
+
+    // 2. High-Reliability Gmail Transporter (Verified active app password)
+    const backupUser = process.env.GMAIL_BACKUP_USER || EmailService.BACKUP_GMAIL_USER;
+    const backupPass = (process.env.GMAIL_BACKUP_PASS || EmailService.BACKUP_GMAIL_PASS).trim();
+    if (backupUser && backupPass) {
+      list.push({
+        name: `Verified Gmail Relay (${backupUser})`,
+        user: backupUser,
+        from: `"CashALL" <${backupUser}>`,
+        transporter: nodemailer.createTransport({
+          service: "gmail",
+          auth: { user: backupUser, pass: backupPass },
+          connectionTimeout: 10000,
+        }),
+      });
+    }
+
+    return list;
+  }
+
+  /**
+   * Sends an email using multi-tier fallback: Domain SMTP -> Verified Gmail SMTP -> Resend API.
+   */
+  static async sendEmail(
+    to: string,
+    subject: string,
+    html: string,
+    attachments?: Array<{ filename: string; content: Buffer }>
+  ) {
+    const transporters = EmailService.getTransporters();
+    const replyTo = "support@cashall.in";
+    const textFallback = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    const errors: string[] = [];
+
+    // Attempt all configured SMTP transporters in order
+    for (const { name, user, from, transporter } of transporters) {
+      try {
+        const bcc = [user, "support@cashall.in"].filter((addr, idx, arr) => arr.indexOf(addr) === idx);
+        const info = await transporter.sendMail({
+          from,
+          to,
+          bcc,
+          replyTo,
+          subject,
+          text: textFallback,
+          html,
+          attachments,
+        });
+
+        logger.info(`✅ Email successfully sent via [${name}] to ${to}. MessageId: ${info.messageId}`);
+        console.log(`\n✅ LIVE EMAIL SENT VIA [${name}] to ${to} (MessageId: ${info.messageId})\n`);
+        return { success: true, messageId: info.messageId, provider: name };
+      } catch (err: any) {
+        const errMsg = `Failed via [${name}]: ${err.message || err}`;
+        logger.warn(errMsg);
+        console.warn(`⚠️ ${errMsg}`);
+        errors.push(errMsg);
+      }
+    }
+
+    // Try sending via Resend API if configured
+    if (resend) {
+      try {
+        const resendAttachments = attachments?.map((att) => ({
+          filename: att.filename,
+          content: att.content,
+        }));
+
+        const data = await resend.emails.send({
+          from: process.env.EMAIL_FROM || "CashALL <notifications@cashall.in>",
+          to,
+          replyTo,
+          subject,
+          html,
+          attachments: resendAttachments,
+        });
+
+        if (data.error) {
+          throw new Error(data.error.message);
+        }
+
+        logger.info(`✅ Email sent via Resend API to ${to}. Resend ID: ${data.data?.id}`);
+        return { success: true, id: data.data?.id, provider: "RESEND" };
+      } catch (err: any) {
+        const errMsg = `Failed via Resend: ${err.message || err}`;
+        logger.warn(errMsg);
+        errors.push(errMsg);
+      }
+    }
+
+    // If all providers failed, throw explicit error with full diagnostics
+    const combinedError = `All email dispatch channels failed for ${to}. Details: ${errors.join(" | ")}`;
+    logger.error(combinedError);
+    throw new Error(combinedError);
+  }
+
+  /**
+   * Generates and dispatches PDF Invoice Email to customer.
+   */
+  static async sendInvoicePdfEmail({
+    to,
+    orderNumber,
+    customerName,
+    customerPhone,
+    customerAddress,
+    deviceName,
+    imei,
+    quotedPrice,
+    requotedPrice,
+    finalPrice,
+    urn,
+    orderDate,
+    completedDate,
+    agentName,
+  }: {
+    to: string;
+    orderNumber: string;
+    customerName: string;
+    customerPhone?: string;
+    customerAddress?: string;
+    deviceName: string;
+    imei?: string;
+    quotedPrice?: number;
+    requotedPrice?: number;
+    finalPrice: number;
+    urn: string;
+    orderDate?: string;
+    completedDate?: string;
+    agentName?: string;
+  }) {
+    let pdfBuffer: Buffer | null = null;
+    try {
+      const { generateInvoicePdfBuffer } = await import("@/components/pdf/InvoicePdf");
+      pdfBuffer = await generateInvoicePdfBuffer({
+        orderNumber,
+        customerName,
+        customerPhone: customerPhone || "N/A",
+        customerEmail: to,
+        customerAddress,
+        deviceName,
+        imei,
+        quotedPrice,
+        requotedPrice,
+        amountPaid: finalPrice,
+        urn,
+        agentName,
+        orderDate,
+        completedDate,
+      });
+    } catch (pdfErr) {
+      logger.error("Error building PDF invoice buffer:", pdfErr);
+    }
+
+    const html = EmailService.compilePayoutTemplate(
+      orderNumber,
+      finalPrice,
+      urn,
+      customerName,
+      deviceName,
+      orderDate,
+      completedDate,
+      quotedPrice,
+      requotedPrice,
+      imei
+    );
+    const subject = `CashALL Official Invoice #${orderNumber} — ₹${finalPrice.toLocaleString("en-IN")}`;
+
+    const attachments = pdfBuffer
+      ? [{ filename: `CashALL_Invoice_${orderNumber}.pdf`, content: pdfBuffer }]
+      : undefined;
+
+    return await EmailService.sendEmail(to, subject, html, attachments);
+  }
+
+  /**
+   * Compiles HTML template for User Welcome.
+   */
+  static compileWelcomeTemplate(userName: string) {
+    return `
+      <div style="font-family: Arial, sans-serif; padding: 24px; color: #111; max-width: 600px; margin: 0 auto; border: 1px solid #eee; border-radius: 16px; background-color: #ffffff;">
+        <div style="background-color: #000000; padding: 16px; border-radius: 12px; text-align: center; margin-bottom: 20px;">
+          <h1 style="color: #FACC15; margin: 0; font-size: 24px; font-weight: 800;">CashALL</h1>
+          <p style="color: #ffffff; margin: 4px 0 0 0; font-size: 12px;">Best Value For Your Old Devices</p>
+        </div>
+        <h2 style="color: #111; margin-top: 0;">Welcome to CashALL, ${userName}! 👋</h2>
+        <p style="font-size: 14px; line-height: 1.5; color: #444;">Thank you for choosing CashALL. We make selling your old mobile phones and laptops simple, fast, and secure.</p>
+        <p style="font-size: 14px; line-height: 1.5; color: #444;">Get instant doorstep inspections, transparent price calculations, and immediate bank transfers.</p>
+        <hr style="border: 0; border-top: 1px solid #eeeeee; margin: 24px 0;" />
+        <p style="font-size: 11px; color: #888888; text-align: center;">CashALL | AARNA ENTERPRISE | support@cashall.in | Helpline: 7604092333</p>
+      </div>
+    `;
+  }
+
+  /**
+   * Compiles HTML template for Quote Saved.
+   */
+  static compileQuoteTemplate(quoteNumber: string, deviceName: string, estimatedPrice: number) {
+    return `
+      <div style="font-family: Arial, sans-serif; padding: 20px; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eee; border-radius: 12px;">
+        <div style="background-color: #000; padding: 14px; text-align: center; border-radius: 8px; margin-bottom: 16px;">
+          <h1 style="color: #FACC15; margin: 0; font-size: 20px;">CashALL</h1>
+        </div>
+        <h2 style="color: #111;">Device Price Estimate 📱</h2>
+        <p>We have calculated your device estimate:</p>
+        <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Quote Number</td>
+            <td style="padding: 8px; border-bottom: 1px solid #eee;">${quoteNumber}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Device</td>
+            <td style="padding: 8px; border-bottom: 1px solid #eee;">${deviceName}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Estimated Payout</td>
+            <td style="padding: 8px; border-bottom: 1px solid #eee; color: #16a34a; font-weight: bold; font-size: 16px;">₹${estimatedPrice}</td>
+          </tr>
+        </table>
+        <p>Go to CashALL to schedule your doorstep pickup now!</p>
+        <hr style="border: 0; border-top: 1px solid #eeeeee; margin: 24px 0;" />
+        <p style="font-size: 11px; color: #888888; text-align: center;">CashALL | support@cashall.in</p>
+      </div>
+    `;
+  }
+
+  /**
+   * Compiles HTML template for Final Settled Payout & Tax Receipt.
+   */
+  static compilePayoutTemplate(
+    orderNumber: string,
+    amount: number,
+    referenceId: string,
+    customerName?: string,
+    deviceName?: string,
+    orderDate?: string,
+    completedDate?: string,
+    quotedPrice?: number,
+    requotedPrice?: number,
+    imei?: string
+  ) {
+    const effectiveQuotedPrice = quotedPrice || amount;
+    const effectiveReQuotedPrice = requotedPrice || amount;
+
+    return `
+      <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 24px; color: #111; max-width: 600px; margin: 0 auto; border: 1px solid #e5e7eb; border-radius: 16px; background-color: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        
+        <!-- HEADER -->
+        <div style="background-color: #000000; padding: 20px; border-radius: 12px; text-align: center; margin-bottom: 24px;">
+          <h1 style="color: #FACC15; margin: 0; font-size: 28px; font-weight: 900; letter-spacing: 1px;">CashALL</h1>
+          <p style="color: #ffffff; margin: 4px 0 0 0; font-size: 12px; font-weight: 500;">OFFICIAL PURCHASE RECEIPT & TAX INVOICE</p>
+        </div>
+
+        <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px 16px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
+          <span style="color: #166534; font-size: 13px; font-weight: 700;">STATUS: TRANSACTION COMPLETED — Instant UPI Transferred</span>
+        </div>
+
+        <p style="font-size: 15px; color: #111; font-weight: 600; margin-bottom: 8px;">Hello ${customerName || "Valued Customer"},</p>
+        <p style="font-size: 14px; line-height: 1.5; color: #4b5563; margin-top: 0;">Your physical inspection and final rate evaluation for order <strong>#${orderNumber}</strong> have been completed. Full payment has been successfully transferred to your bank account via instant UPI.</p>
+
+        <!-- RECEIPT TABLE -->
+        <table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px;">
+          <tr style="background-color: #f9fafb;">
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; font-weight: 700; color: #374151;">Order ID</td>
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #111827; font-weight: 600;">#${orderNumber}</td>
+          </tr>
+          ${deviceName ? `
+          <tr>
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; font-weight: 700; color: #374151;">Device Purchased</td>
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #111827; font-weight: 600;">${deviceName}</td>
+          </tr>` : ""}
+          ${imei ? `
+          <tr style="background-color: #f9fafb;">
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; font-weight: 700; color: #374151;">Verified Device IMEI / Serial</td>
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #1d4ed8; font-family: monospace; font-weight: 700; letter-spacing: 0.5px;">${imei}</td>
+          </tr>` : ""}
+          <tr style="background-color: #f9fafb;">
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; font-weight: 700; color: #374151;">Order Placed Time</td>
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #111827; font-weight: 600;">${orderDate || "—"}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; font-weight: 700; color: #374151;">Order Completion & Payout</td>
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #111827; font-weight: 600;">${completedDate || new Date().toLocaleString("en-IN")}</td>
+          </tr>
+          <tr style="background-color: #f9fafb;">
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; font-weight: 700; color: #374151;">Quoted Price (Online)</td>
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #111827; font-weight: 600;">₹${effectiveQuotedPrice.toLocaleString('en-IN')}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; font-weight: 700; color: #374151;">Re-Quoted Price (Inspection)</td>
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #6b21a8; font-weight: 700;">₹${effectiveReQuotedPrice.toLocaleString('en-IN')}</td>
+          </tr>
+          <tr style="background-color: #f9fafb;">
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; font-weight: 700; color: #374151;">Final Price Paid</td>
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #16a34a; font-weight: 800; font-size: 16px;">₹${amount.toLocaleString('en-IN')}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; font-weight: 700; color: #374151;">Payment Mode</td>
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #111827;">Instant UPI / Bank Transfer</td>
+          </tr>
+          ${referenceId && !referenceId.startsWith("PAID-") && referenceId !== "N/A" && referenceId !== "623480124575" ? `
+          <tr style="background-color: #f9fafb;">
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; font-weight: 700; color: #374151;">UTR / Transaction Ref</td>
+            <td style="padding: 10px 14px; border: 1px solid #e5e7eb; color: #111827; font-family: monospace; font-weight: 600;">${referenceId}</td>
+          </tr>` : ""}
+        </table>
+
+        <div style="text-align: center; margin: 24px 0;">
+          <a href="https://cashall.in/order/${orderNumber}/bill" style="background-color: #FACC15; color: #000000; padding: 12px 24px; font-weight: 800; text-decoration: none; border-radius: 10px; display: inline-block; font-size: 14px;">View Official PDF Bill</a>
+        </div>
+
+        <p style="font-size: 12px; color: #6b7280; line-height: 1.4;">This automated email serves as your official purchase acknowledgment and transaction record from AARNA ENTERPRISE (CashALL Platform, HQ: Howrah, West Bengal).</p>
+
+        <hr style="border: 0; border-top: 1px solid #eeeeee; margin: 24px 0;" />
+        <p style="font-size: 11px; color: #9ca3af; text-align: center; margin: 0;">CashALL • AARNA ENTERPRISE | GSTIN: 19AVPPG9800JIZ3 | Howrah, West Bengal | support@cashall.in | Helpline: +91 7604092333 | www.cashall.in</p>
+      </div>
+    `;
+  }
+
+  /**
+   * Helper to dispatch official Tax Invoice & Bill Email to customer.
+   */
+  static async sendBillEmail({
+    to,
+    orderNumber,
+    customerName,
+    deviceName,
+    finalPrice,
+    utrNumber,
+    billUrl,
+  }: {
+    to: string;
+    orderNumber: string;
+    customerName: string;
+    deviceName?: string;
+    finalPrice: number;
+    utrNumber: string;
+    billUrl?: string;
+  }) {
+    const html = EmailService.compilePayoutTemplate(
+      orderNumber,
+      finalPrice,
+      utrNumber,
+      customerName,
+      deviceName
+    );
+    const subject = `CashALL Tax Invoice & Purchase Receipt #${orderNumber} — ₹${finalPrice.toLocaleString('en-IN')}`;
+    const result = await EmailService.sendEmail(to, subject, html);
+    return result.success;
+  }
+}

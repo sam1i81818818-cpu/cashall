@@ -1,0 +1,18 @@
+/* TEAM */
+Platform: CashALL (cashall.in)
+Operating Company: Aarna Enterprise (MSME UDYAM-WB-08-0024921)
+Location: Howrah & Kolkata, West Bengal, India
+Contact: support@cashall.in
+WhatsApp / Helpline: +91 7604092333
+
+/* THANKS */
+Verified Sellers: Over 2,840+ customers across Kolkata, Howrah, Hooghly, Barrackpore, Ranchi, Patna, Gorakhpur, and Ballia.
+
+/* SITE */
+Standards: HTML5, CSS3, ESNext, TypeScript, JSON-LD Schema.org, NIST SP 800-88 Data Sanitization
+Framework: Next.js 14 (App Router)
+Hosting: Vercel Production Infrastructure
+Edge Network: Cloudflare Global CDN
+Database: PostgreSQL with Prisma ORM
+Language: English, Hindi, Bengali
+Doctype: HTML5

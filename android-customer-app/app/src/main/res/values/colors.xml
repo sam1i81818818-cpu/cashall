@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="brand_yellow">#FFD700</color>
+    <color name="brand_yellow_dark">#E5C100</color>
+    <color name="brand_bg_dark">#0F0F0F</color>
+    <color name="brand_card_dark">#18181B</color>
+    <color name="brand_border_dark">#27272A</color>
+    <color name="text_muted">#A1A1AA</color>
+    <color name="ic_launcher_background">#111111</color>
+</resources>

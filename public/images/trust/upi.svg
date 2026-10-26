@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" rx="24" fill="#0A0A0A" />
+  <rect x="1" y="1" width="118" height="118" rx="23" stroke="#262626" stroke-width="2" />
+  <!-- White Inner Card for Official UPI Brand Visibility -->
+  <rect x="14" y="24" width="92" height="72" rx="14" fill="#FFFFFF" />
+  <!-- NPCI Unified Payments Interface Official Graphic Arrows -->
+  <g transform="translate(24, 38)">
+    <!-- Green Arrow (Top) -->
+    <path d="M14 8L30 8L20 24L4 24L14 8Z" fill="#097939" />
+    <!-- Orange Arrow (Bottom) -->
+    <path d="M22 20L38 20L28 36L12 36L22 20Z" fill="#ED752E" />
+    <!-- UPI Wordmark Text -->
+    <text x="38" y="28" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="900" font-style="italic" fill="#2E3192" letter-spacing="-0.5">UPI</text>
+    <text x="8" y="44" font-family="Arial, Helvetica, sans-serif" font-size="5" font-weight="800" fill="#555555" letter-spacing="0.8">UNIFIED PAYMENTS INTERFACE</text>
+  </g>
+</svg>

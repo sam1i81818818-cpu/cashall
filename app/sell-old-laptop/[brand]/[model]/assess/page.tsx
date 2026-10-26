@@ -1,0 +1,1132 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { useParams, useSearchParams, useRouter } from "next/navigation";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { PriceUnlockModal } from "@/components/common/PriceUnlockModal";
+import { VisualOptionCard } from "@/components/assessment/VisualOptionCard";
+import {
+  LaptopHardwareIllustration,
+  LaptopScreenIllustration,
+  LaptopAccessoryIllustration,
+  LaptopBodyIllustration,
+} from "@/components/assessment/LaptopIllustrations";
+import { RadioQuestionItem } from "@/components/assessment/RadioQuestionItem";
+import { AssessmentHeader } from "@/components/assessment/AssessmentHeader";
+import { AssessmentSidebar } from "@/components/assessment/AssessmentSidebar";
+import {
+  INITIAL_BRANDS,
+  INITIAL_MODELS,
+  INITIAL_VARIANTS,
+  QuoteData,
+} from "@/lib/store";
+import { saveQuoteToCart } from "@/lib/cart";
+import { formatDeviceName } from "@/lib/device";
+import { getLaptopSpecs } from "@/lib/laptop-specs";
+import { trackMetaCustomEvent, trackMetaStandardEvent } from "@/lib/analytics/meta";
+import { ChevronRight } from "lucide-react";
+
+// NOTE: Processor/RAM/Storage options are now model-specific.
+// They are derived at runtime via getLaptopSpecs() using the brand + model slug.
+
+function LaptopAssessmentContent() {
+  const router = useRouter();
+  const params = useParams();
+  const searchParams = useSearchParams();
+
+  const brandSlug = (params?.brand as string) || "apple";
+  const modelSlug = (params?.model as string) || "macbook-air-2022-m2";
+  const variantIdParam = searchParams.get("variantId") || "";
+
+  const brand = INITIAL_BRANDS.find((b) => b.slug.toLowerCase() === brandSlug.toLowerCase()) || {
+    id: `b-${brandSlug}`,
+    name: brandSlug.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" "),
+    slug: brandSlug,
+    category: "LAPTOP",
+    active: true,
+  };
+
+  const cleanModelSlug = modelSlug.toLowerCase();
+  const strippedSlug = cleanModelSlug.replace(new RegExp(`^${brandSlug.toLowerCase()}-`), "");
+  const model =
+    INITIAL_MODELS.find(
+      (m) =>
+        m.category === "LAPTOP" &&
+        (m.slug.toLowerCase() === cleanModelSlug ||
+          m.slug.toLowerCase() === strippedSlug ||
+          m.slug.toLowerCase() === `${brandSlug.toLowerCase()}-${strippedSlug}` ||
+          m.slug.toLowerCase().replace(new RegExp(`^${brandSlug.toLowerCase()}-`), "") === strippedSlug ||
+          m.id.toLowerCase() === cleanModelSlug ||
+          m.name.toLowerCase().replace(/\s+/g, "-") === cleanModelSlug)
+    ) ||
+    INITIAL_MODELS.find(
+      (m) =>
+        m.slug.toLowerCase() === cleanModelSlug ||
+        m.slug.toLowerCase() === strippedSlug ||
+        m.slug.toLowerCase().replace(new RegExp(`^${brandSlug.toLowerCase()}-`), "") === strippedSlug
+    ) || {
+      id: `m-laptop-${brandSlug}-${strippedSlug}`,
+      brandId: brand.id,
+      brandSlug: brand.slug,
+      name: modelSlug
+        .split("-")
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(" "),
+      slug: modelSlug,
+      popular: true,
+      active: true,
+      contactForPrice: false,
+      category: "LAPTOP",
+      imageUrl: `/api/v1/catalog/image/${modelSlug}`,
+      releaseYear: 2023,
+    };
+
+  const resolvedVariant = INITIAL_VARIANTS.find((v) => v.id === variantIdParam);
+  const [activeVariant, setActiveVariant] = useState<any>(resolvedVariant || null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      let foundVar = resolvedVariant;
+      if (!foundVar) {
+        try {
+          const stored = localStorage.getItem("cashall_current_variant");
+          if (stored) {
+            const parsed = JSON.parse(stored);
+            if (parsed && (parsed.modelId === model.id || parsed.id === variantIdParam || parsed.storage)) {
+              foundVar = parsed;
+            }
+          }
+        } catch (e) {}
+      }
+
+      if (!foundVar) {
+        const matchByModel = INITIAL_VARIANTS.filter((v) => v.modelId === model.id);
+        if (matchByModel.length > 0) {
+          foundVar = matchByModel[0];
+        } else {
+          foundVar = {
+            id: `v-laptop-${model.slug}-256`,
+            modelId: model.id,
+            storage: "8 GB / 256 GB SSD",
+            basePrice: 42000,
+            active: true,
+          };
+        }
+      }
+
+      setActiveVariant(foundVar);
+    }
+  }, [variantIdParam, model.id, model.slug, resolvedVariant]);
+
+  const variant = activeVariant || {
+    id: `v-laptop-${model.slug}-256`,
+    modelId: model.id,
+    storage: "8 GB / 256 GB SSD",
+    basePrice: 42000,
+    active: true,
+  };
+
+  // ── WIZARD STATE (7 STEPS) ────────────────────────────────────────────────
+  const [step, setStep] = useState<number>(1);
+  const totalSteps = 7;
+  const [unlockModalOpen, setUnlockModalOpen] = useState(false);
+
+  // STEP 1: Power Status
+  const [turnsOn, setTurnsOn] = useState<boolean | null>(true);
+
+  // STEP 2: System Configuration Details (Processor, RAM, Storage)
+  // Model-specific spec options — drives the 3 dropdowns in Step 2
+  const modelSpecs = getLaptopSpecs(brandSlug, modelSlug);
+  const [processor, setProcessor] = useState<string>(modelSpecs.defaultProcessor);
+  const [ram, setRam] = useState<string>(modelSpecs.defaultRam);
+  const [hardDisk, setHardDisk] = useState<string>(modelSpecs.defaultStorage);
+  const hasStylus = modelSpecs.hasStylus;
+
+  // STEP 3: Functional Problems (Multi-select)
+  const [functionalProblems, setFunctionalProblems] = useState<string[]>([]);
+
+  // STEP 4: Screen Condition (4 single-choice groups)
+  const [screenScratches, setScreenScratches] = useState<string>("no_scratches");
+  const [screenDiscoloration, setScreenDiscoloration] = useState<string>("no_discoloration");
+  const [screenSpots, setScreenSpots] = useState<string>("no_spots");
+  const [screenLines, setScreenLines] = useState<string>("no_lines");
+
+  // STEP 5: Accessories (Multi-select)
+  // Include stylus in default accessories only for models that ship with one
+  const [accessories, setAccessories] = useState<string[]>(
+    hasStylus ? ["charger", "box", "stylus"] : ["charger", "box"]
+  );
+
+  // STEP 6: Laptop Age
+  const [laptopAge, setLaptopAge] = useState<string>("Less than 1 year (in warranty)");
+
+  // STEP 7: Physical Body Condition (5 single-choice groups)
+  const [bodyScratches, setBodyScratches] = useState<string>("no_scratches");
+  const [topPanelDents, setTopPanelDents] = useState<string>("no_dents");
+  const [basePanelDents, setBasePanelDents] = useState<string>("no_dents");
+  const [looseHinges, setLooseHinges] = useState<string>("no_loose");
+  const [panelCondition, setPanelCondition] = useState<string>("no_defect");
+
+  const toggleArrayItem = (array: string[], item: string) => {
+    return array.includes(item) ? array.filter((i) => i !== item) : [...array, item];
+  };
+
+  // ── MARKET PRICING PERCENTAGE DEDUCTIONS ───────────────────────────────────
+  const calculatePricing = () => {
+    const baseP = variant.basePrice;
+    let totalDeductionPct = 0;
+    const deductionsList: { label: string; amount: number }[] = [];
+
+    const addDeduction = (label: string, pct: number) => {
+      totalDeductionPct += pct;
+      const amt = Math.round((baseP * pct) / 100);
+      deductionsList.push({ label, amount: amt });
+    };
+
+    // Step 1 Power Status
+    if (turnsOn === false) {
+      addDeduction("Device Does Not Switch On", 65);
+    }
+
+    // Step 2 Configuration Adjustments
+    if (["512 MB", "1 GB", "2 GB"].includes(ram)) {
+      addDeduction(`Low RAM (${ram})`, 14);
+    } else if (["3 GB", "4 GB"].includes(ram)) {
+      addDeduction(`Entry RAM (${ram})`, 8);
+    } else if (ram === "6 GB") {
+      addDeduction(`Entry RAM (${ram})`, 5);
+    }
+
+    if (["60 GB HDD", "80 GB HDD", "120 GB HDD", "160 GB HDD"].includes(hardDisk)) {
+      addDeduction(`Legacy HDD (${hardDisk})`, 12);
+    } else if (["250 GB HDD", "320 GB HDD", "500 GB HDD", "750 GB HDD"].includes(hardDisk)) {
+      addDeduction(`Standard HDD (${hardDisk})`, 6);
+    } else if (["1 TB HDD", "2 TB HDD"].includes(hardDisk)) {
+      addDeduction(`HDD-Only Storage (${hardDisk})`, 4);
+    }
+
+    if (["Intel Core 2 Duo", "Intel Pentium / Celeron", "AMD Athlon", "Other Dual Core"].includes(processor)) {
+      addDeduction(`Legacy Processor (${processor})`, 10);
+    }
+
+    // Step 3 Functional Problems
+    const funcMap: Record<string, { label: string; pct: number }> = {
+      keyboard: { label: "Keyboard Defective", pct: 10 },
+      cddvd: { label: "CD/DVD Drive Defective", pct: 3 },
+      touchpad: { label: "Touchpad / Click Issue", pct: 8 },
+      battery_dead: { label: "Battery Degraded / Backup < 60m", pct: 15 },
+      speakers: { label: "Speakers Cracked/Faulty", pct: 6 },
+      wifi: { label: "Wi-Fi Malfunction", pct: 7 },
+      usb: { label: "USB Port Malfunction", pct: 5 },
+      webcam: { label: "Webcam Not Working", pct: 4 },
+      charging_port: { label: "Charging Port Issue", pct: 8 },
+      hard_drive: { label: "Hard Drive / SSD Defective", pct: 18 },
+      motherboard: { label: "Motherboard / Booting Issue", pct: 40 },
+    };
+
+    functionalProblems.forEach((pId) => {
+      if (funcMap[pId]) {
+        addDeduction(funcMap[pId].label, funcMap[pId].pct);
+      }
+    });
+
+    // Step 4 Screen Condition Groups
+    if (screenScratches === "1_2_scratches") addDeduction("1-2 Scratches on Screen", 4);
+    if (screenScratches === "more_than_2") addDeduction("Major Scratches on Screen", 8);
+    if (screenScratches === "cracked_broken") addDeduction("Screen Cracked or Broken", 28);
+
+    if (screenDiscoloration === "minor") addDeduction("Minor Screen Discolouration", 6);
+    if (screenDiscoloration === "major") addDeduction("Major Screen Discolouration", 14);
+
+    if (screenSpots === "minor_spots") addDeduction("1-2 Minor Screen Spots", 6);
+    if (screenSpots === "heavy_spots") addDeduction("Heavy Visible Spots on Screen", 14);
+
+    if (screenLines === "visible_lines") addDeduction("Visible Lines on Screen", 18);
+    if (screenLines === "flickering") addDeduction("Display Flickering Issue", 15);
+    if (screenLines === "black_dots") addDeduction("Black Dots on Screen", 16);
+
+    // Step 5 Accessories
+    if (!accessories.includes("charger")) addDeduction("Original Charger Missing", 10);
+    if (!accessories.includes("box")) addDeduction("Original Box Missing", 3);
+    if (hasStylus && !accessories.includes("stylus")) addDeduction("Original Stylus / Pen Missing", 6);
+
+    // Step 6 Laptop Age
+    if (laptopAge === "Between 1 and 3 years") addDeduction("Device Age (1-3 Years)", 8);
+    if (laptopAge === "More than 3 years") addDeduction("Device Age (> 3 Years)", 16);
+
+    // Step 7 Physical Body Condition Groups
+    if (bodyScratches === "minor") addDeduction("Minor Scratches on Body", 3);
+    if (bodyScratches === "major") addDeduction("Major Scratches on Body", 7);
+
+    if (topPanelDents === "upto_2") addDeduction("Upto 2 Minor Top Dents", 3);
+    if (topPanelDents === "more_than_2") addDeduction("Multiple Minor Top Dents", 6);
+    if (topPanelDents === "major") addDeduction("Major Top Panel Dent", 10);
+
+    if (basePanelDents === "upto_2") addDeduction("Upto 2 Minor Base Dents", 3);
+    if (basePanelDents === "more_than_2") addDeduction("Multiple Minor Base Dents", 6);
+    if (basePanelDents === "major") addDeduction("Major Base Panel Dent", 10);
+
+    if (looseHinges === "loose") addDeduction("Loose / Damaged Hinges", 6);
+
+    if (panelCondition === "loose") addDeduction("Loose Device Panel", 5);
+    if (panelCondition === "cracked") addDeduction("Cracked / Damaged Panel", 12);
+
+    const totalDeductionAmount = Math.round((baseP * totalDeductionPct) / 100);
+    const calculatedPrice = Math.max(Math.round(baseP * 0.15), Math.max(2500, baseP - totalDeductionAmount));
+
+    return {
+      estimatedPrice: calculatedPrice,
+      totalDeductions: baseP - calculatedPrice,
+      deductionsList,
+    };
+  };
+
+  const { estimatedPrice, totalDeductions, deductionsList } = calculatePricing();
+
+  useEffect(() => {
+    if (brand && model && variant) {
+      const deviceFullName = formatDeviceName(brand.name, model.name, variant.storage);
+      trackMetaCustomEvent("AssessmentStarted", {
+        content_name: deviceFullName,
+        content_category: "laptop",
+        brand: brand.name,
+        model: model.name,
+        storage: variant.storage,
+      }, { eventId: `assess_start_${variant.id}` });
+    }
+  }, [variant?.id]);
+
+  const handleNext = () => {
+    if (step < totalSteps) {
+      setStep((prev) => prev + 1);
+      window.scrollTo({ top: 120, behavior: "smooth" });
+    } else {
+      handleFinalize();
+    }
+  };
+
+  const handleBack = () => {
+    if (step > 1) {
+      setStep((prev) => prev - 1);
+      window.scrollTo({ top: 120, behavior: "smooth" });
+    }
+  };
+
+  const handleFinalize = () => {
+    if (typeof window !== "undefined" && !localStorage.getItem("cashall_user")) {
+      setUnlockModalOpen(true);
+      return;
+    }
+    proceedWithQuote();
+  };
+
+  const proceedWithQuote = () => {
+    const quoteId = `quote-${Date.now()}`;
+    const random5Digits = Math.floor(10000 + Math.random() * 90000);
+    const quoteNumber = `CAQ${random5Digits}`;
+    const currentConfigStr = `${processor} • ${ram} • ${hardDisk}`;
+    const deviceFullName = formatDeviceName(brand.name, model.name, currentConfigStr);
+
+    const answersSummary = {
+      device: deviceFullName,
+      turnsOn,
+      processor,
+      ram,
+      hardDisk,
+      functionalProblems,
+      screenScratches,
+      screenDiscoloration,
+      screenSpots,
+      screenLines,
+      accessories,
+      hasStylus,
+      laptopAge,
+      bodyScratches,
+      topPanelDents,
+      basePanelDents,
+      looseHinges,
+      panelCondition,
+    };
+
+    const newQuote: QuoteData = {
+      id: quoteId,
+      quoteNumber,
+      variantId: variant.id,
+      selectedAnswersJson: JSON.stringify(answersSummary),
+      basePrice: variant.basePrice,
+      totalDeductions,
+      estimatedPrice,
+      breakdownJson: JSON.stringify({
+        deviceName: deviceFullName,
+        basePrice: variant.basePrice,
+        estimatedPrice,
+        summary: [
+          { label: "Base Laptop Market Valuation", amount: variant.basePrice },
+          { label: "Hardware & Condition Deductions", amount: -totalDeductions },
+        ],
+      }),
+      expiresAt: new Date(Date.now() + 48 * 60 * 60 * 1000).toISOString(),
+      status: "ACTIVE",
+      createdAt: new Date().toISOString(),
+    };
+
+    let userCustomerName = "";
+    let userCustomerPhone = "";
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`cashall_quote_${quoteId}`, JSON.stringify(newQuote));
+      localStorage.setItem("cashall_latest_quote", JSON.stringify(newQuote));
+      try {
+        const u = JSON.parse(localStorage.getItem("cashall_user") || "{}");
+        if (u?.name) userCustomerName = u.name;
+        if (u?.phone) userCustomerPhone = u.phone;
+      } catch (e) {}
+
+      saveQuoteToCart({
+        quoteId,
+        quoteNumber,
+        variantId: variant.id,
+        brandName: brand.name,
+        modelName: model.name,
+        storage: variant.storage,
+        imageUrl: model.imageUrl,
+        category: "LAPTOP",
+        estimatedPrice,
+        basePrice: variant.basePrice,
+        customerName: userCustomerName,
+        customerPhone: userCustomerPhone,
+        selectedAnswersJson: newQuote.selectedAnswersJson,
+        breakdownJson: newQuote.breakdownJson,
+        createdAt: newQuote.createdAt,
+      });
+    }
+
+    fetch("/api/v1/quotes/save", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...newQuote,
+        customerName: userCustomerName,
+        customerPhone: userCustomerPhone,
+        deviceName: deviceFullName,
+      }),
+    }).catch((err) => console.error("Quote DB save error:", err));
+
+    trackMetaCustomEvent("AssessmentCompleted", {
+      content_name: deviceFullName,
+      content_category: "laptop",
+      brand: brand.name,
+      model: model.name,
+      estimated_value: estimatedPrice,
+      currency: "INR",
+    }, { eventId: `assess_done_${variant.id}` });
+
+    trackMetaCustomEvent("QuoteGenerated", {
+      quote_id: quoteNumber,
+      content_name: deviceFullName,
+      content_category: "laptop",
+      brand: brand.name,
+      model: model.name,
+      value: estimatedPrice,
+      currency: "INR",
+    }, { eventId: `quote_${quoteNumber}` });
+
+    trackMetaStandardEvent("AddToCart", {
+      content_type: "product",
+      content_name: deviceFullName,
+      content_ids: [variant.id],
+      value: estimatedPrice,
+      currency: "INR",
+    }, { eventId: `cart_${quoteNumber}` });
+
+    router.push(`/quote/${quoteId}`);
+  };
+
+  const stepTitles = [
+    { title: "Does the Laptop switch on?", subtitle: "We currently only accept devices that switch on without any issues." },
+    { title: "System Configuration Details", subtitle: "Choose your laptop's processor, memory (RAM), and storage configuration from the options below." },
+    { title: "Does your device function properly?", subtitle: "Please choose appropriate condition to get accurate quote" },
+    { title: "Select the screen condition of your device?", subtitle: "Select options that best describe your screen" },
+    { title: "Do you have the following?", subtitle: "Please select accessories which are available" },
+    { title: "Age of your device", subtitle: "Let us know how old is your device. Valid bill is needed for devices less than 3 years." },
+    { title: "Select the physical condition of your device?", subtitle: "Select body, hinge and panel condition" },
+  ];
+
+  const currentHeaderInfo = stepTitles[step - 1] || stepTitles[0];
+
+  return (
+    <div className="min-h-screen flex flex-col bg-brand-bg text-brand-black">
+      <Header />
+      <main className="flex-grow py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* BREADCRUMB */}
+          <div className="flex items-center gap-2 text-xs font-semibold text-brand-muted mb-6">
+            <Link href="/" className="hover:text-brand-black">Home</Link>
+            <ChevronRight className="w-3.5 h-3.5" />
+            <Link href="/sell-old-laptop" className="hover:text-brand-black">Sell Laptop</Link>
+            <ChevronRight className="w-3.5 h-3.5" />
+            <Link href={`/sell-old-laptop/${brand.slug}`} className="hover:text-brand-black">{brand.name}</Link>
+            <ChevronRight className="w-3.5 h-3.5" />
+            <Link href={`/sell-old-laptop/${brand.slug}/${model.slug}`} className="hover:text-brand-black">{model.name}</Link>
+            <ChevronRight className="w-3.5 h-3.5" />
+            <span className="text-brand-black font-bold">{model.name}</span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            {/* WIZARD QUESTION CONTENT (LEFT 8 COLS) */}
+            <div className="lg:col-span-8 space-y-6">
+              <AssessmentHeader
+                currentStep={step}
+                totalSteps={totalSteps}
+                stepTitle={currentHeaderInfo.title}
+                stepSubtitle={currentHeaderInfo.subtitle}
+                onBack={handleBack}
+                canGoBack={step > 1}
+              />
+
+              {/* ── STEP 1: Power Status ── */}
+              {step === 1 && (
+                <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-subtleCard space-y-4">
+                  <RadioQuestionItem
+                    id="q-laptop-power"
+                    questionNumber={1}
+                    question="Does the Laptop switch on?"
+                    hint="We currently only accept devices that switch on without any issues."
+                    options={["Yes", "No"]}
+                    selectedValue={turnsOn}
+                    onSelect={(val) => setTurnsOn(val)}
+                  />
+                </div>
+              )}
+
+              {/* ── STEP 2: System Configuration Details ── */}
+              {step === 2 && (
+                <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-subtleCard space-y-6">
+                  <div className="border-b border-gray-100 pb-4">
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-gray-900">
+                      System Configuration Details
+                    </h3>
+                    <p className="text-sm text-gray-500 mt-1">
+                      Choose your laptop's processor, memory (RAM), and storage configuration from the options below.
+                    </p>
+                  </div>
+
+                  <div className="space-y-5">
+                    {/* Processor Dropdown */}
+                    <div>
+                      <label className="block text-sm font-bold text-gray-800 mb-2">
+                        Processor <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <select
+                          id="select-laptop-processor"
+                          value={processor}
+                          onChange={(e) => setProcessor(e.target.value)}
+                          className="w-full bg-white border border-gray-200 hover:border-brand-yellow focus:border-brand-yellow rounded-xl px-4 py-3.5 text-sm font-semibold text-gray-800 appearance-none focus:outline-none focus:ring-2 focus:ring-brand-yellow/20 shadow-sm transition pr-10 cursor-pointer"
+                        >
+                          {modelSpecs.processors.map((proc) => (
+                            <option key={proc} value={proc}>
+                              {proc}
+                            </option>
+                          ))}
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
+                          <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                            <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* RAM Dropdown */}
+                    <div>
+                      <label className="block text-sm font-bold text-gray-800 mb-2">
+                        RAM <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <select
+                          id="select-laptop-ram"
+                          value={ram}
+                          onChange={(e) => setRam(e.target.value)}
+                          className="w-full bg-white border border-gray-200 hover:border-brand-yellow focus:border-brand-yellow rounded-xl px-4 py-3.5 text-sm font-semibold text-gray-800 appearance-none focus:outline-none focus:ring-2 focus:ring-brand-yellow/20 shadow-sm transition pr-10 cursor-pointer"
+                        >
+                          {modelSpecs.rams.map((r) => (
+                            <option key={r} value={r}>
+                              {r}
+                            </option>
+                          ))}
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
+                          <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                            <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Hard Disk / SSD Dropdown */}
+                    <div>
+                      <label className="block text-sm font-bold text-gray-800 mb-2">
+                        Hard Disk / SSD <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <select
+                          id="select-laptop-harddisk"
+                          value={hardDisk}
+                          onChange={(e) => setHardDisk(e.target.value)}
+                          className="w-full bg-white border border-gray-200 hover:border-brand-yellow focus:border-brand-yellow rounded-xl px-4 py-3.5 text-sm font-semibold text-gray-800 appearance-none focus:outline-none focus:ring-2 focus:ring-brand-yellow/20 shadow-sm transition pr-10 cursor-pointer"
+                        >
+                          {modelSpecs.storages.map((st) => (
+                            <option key={st} value={st}>
+                              {st}
+                            </option>
+                          ))}
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
+                          <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                            <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-emerald-50 border border-emerald-200/60 rounded-2xl flex items-center gap-3 text-emerald-800 text-xs sm:text-sm font-medium">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>Selected: <strong>{processor}</strong> • <strong>{ram} RAM</strong> • <strong>{hardDisk}</strong></span>
+                  </div>
+                </div>
+              )}
+
+              {/* ── STEP 3: Functional Problems (11 Visual Cards) ── */}
+              {step === 3 && (
+                <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-subtleCard space-y-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <VisualOptionCard
+                      id="prob-laptop-kb"
+                      label="Keyboard not working; key(s) missing/not working"
+                      iconNode={<LaptopHardwareIllustration variant="keyboard" />}
+                      selected={functionalProblems.includes("keyboard")}
+                      onClick={() => setFunctionalProblems(toggleArrayItem(functionalProblems, "keyboard"))}
+                    />
+                    <VisualOptionCard
+                      id="prob-laptop-cddvd"
+                      label="CD/DVD Drive not working"
+                      iconNode={<LaptopHardwareIllustration variant="cddvd" />}
+                      selected={functionalProblems.includes("cddvd")}
+                      onClick={() => setFunctionalProblems(toggleArrayItem(functionalProblems, "cddvd"))}
+                    />
+                    <VisualOptionCard
+                      id="prob-laptop-touchpad"
+                      label="Touchpad not working; Left/Right click faulty"
+                      iconNode={<LaptopHardwareIllustration variant="touchpad" />}
+                      selected={functionalProblems.includes("touchpad")}
+                      onClick={() => setFunctionalProblems(toggleArrayItem(functionalProblems, "touchpad"))}
+                    />
+                    <VisualOptionCard
+                      id="prob-laptop-battery"
+                      label="Battery dead, backup < 60 mins, health < 80%, cycle count > 800"
+                      iconNode={<LaptopHardwareIllustration variant="battery_dead" />}
+                      selected={functionalProblems.includes("battery_dead")}
+                      onClick={() => setFunctionalProblems(toggleArrayItem(functionalProblems, "battery_dead"))}
+                    />
+                    <VisualOptionCard
+                      id="prob-laptop-speakers"
+                      label="Speakers not working; faulty/cracked sound"
+                      iconNode={<LaptopHardwareIllustration variant="speakers" />}
+                      selected={functionalProblems.includes("speakers")}
+                      onClick={() => setFunctionalProblems(toggleArrayItem(functionalProblems, "speakers"))}
+                    />
+                    <VisualOptionCard
+                      id="prob-laptop-wifi"
+                      label="Wi-Fi not working"
+                      iconNode={<LaptopHardwareIllustration variant="wifi" />}
+                      selected={functionalProblems.includes("wifi")}
+                      onClick={() => setFunctionalProblems(toggleArrayItem(functionalProblems, "wifi"))}
+                    />
+                    <VisualOptionCard
+                      id="prob-laptop-usb"
+                      label="USB Port not working"
+                      iconNode={<LaptopHardwareIllustration variant="usb" />}
+                      selected={functionalProblems.includes("usb")}
+                      onClick={() => setFunctionalProblems(toggleArrayItem(functionalProblems, "usb"))}
+                    />
+                    <VisualOptionCard
+                      id="prob-laptop-webcam"
+                      label="Web Cam not working"
+                      iconNode={<LaptopHardwareIllustration variant="webcam" />}
+                      selected={functionalProblems.includes("webcam")}
+                      onClick={() => setFunctionalProblems(toggleArrayItem(functionalProblems, "webcam"))}
+                    />
+                    <VisualOptionCard
+                      id="prob-laptop-charging"
+                      label="Charging Port not working"
+                      iconNode={<LaptopHardwareIllustration variant="charging_port" />}
+                      selected={functionalProblems.includes("charging_port")}
+                      onClick={() => setFunctionalProblems(toggleArrayItem(functionalProblems, "charging_port"))}
+                    />
+                    <VisualOptionCard
+                      id="prob-laptop-harddrive"
+                      label="Hard Drive Missing/Defective"
+                      iconNode={<LaptopHardwareIllustration variant="hard_drive" />}
+                      selected={functionalProblems.includes("hard_drive")}
+                      onClick={() => setFunctionalProblems(toggleArrayItem(functionalProblems, "hard_drive"))}
+                    />
+                    <VisualOptionCard
+                      id="prob-laptop-mobo"
+                      label="Motherboard issue - auto restart, hanging, heating/not booting"
+                      iconNode={<LaptopHardwareIllustration variant="motherboard" />}
+                      selected={functionalProblems.includes("motherboard")}
+                      onClick={() => setFunctionalProblems(toggleArrayItem(functionalProblems, "motherboard"))}
+                    />
+                  </div>
+
+                  <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
+                    <p className="text-xs text-gray-500">
+                      {functionalProblems.length === 0 ? "No hardware defects selected" : `${functionalProblems.length} issue(s) reported`}
+                    </p>
+                    {functionalProblems.length > 0 && (
+                      <button
+                        type="button"
+                        onClick={() => setFunctionalProblems([])}
+                        className="text-xs font-bold text-gray-500 hover:text-red-600 transition"
+                      >
+                        Clear All
+                      </button>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* ── STEP 4: Screen Condition (4 Groups of Single Choice Visual Cards) ── */}
+              {step === 4 && (
+                <div className="space-y-6">
+                  {/* Group 1: Scratch or Broken on Screen */}
+                  <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-subtleCard space-y-4">
+                    <h3 className="text-sm sm:text-base font-extrabold text-gray-900 border-b border-gray-100 pb-2">
+                      Scratch or Broken on Screen
+                    </h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                      <VisualOptionCard
+                        id="scr-no-scratches"
+                        label="No scratches on screen"
+                        iconNode={<LaptopScreenIllustration variant="no_scratches" />}
+                        selected={screenScratches === "no_scratches"}
+                        onClick={() => setScreenScratches("no_scratches")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="scr-1-2-scratches"
+                        label="1-2 scratches on screen"
+                        iconNode={<LaptopScreenIllustration variant="1_2_scratches" />}
+                        selected={screenScratches === "1_2_scratches"}
+                        onClick={() => setScreenScratches("1_2_scratches")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="scr-more-2-scratches"
+                        label="More than 2 scratches on screen"
+                        iconNode={<LaptopScreenIllustration variant="more_than_2" />}
+                        selected={screenScratches === "more_than_2"}
+                        onClick={() => setScreenScratches("more_than_2")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="scr-cracked-broken"
+                        label="Screen Cracked or Broken"
+                        iconNode={<LaptopScreenIllustration variant="cracked_broken" />}
+                        selected={screenScratches === "cracked_broken"}
+                        onClick={() => setScreenScratches("cracked_broken")}
+                        multiSelect={false}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Group 2: Discolouration on Screen */}
+                  <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-subtleCard space-y-4">
+                    <h3 className="text-sm sm:text-base font-extrabold text-gray-900 border-b border-gray-100 pb-2">
+                      Discolouration on Screen
+                    </h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                      <VisualOptionCard
+                        id="disc-no"
+                        label="No Discolouration"
+                        iconNode={<LaptopScreenIllustration variant="no_discoloration" />}
+                        selected={screenDiscoloration === "no_discoloration"}
+                        onClick={() => setScreenDiscoloration("no_discoloration")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="disc-minor"
+                        label="Minor Discolouration"
+                        iconNode={<LaptopScreenIllustration variant="minor_discoloration" />}
+                        selected={screenDiscoloration === "minor"}
+                        onClick={() => setScreenDiscoloration("minor")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="disc-major"
+                        label="Major Discolouration"
+                        iconNode={<LaptopScreenIllustration variant="major_discoloration" />}
+                        selected={screenDiscoloration === "major"}
+                        onClick={() => setScreenDiscoloration("major")}
+                        multiSelect={false}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Group 3: Spots on Screen */}
+                  <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-subtleCard space-y-4">
+                    <h3 className="text-sm sm:text-base font-extrabold text-gray-900 border-b border-gray-100 pb-2">
+                      Spots on Screen
+                    </h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                      <VisualOptionCard
+                        id="spot-no"
+                        label="No spots on screen"
+                        iconNode={<LaptopScreenIllustration variant="no_spots" />}
+                        selected={screenSpots === "no_spots"}
+                        onClick={() => setScreenSpots("no_spots")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="spot-minor"
+                        label="1-2 minor spots on screen"
+                        iconNode={<LaptopScreenIllustration variant="minor_spots" />}
+                        selected={screenSpots === "minor_spots"}
+                        onClick={() => setScreenSpots("minor_spots")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="spot-heavy"
+                        label="Large/ heavy visible spots on screen"
+                        iconNode={<LaptopScreenIllustration variant="heavy_spots" />}
+                        selected={screenSpots === "heavy_spots"}
+                        onClick={() => setScreenSpots("heavy_spots")}
+                        multiSelect={false}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Group 4: Line on Screen */}
+                  <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-subtleCard space-y-4">
+                    <h3 className="text-sm sm:text-base font-extrabold text-gray-900 border-b border-gray-100 pb-2">
+                      Line on Screen
+                    </h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                      <VisualOptionCard
+                        id="line-no"
+                        label="No Lines"
+                        iconNode={<LaptopScreenIllustration variant="no_lines" />}
+                        selected={screenLines === "no_lines"}
+                        onClick={() => setScreenLines("no_lines")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="line-visible"
+                        label="Visible lines on Screen"
+                        iconNode={<LaptopScreenIllustration variant="visible_lines" />}
+                        selected={screenLines === "visible_lines"}
+                        onClick={() => setScreenLines("visible_lines")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="line-flickering"
+                        label="Display Flickering"
+                        iconNode={<LaptopScreenIllustration variant="flickering" />}
+                        selected={screenLines === "flickering"}
+                        onClick={() => setScreenLines("flickering")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="line-blackdots"
+                        label="Black Dots on Screen"
+                        iconNode={<LaptopScreenIllustration variant="black_dots" />}
+                        selected={screenLines === "black_dots"}
+                        onClick={() => setScreenLines("black_dots")}
+                        multiSelect={false}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* ── STEP 5: Laptop Accessories ── */}
+              {step === 5 && (
+                <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-subtleCard space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <VisualOptionCard
+                      id="laptop-acc-box"
+                      label="Original Box with same serial number"
+                      iconNode={<LaptopAccessoryIllustration variant="box" />}
+                      selected={accessories.includes("box")}
+                      onClick={() => setAccessories(toggleArrayItem(accessories, "box"))}
+                      sublabel="Original retail packaging with matching serial tag"
+                    />
+                    <VisualOptionCard
+                      id="laptop-acc-charger"
+                      label="Original charger available"
+                      iconNode={<LaptopAccessoryIllustration variant="charger" />}
+                      selected={accessories.includes("charger")}
+                      onClick={() => setAccessories(toggleArrayItem(accessories, "charger"))}
+                      sublabel="Official power adapter and charging cord"
+                    />
+                    {hasStylus && (
+                      <VisualOptionCard
+                        id="laptop-acc-stylus"
+                        label="Original Stylus / Pen available"
+                        iconNode={<LaptopAccessoryIllustration variant="stylus" />}
+                        selected={accessories.includes("stylus")}
+                        onClick={() => setAccessories(toggleArrayItem(accessories, "stylus"))}
+                        sublabel="Original stylus / active pen that ships with the device"
+                      />
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* ── STEP 6: Laptop Age ── */}
+              {step === 6 && (
+                <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-subtleCard space-y-4">
+                  <RadioQuestionItem
+                    id="q-laptop-age"
+                    questionNumber={1}
+                    question="Age of your device"
+                    hint="Let us know how old is your device. Valid bill is needed for devices less than 3 years."
+                    options={[
+                      "Less than 1 year (in warranty)",
+                      "Between 1 and 3 years",
+                      "More than 3 years",
+                    ]}
+                    selectedValue={laptopAge}
+                    onSelect={(val) => setLaptopAge(val)}
+                  />
+                </div>
+              )}
+
+              {/* ── STEP 7: Physical Body Condition (5 Groups) ── */}
+              {step === 7 && (
+                <div className="space-y-6">
+                  {/* Group 1: Scratch on Body */}
+                  <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-subtleCard space-y-4">
+                    <h3 className="text-sm sm:text-base font-extrabold text-gray-900 border-b border-gray-100 pb-2">
+                      Scratch on Body
+                    </h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                      <VisualOptionCard
+                        id="bodyscr-no"
+                        label="No Scratches"
+                        iconNode={<LaptopBodyIllustration variant="bodyscr_no" />}
+                        selected={bodyScratches === "no_scratches"}
+                        onClick={() => setBodyScratches("no_scratches")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="bodyscr-minor"
+                        label="Minor Scratch on Body"
+                        iconNode={<LaptopBodyIllustration variant="bodyscr_minor" />}
+                        selected={bodyScratches === "minor"}
+                        onClick={() => setBodyScratches("minor")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="bodyscr-major"
+                        label="Major Scratch on Body"
+                        iconNode={<LaptopBodyIllustration variant="bodyscr_major" />}
+                        selected={bodyScratches === "major"}
+                        onClick={() => setBodyScratches("major")}
+                        multiSelect={false}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Group 2: Dent on Top Panel */}
+                  <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-subtleCard space-y-4">
+                    <h3 className="text-sm sm:text-base font-extrabold text-gray-900 border-b border-gray-100 pb-2">
+                      Dent on Top Panel
+                    </h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                      <VisualOptionCard
+                        id="topdent-no"
+                        label="No Dents on top panel"
+                        iconNode={<LaptopBodyIllustration variant="topdent_no" />}
+                        selected={topPanelDents === "no_dents"}
+                        onClick={() => setTopPanelDents("no_dents")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="topdent-upto2"
+                        label="Upto 2 Minor Dents"
+                        iconNode={<LaptopBodyIllustration variant="topdent_upto2" />}
+                        selected={topPanelDents === "upto_2"}
+                        onClick={() => setTopPanelDents("upto_2")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="topdent-more2"
+                        label="More than 2 Minor Dents"
+                        iconNode={<LaptopBodyIllustration variant="topdent_more2" />}
+                        selected={topPanelDents === "more_than_2"}
+                        onClick={() => setTopPanelDents("more_than_2")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="topdent-major"
+                        label="1 or more Major Dents"
+                        iconNode={<LaptopBodyIllustration variant="topdent_major" />}
+                        selected={topPanelDents === "major"}
+                        onClick={() => setTopPanelDents("major")}
+                        multiSelect={false}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Group 3: Dent on Base Panel */}
+                  <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-subtleCard space-y-4">
+                    <h3 className="text-sm sm:text-base font-extrabold text-gray-900 border-b border-gray-100 pb-2">
+                      Dent on Base Panel
+                    </h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                      <VisualOptionCard
+                        id="basedent-no"
+                        label="No Dents on base panel"
+                        iconNode={<LaptopBodyIllustration variant="basedent_no" />}
+                        selected={basePanelDents === "no_dents"}
+                        onClick={() => setBasePanelDents("no_dents")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="basedent-upto2"
+                        label="Upto 2 Minor Dents"
+                        iconNode={<LaptopBodyIllustration variant="basedent_upto2" />}
+                        selected={basePanelDents === "upto_2"}
+                        onClick={() => setBasePanelDents("upto_2")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="basedent-more2"
+                        label="More than 2 Minor Dents"
+                        iconNode={<LaptopBodyIllustration variant="basedent_more2" />}
+                        selected={basePanelDents === "more_than_2"}
+                        onClick={() => setBasePanelDents("more_than_2")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="basedent-major"
+                        label="1 or more Major Dents"
+                        iconNode={<LaptopBodyIllustration variant="basedent_major" />}
+                        selected={basePanelDents === "major"}
+                        onClick={() => setBasePanelDents("major")}
+                        multiSelect={false}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Group 4: Loose Hinges */}
+                  <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-subtleCard space-y-4">
+                    <h3 className="text-sm sm:text-base font-extrabold text-gray-900 border-b border-gray-100 pb-2">
+                      Loose Hinges
+                    </h3>
+                    <div className="grid grid-cols-2 gap-4 max-w-md">
+                      <VisualOptionCard
+                        id="hinges-no"
+                        label="No Loose Hinges"
+                        iconNode={<LaptopBodyIllustration variant="hinges_no" />}
+                        selected={looseHinges === "no_loose"}
+                        onClick={() => setLooseHinges("no_loose")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="hinges-yes"
+                        label="Yes - Loose Hinges"
+                        iconNode={<LaptopBodyIllustration variant="hinges_yes" />}
+                        selected={looseHinges === "loose"}
+                        onClick={() => setLooseHinges("loose")}
+                        multiSelect={false}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Group 5: Cracked or Loose Panel */}
+                  <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-subtleCard space-y-4">
+                    <h3 className="text-sm sm:text-base font-extrabold text-gray-900 border-b border-gray-100 pb-2">
+                      Cracked or Loose Panel
+                    </h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                      <VisualOptionCard
+                        id="panel-no"
+                        label="No Cracked or Loose Panel"
+                        iconNode={<LaptopBodyIllustration variant="panel_no" />}
+                        selected={panelCondition === "no_defect"}
+                        onClick={() => setPanelCondition("no_defect")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="panel-loose"
+                        label="Loose Panel"
+                        iconNode={<LaptopBodyIllustration variant="panel_loose" />}
+                        selected={panelCondition === "loose"}
+                        onClick={() => setPanelCondition("loose")}
+                        multiSelect={false}
+                      />
+                      <VisualOptionCard
+                        id="panel-crack"
+                        label="Crack/Damage Panel"
+                        iconNode={<LaptopBodyIllustration variant="panel_crack" />}
+                        selected={panelCondition === "cracked"}
+                        onClick={() => setPanelCondition("cracked")}
+                        multiSelect={false}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* LIVE VALUATION SIDEBAR (RIGHT 4 COLS) */}
+            <div className="lg:col-span-4">
+              <AssessmentSidebar
+                deviceName={formatDeviceName(brand.name, model.name, `${processor} • ${ram} • ${hardDisk}`)}
+                deviceImageUrl={model.imageUrl}
+                storageOrSpecs={`${processor} • ${ram} • ${hardDisk}`}
+                basePrice={variant.basePrice}
+                estimatedPrice={estimatedPrice}
+                onNext={handleNext}
+                nextButtonText={step === totalSteps ? "Get Exact Value" : "Continue"}
+                onBack={handleBack}
+                currentStep={step}
+                totalSteps={totalSteps}
+                deductionBreakdown={deductionsList}
+              />
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <PriceUnlockModal
+        isOpen={unlockModalOpen}
+        onClose={() => setUnlockModalOpen(false)}
+        onSuccess={() => {
+          setUnlockModalOpen(false);
+          proceedWithQuote();
+        }}
+        deviceName={formatDeviceName(brand.name, model.name, `${processor} • ${ram} • ${hardDisk}`)}
+        deviceImageUrl={model.imageUrl}
+        storage={`${processor} • ${ram} • ${hardDisk}`}
+      />
+
+      <Footer />
+    </div>
+  );
+}
+
+export default function LaptopAssessmentPage() {
+  return (
+    <React.Suspense fallback={<div className="min-h-screen bg-brand-black flex items-center justify-center text-white text-sm font-semibold">Loading device evaluation...</div>}>
+      <LaptopAssessmentContent />
+    </React.Suspense>
+  );
+}

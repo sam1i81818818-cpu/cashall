@@ -1,0 +1,4316 @@
+===========================================================================
+  CASHIFY - LAPTOPS CATALOG (+2% UPDATED PRICING)
+  Total Models: 308 | Total Variants: 308
+===========================================================================
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro (Late 2016, Touch Bar, Four Thunderbolt 3 Ports)
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-late-2016-touch-bar-four-thunderbolt-3-ports
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ff75fa17-180d.jpg
+
+[Variant 1]
+    Name       : MacBook Pro (Late 2016, Touch Bar, Four Thunderbolt 3 Ports)
+    Base Price : ₹28,417
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ff75fa17-180d.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-late-2016-touch-bar-four-thunderbolt-3-ports
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro (Late 2016, Two Thunderbolt 3 Ports)
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-late-2016-two-thunderbolt-3-ports
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/528a23f1-b0d4.jpg
+
+[Variant 1]
+    Name       : MacBook Pro (Late 2016, Two Thunderbolt 3 Ports)
+    Base Price : ₹25,826
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/528a23f1-b0d4.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-late-2016-two-thunderbolt-3-ports
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro Retina Mid 2014
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-retina-mid-2014
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/4a8a7685-88f2.jpg
+
+[Variant 1]
+    Name       : MacBook Pro Retina Mid 2014
+    Base Price : ₹18,809
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/4a8a7685-88f2.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-retina-mid-2014
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro (Mid-2017, Touch Bar, Four Thunderbolt 3 Ports)
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-mid-2017-touch-bar-four-thunderbolt-3-ports
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/371cf064-4471.jpg
+
+[Variant 1]
+    Name       : MacBook Pro (Mid-2017, Touch Bar, Four Thunderbolt 3 Ports)
+    Base Price : ₹28,417
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/371cf064-4471.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-mid-2017-touch-bar-four-thunderbolt-3-ports
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro (Mid-2017, Two Thunderbolt 3 Ports)
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-mid-2017-two-thunderbolt-3-ports
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e2098db8-be0c.jpg
+
+[Variant 1]
+    Name       : MacBook Pro (Mid-2017, Two Thunderbolt 3 Ports)
+    Base Price : ₹26,693
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e2098db8-be0c.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-mid-2017-two-thunderbolt-3-ports
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro (Mid-2018, Touch Bar, Four Thunderbolt 3 Ports)
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-mid-2018-touch-bar-four-thunderbolt-3-ports
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/0ffac354-b1e0.jpg
+
+[Variant 1]
+    Name       : MacBook Pro (Mid-2018, Touch Bar, Four Thunderbolt 3 Ports)
+    Base Price : ₹33,578
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/0ffac354-b1e0.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-mid-2018-touch-bar-four-thunderbolt-3-ports
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro 2019
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2019
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/17f0b83e-875b.jpg
+
+[Variant 1]
+    Name       : MacBook Pro 2019
+    Base Price : ₹36,791
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/17f0b83e-875b.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2019
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro 2019 (Touch Bar)
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2019-touch-bar
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/be00b175-d9bf.jpg
+
+[Variant 1]
+    Name       : MacBook Pro 2019 (Touch Bar)
+    Base Price : ₹36,883
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/be00b175-d9bf.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2019-touch-bar
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro 2019 (Touch Bar, Four Thunderbolt 3 ports)
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2019-touch-bar-four-thunderbolt-3-ports
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/33ffe4a7-3334.jpg
+
+[Variant 1]
+    Name       : MacBook Pro 2019 (Touch Bar, Four Thunderbolt 3 ports)
+    Base Price : ₹36,159
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/33ffe4a7-3334.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2019-touch-bar-four-thunderbolt-3-ports
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro 2019 (Touch Bar, Two Thunderbolt 3 ports)
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2019-touch-bar-two-thunderbolt-3-ports
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/33e4b267-4b2b.jpg
+
+[Variant 1]
+    Name       : MacBook Pro 2019 (Touch Bar, Two Thunderbolt 3 ports)
+    Base Price : ₹33,976
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/33e4b267-4b2b.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2019-touch-bar-two-thunderbolt-3-ports
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro 2020
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2020
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b99faa8c-8844.jpg
+
+[Variant 1]
+    Name       : MacBook Pro 2020
+    Base Price : ₹42,840
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b99faa8c-8844.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2020
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro 2020 (Touch Bar, Four Thunderbolt 3 ports)
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2020-touch-bar-four-thunderbolt-3-ports
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/89a66ea7-83e8.jpg
+
+[Variant 1]
+    Name       : MacBook Pro 2020 (Touch Bar, Four Thunderbolt 3 ports)
+    Base Price : ₹44,513
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/89a66ea7-83e8.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2020-touch-bar-four-thunderbolt-3-ports
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro 2020 (Touch Bar, Two Thunderbolt 3 ports)
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2020-touch-bar-two-thunderbolt-3-ports
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2737e96e-5816.jpg
+
+[Variant 1]
+    Name       : MacBook Pro 2020 (Touch Bar, Two Thunderbolt 3 ports)
+    Base Price : ₹36,159
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2737e96e-5816.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2020-touch-bar-two-thunderbolt-3-ports
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro 2021
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2021
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ed102c4f-125c.jpg
+
+[Variant 1]
+    Name       : MacBook Pro 2021
+    Base Price : ₹61,200
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ed102c4f-125c.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2021
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro 2022
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2022
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/dd767d21-a754.jpg
+
+[Variant 1]
+    Name       : MacBook Pro 2022
+    Base Price : ₹63,240
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/dd767d21-a754.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2022
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro 2023
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2023
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5f32d963-46a3.jpg
+
+[Variant 1]
+    Name       : MacBook Pro 2023
+    Base Price : ₹71,400
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5f32d963-46a3.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2023
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro 2025
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2025
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/dd635be2-d746.jpg
+
+[Variant 1]
+    Name       : MacBook Pro 2025
+    Base Price : ₹96,900
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/dd635be2-d746.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2025
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro 2026
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2026
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ee530154-4a5c.jpg
+
+[Variant 1]
+    Name       : MacBook Pro 2026
+    Base Price : ₹1,53,000
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ee530154-4a5c.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-2026
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro Retina Early 2013
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-retina-early-2013
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/05692cbe-c41d.jpg
+
+[Variant 1]
+    Name       : MacBook Pro Retina Early 2013
+    Base Price : ₹14,209
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/05692cbe-c41d.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-retina-early-2013
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro Retina Early 2015
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-retina-early-2015
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d5f00101-f1a5.jpg
+
+[Variant 1]
+    Name       : MacBook Pro Retina Early 2015
+    Base Price : ₹15,300
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d5f00101-f1a5.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-retina-early-2015
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro Retina Late 2013
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-retina-late-2013
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/001ee2c5-1a7e.jpg
+
+[Variant 1]
+    Name       : MacBook Pro Retina Late 2013
+    Base Price : ₹14,800
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/001ee2c5-1a7e.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-retina-late-2013
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Pro Retina Mid 2015
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-pro-retina-mid-2015
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9507fc07-2cee.jpg
+
+[Variant 1]
+    Name       : MacBook Pro Retina Mid 2015
+    Base Price : ₹25,388
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9507fc07-2cee.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-pro-retina-mid-2015
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Air Early 2015
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-air-early-2015
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9d7b63dd-6697.jpg
+
+[Variant 1]
+    Name       : MacBook Air Early 2015
+    Base Price : ₹14,800
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9d7b63dd-6697.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-air-early-2015
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Air 2018
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-air-2018
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/22a40d73-ddf9.jpg
+
+[Variant 1]
+    Name       : MacBook Air 2018
+    Base Price : ₹23,491
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/22a40d73-ddf9.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-air-2018
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Air 2019
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-air-2019
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/1a02a183-f62c.jpg
+
+[Variant 1]
+    Name       : MacBook Air 2019
+    Base Price : ₹27,285
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/1a02a183-f62c.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-air-2019
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Air 2020
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-air-2020
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/3e4863fe-7dcc.jpg
+
+[Variant 1]
+    Name       : MacBook Air 2020
+    Base Price : ₹36,363
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/3e4863fe-7dcc.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-air-2020
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Air 2022
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-air-2022
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/6c75c8b5-88a0.jpg
+
+[Variant 1]
+    Name       : MacBook Air 2022
+    Base Price : ₹49,490
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/6c75c8b5-88a0.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-air-2022
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Air 2023
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-air-2023
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/db9ef407-4a18.jpg
+
+[Variant 1]
+    Name       : MacBook Air 2023
+    Base Price : ₹55,437
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/db9ef407-4a18.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-air-2023
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Air 2024
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-air-2024
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5372f5ef-25a2.jpg
+
+[Variant 1]
+    Name       : MacBook Air 2024
+    Base Price : ₹61,200
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5372f5ef-25a2.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-air-2024
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Air Early 2014
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-air-early-2014
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e0784a88-2983.jpg
+
+[Variant 1]
+    Name       : MacBook Air Early 2014
+    Base Price : ₹11,628
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e0784a88-2983.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-air-early-2014
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Air Mid 2013
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-air-mid-2013
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a82af176-2db0.jpg
+
+[Variant 1]
+    Name       : MacBook Air Mid 2013
+    Base Price : ₹11,628
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a82af176-2db0.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-air-mid-2013
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Air Mid 2017
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-air-mid-2017
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/1e83be50-644e.jpg
+
+[Variant 1]
+    Name       : MacBook Air Mid 2017
+    Base Price : ₹18,074
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/1e83be50-644e.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-air-mid-2017
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : Macbook Air 2026
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-air-2026
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/904a7182-267b.jpg
+
+[Variant 1]
+    Name       : Macbook Air 2026
+    Base Price : ₹71,400
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/904a7182-267b.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-air-2026
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Retina Early 2015
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-retina-early-2015
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9ebc8974-5cfa.jpg
+
+[Variant 1]
+    Name       : MacBook Retina Early 2015
+    Base Price : ₹14,086
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9ebc8974-5cfa.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-retina-early-2015
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Retina Early 2016
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-retina-early-2016
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/932f699d-5674.jpg
+
+[Variant 1]
+    Name       : MacBook Retina Early 2016
+    Base Price : ₹15,851
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/932f699d-5674.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-retina-early-2016
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : MacBook Retina Mid 2017
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-retina-mid-2017
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/393dff6b-fcb1.jpg
+
+[Variant 1]
+    Name       : MacBook Retina Mid 2017
+    Base Price : ₹18,788
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/393dff6b-fcb1.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-retina-mid-2017
+
+----------------------------------------------------------------------
+BRAND      : Apple
+MODEL NAME : Macbook Neo Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-macbook-neo-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/25fdb780-ab1f.jpg
+
+[Variant 1]
+    Name       : Macbook Neo Series
+    Base Price : ₹36,720
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/25fdb780-ab1f.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-macbook-neo-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Thinkpad 11e Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-thinkpad-11e-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/623e4867-2dfe.jpg
+
+[Variant 1]
+    Name       : Thinkpad 11e Series
+    Base Price : ₹5,702
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/623e4867-2dfe.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-thinkpad-11e-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Thinkpad A Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-thinkpad-a-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d6dbed93-69ba.jpg
+
+[Variant 1]
+    Name       : Thinkpad A Series
+    Base Price : ₹5,600
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d6dbed93-69ba.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-thinkpad-a-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Thinkpad E Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-thinkpad-e-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ebfcd8b7-d115.jpg
+
+[Variant 1]
+    Name       : Thinkpad E Series
+    Base Price : ₹12,118
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ebfcd8b7-d115.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-thinkpad-e-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Thinkpad Edge Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-thinkpad-edge-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/20604e4e-c319.jpg
+
+[Variant 1]
+    Name       : Thinkpad Edge Series
+    Base Price : ₹5,212
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/20604e4e-c319.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-thinkpad-edge-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Thinkpad Helix Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-thinkpad-helix-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/91f3a22c-3b9a.jpg
+
+[Variant 1]
+    Name       : Thinkpad Helix Series
+    Base Price : ₹6,202
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/91f3a22c-3b9a.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-thinkpad-helix-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Thinkpad L Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-thinkpad-l-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b45d0375-8b82.jpg
+
+[Variant 1]
+    Name       : Thinkpad L Series
+    Base Price : ₹8,864
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b45d0375-8b82.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-thinkpad-l-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Thinkpad P Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-thinkpad-p-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/8ecf6ee4-7748.jpg
+
+[Variant 1]
+    Name       : Thinkpad P Series
+    Base Price : ₹7,772
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/8ecf6ee4-7748.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-thinkpad-p-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Thinkpad T Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-thinkpad-t-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e80ed627-e9f8.jpg
+
+[Variant 1]
+    Name       : Thinkpad T Series
+    Base Price : ₹6,171
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e80ed627-e9f8.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-thinkpad-t-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Thinkpad Twist Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-thinkpad-twist-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/f11fa35d-27cb.jpg
+
+[Variant 1]
+    Name       : Thinkpad Twist Series
+    Base Price : ₹6,589
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/f11fa35d-27cb.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-thinkpad-twist-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Thinkpad X Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-thinkpad-x-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/fa4c6c5f-b279.jpg
+
+[Variant 1]
+    Name       : Thinkpad X Series
+    Base Price : ₹7,477
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/fa4c6c5f-b279.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-thinkpad-x-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Thinkpad X1 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-thinkpad-x1-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/cf4b24ac-91b7.jpg
+
+[Variant 1]
+    Name       : Thinkpad X1 Series
+    Base Price : ₹30,600
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/cf4b24ac-91b7.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-thinkpad-x1-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Legion 5 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-legion-5-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/3adc3552-3677.jpg
+
+[Variant 1]
+    Name       : Legion 5 Series
+    Base Price : ₹22,297
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/3adc3552-3677.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-legion-5-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Legion 5i Pro Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-legion-5i-pro-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5e7184d3-4e74.jpg
+
+[Variant 1]
+    Name       : Legion 5i Pro Series
+    Base Price : ₹43,860
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5e7184d3-4e74.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-legion-5i-pro-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Legion 5i Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-legion-5i-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/0c1a44d3-48f5.jpg
+
+[Variant 1]
+    Name       : Legion 5i Series
+    Base Price : ₹35,700
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/0c1a44d3-48f5.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-legion-5i-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Legion 7 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-legion-7-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/66d9826b-8c55.jpg
+
+[Variant 1]
+    Name       : Legion 7 Series
+    Base Price : ₹33,507
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/66d9826b-8c55.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-legion-7-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Legion 9i Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-legion-9i-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/bcd340d1-8ec1.jpg
+
+[Variant 1]
+    Name       : Legion 9i Series
+    Base Price : ₹61,200
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/bcd340d1-8ec1.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-legion-9i-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Legion Pro 5 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-legion-pro-5-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2d888000-a15f.jpg
+
+[Variant 1]
+    Name       : Legion Pro 5 Series
+    Base Price : ₹40,800
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2d888000-a15f.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-legion-pro-5-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Legion Pro 5i Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-legion-pro-5i-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e827a175-743c.jpg
+
+[Variant 1]
+    Name       : Legion Pro 5i Series
+    Base Price : ₹39,780
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e827a175-743c.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-legion-pro-5i-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Legion Pro 7i Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-legion-pro-7i-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e6d9b0f6-b639.jpg
+
+[Variant 1]
+    Name       : Legion Pro 7i Series
+    Base Price : ₹51,000
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e6d9b0f6-b639.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-legion-pro-7i-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Legion Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-legion-y-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/947278e6-1a7e.jpg
+
+[Variant 1]
+    Name       : Legion Series
+    Base Price : ₹17,207
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/947278e6-1a7e.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-legion-y-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Legion Slim 5 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-legion-slim-5-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e3178c7f-e248.jpg
+
+[Variant 1]
+    Name       : Legion Slim 5 Series
+    Base Price : ₹29,580
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e3178c7f-e248.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-legion-slim-5-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Legion Slim 5i Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-legion-slim-5i-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/46310265-041b.jpg
+
+[Variant 1]
+    Name       : Legion Slim 5i Series
+    Base Price : ₹38,760
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/46310265-041b.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-legion-slim-5i-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Yoga 500 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-yoga-500-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/8d916588-ff5a.jpg
+
+[Variant 1]
+    Name       : Yoga 500 Series
+    Base Price : ₹10,220
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/8d916588-ff5a.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-yoga-500-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Yoga 6 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-yoga-6-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2d43de3a-0c17.jpg
+
+[Variant 1]
+    Name       : Yoga 6 Series
+    Base Price : ₹25,500
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2d43de3a-0c17.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-yoga-6-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Yoga 7 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-yoga-7-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5c133548-3f24.jpg
+
+[Variant 1]
+    Name       : Yoga 7 Series
+    Base Price : ₹26,520
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5c133548-3f24.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-yoga-7-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Yoga 700 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-yoga-700-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/38fadbe9-d806.jpg
+
+[Variant 1]
+    Name       : Yoga 700 Series
+    Base Price : ₹10,547
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/38fadbe9-d806.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-yoga-700-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Yoga 7i Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-yoga-7i-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/31af6a47-cf93.jpg
+
+[Variant 1]
+    Name       : Yoga 7i Series
+    Base Price : ₹35,700
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/31af6a47-cf93.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-yoga-7i-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Yoga 900 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-yoga-900-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2a0f95cb-6010.jpg
+
+[Variant 1]
+    Name       : Yoga 900 Series
+    Base Price : ₹10,547
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2a0f95cb-6010.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-yoga-900-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Yoga 9i Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-yoga-9i-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ec640222-49d2.jpg
+
+[Variant 1]
+    Name       : Yoga 9i Series
+    Base Price : ₹51,000
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ec640222-49d2.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-yoga-9i-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Yoga Book 9i Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-yoga-book-9i-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/7c6d4ba5-3af2.jpg
+
+[Variant 1]
+    Name       : Yoga Book 9i Series
+    Base Price : ₹56,100
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/7c6d4ba5-3af2.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-yoga-book-9i-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Yoga C Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-yoga-c-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/1c24c23f-a53f.jpg
+
+[Variant 1]
+    Name       : Yoga C Series
+    Base Price : ₹4,774
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/1c24c23f-a53f.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-yoga-c-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Yoga Pro 7i Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-yoga-pro-7i-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/36786494-7264.jpg
+
+[Variant 1]
+    Name       : Yoga Pro 7i Series
+    Base Price : ₹40,800
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/36786494-7264.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-yoga-pro-7i-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Yoga Slim 6i Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-yoga-slim-6i-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2122a53d-68ea.jpg
+
+[Variant 1]
+    Name       : Yoga Slim 6i Series
+    Base Price : ₹30,600
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2122a53d-68ea.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-yoga-slim-6i-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Yoga Slim 7 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-yoga-slim-7-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/cb8d3fcc-76f8.jpg
+
+[Variant 1]
+    Name       : Yoga Slim 7 Series
+    Base Price : ₹27,030
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/cb8d3fcc-76f8.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-yoga-slim-7-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Yoga Slim 7i Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-yoga-slim-7i-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/810587b9-4040.jpg
+
+[Variant 1]
+    Name       : Yoga Slim 7i Series
+    Base Price : ₹38,760
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/810587b9-4040.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-yoga-slim-7i-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : IdeaPad 100 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-ideapad-100-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/7b1a19ce-54ad.jpg
+
+[Variant 1]
+    Name       : IdeaPad 100 Series
+    Base Price : ₹5,069
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/7b1a19ce-54ad.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-ideapad-100-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : IdeaPad 300 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-ideapad-300-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/47a672c2-7223.jpg
+
+[Variant 1]
+    Name       : IdeaPad 300 Series
+    Base Price : ₹11,710
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/47a672c2-7223.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-ideapad-300-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : IdeaPad 500 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-ideapad-500-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/86730ffb-68bc.jpg
+
+[Variant 1]
+    Name       : IdeaPad 500 Series
+    Base Price : ₹6,436
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/86730ffb-68bc.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-ideapad-500-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : IdeaPad 700 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-ideapad-700-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/c4f33b32-3229.jpg
+
+[Variant 1]
+    Name       : IdeaPad 700 Series
+    Base Price : ₹7,120
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/c4f33b32-3229.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-ideapad-700-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : IdeaPad 900 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-ideapad-900-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/bba652bc-f192.jpg
+
+[Variant 1]
+    Name       : IdeaPad 900 Series
+    Base Price : ₹10,730
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/bba652bc-f192.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-ideapad-900-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : IdeaPad D Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-ideapad-d-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/8eab44d2-ea5a.jpg
+
+[Variant 1]
+    Name       : IdeaPad D Series
+    Base Price : ₹6,069
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/8eab44d2-ea5a.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-ideapad-d-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : IdeaPad Flex Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-ideapad-flex-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/24ee4703-8f4a.jpg
+
+[Variant 1]
+    Name       : IdeaPad Flex Series
+    Base Price : ₹6,834
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/24ee4703-8f4a.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-ideapad-flex-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : IdeaPad Gaming Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-ideapad-gaming-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/41212d31-1a5a.jpg
+
+[Variant 1]
+    Name       : IdeaPad Gaming Series
+    Base Price : ₹20,512
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/41212d31-1a5a.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-ideapad-gaming-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : IdeaPad S Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-ideapad-s-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/524c0d79-6dde.jpg
+
+[Variant 1]
+    Name       : IdeaPad S Series
+    Base Price : ₹5,651
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/524c0d79-6dde.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-ideapad-s-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : IdeaPad Slim 3i Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-ideapad-slim-3i-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d0656fb3-7b57.jpg
+
+[Variant 1]
+    Name       : IdeaPad Slim 3i Series
+    Base Price : ₹17,677
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d0656fb3-7b57.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-ideapad-slim-3i-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : IdeaPad Slim 5i Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-ideapad-slim-5i-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/54085748-c2d1.jpg
+
+[Variant 1]
+    Name       : IdeaPad Slim 5i Series
+    Base Price : ₹22,695
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/54085748-c2d1.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-ideapad-slim-5i-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : ThinkBook Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-thinkbook-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b46f806b-f0a1.jpg
+
+[Variant 1]
+    Name       : ThinkBook Series
+    Base Price : ₹5,967
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b46f806b-f0a1.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-thinkbook-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Lenovo 100e Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-lenovo-100e-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/c04d0dc5-1a94.jpg
+
+[Variant 1]
+    Name       : Lenovo 100e Series
+    Base Price : ₹4,060
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/c04d0dc5-1a94.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-lenovo-100e-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Lenovo 11e Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-lenovo-11e-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a59b17a8-180e.jpg
+
+[Variant 1]
+    Name       : Lenovo 11e Series
+    Base Price : ₹2,938
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a59b17a8-180e.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-lenovo-11e-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Lenovo 300e Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-lenovo-300e-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/24fdca2d-fd6a.jpg
+
+[Variant 1]
+    Name       : Lenovo 300e Series
+    Base Price : ₹5,804
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/24fdca2d-fd6a.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-lenovo-300e-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Lenovo 500e Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-lenovo-500e-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/f0196b3b-3026.jpg
+
+[Variant 1]
+    Name       : Lenovo 500e Series
+    Base Price : ₹4,060
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/f0196b3b-3026.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-lenovo-500e-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Lenovo LOQ Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-lenovo-loq-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/3e2c35a7-79ff.jpg
+
+[Variant 1]
+    Name       : Lenovo LOQ Series
+    Base Price : ₹28,121
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/3e2c35a7-79ff.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-lenovo-loq-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Lenovo N Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-lenovo-n-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9196de15-0cec.jpg
+
+[Variant 1]
+    Name       : Lenovo N Series
+    Base Price : ₹4,580
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9196de15-0cec.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-lenovo-n-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Lenovo V Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-lenovo-v-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2654d67f-611f.jpg
+
+[Variant 1]
+    Name       : Lenovo V Series
+    Base Price : ₹6,508
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2654d67f-611f.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-lenovo-v-series
+
+----------------------------------------------------------------------
+BRAND      : Lenovo
+MODEL NAME : Lenovo Y Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-lenovo-y-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/76ceb294-5745.jpg
+
+[Variant 1]
+    Name       : Lenovo Y Series
+    Base Price : ₹19,156
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/76ceb294-5745.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-lenovo-y-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : XPS Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-xps-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/082b2afc-85c7.jpg
+
+[Variant 1]
+    Name       : XPS Series
+    Base Price : ₹12,077
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/082b2afc-85c7.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-xps-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Alienware Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-alienware-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5a9959b4-c401.jpg
+
+[Variant 1]
+    Name       : Alienware Series
+    Base Price : ₹18,054
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5a9959b4-c401.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-alienware-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Inspiron 3000 2-in-1 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-inspiron-3000-2-in-1-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/75de0a94-1d7f.jpg
+
+[Variant 1]
+    Name       : Inspiron 3000 2-in-1 Series
+    Base Price : ₹8,670
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/75de0a94-1d7f.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-inspiron-3000-2-in-1-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Inspiron 3000 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-inspiron-3000-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/075e5ff7-b5b9.jpg
+
+[Variant 1]
+    Name       : Inspiron 3000 Series
+    Base Price : ₹10,608
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/075e5ff7-b5b9.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-inspiron-3000-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Inspiron 5000 2-in-1 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-inspiron-5000-2-in-1-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/270c2e52-1327.jpg
+
+[Variant 1]
+    Name       : Inspiron 5000 2-in-1 Series
+    Base Price : ₹11,016
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/270c2e52-1327.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-inspiron-5000-2-in-1-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Inspiron 5000 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-inspiron-5000-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9736b2f5-15d0.jpg
+
+[Variant 1]
+    Name       : Inspiron 5000 Series
+    Base Price : ₹10,812
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9736b2f5-15d0.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-inspiron-5000-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Inspiron 7000 2-in-1 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-inspiron-7000-2-in-1-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e49a4bcf-7c21.jpg
+
+[Variant 1]
+    Name       : Inspiron 7000 2-in-1 Series
+    Base Price : ₹14,280
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e49a4bcf-7c21.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-inspiron-7000-2-in-1-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Inspiron 7000 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-inspiron-7000-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/4365395a-ed30.jpg
+
+[Variant 1]
+    Name       : Inspiron 7000 Series
+    Base Price : ₹13,464
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/4365395a-ed30.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-inspiron-7000-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Inspiron Gaming Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-inspiron-gaming-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/129ba58c-56ce.jpg
+
+[Variant 1]
+    Name       : Inspiron Gaming Series
+    Base Price : ₹9,996
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/129ba58c-56ce.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-inspiron-gaming-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Inspiron N5000 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-inspiron-n5000-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/05595549-1e67.jpg
+
+[Variant 1]
+    Name       : Inspiron N5000 Series
+    Base Price : ₹6,630
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/05595549-1e67.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-inspiron-n5000-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Inspiron Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-inspiron-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d9a238b9-05c5.jpg
+
+[Variant 1]
+    Name       : Inspiron Series
+    Base Price : ₹12,944
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d9a238b9-05c5.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-inspiron-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : G Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-g-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/7c1254af-b6aa.jpg
+
+[Variant 1]
+    Name       : G Series
+    Base Price : ₹7,987
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/7c1254af-b6aa.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-g-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : G15 Gaming Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-G15-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d27f15f3-9fa3.jpg
+
+[Variant 1]
+    Name       : G15 Gaming Series
+    Base Price : ₹22,440
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d27f15f3-9fa3.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-G15-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : G16 Gaming Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-G16-Series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2b07eea0-6d0c.jpg
+
+[Variant 1]
+    Name       : G16 Gaming Series
+    Base Price : ₹20,400
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2b07eea0-6d0c.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-G16-Series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : G3 Gaming Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-g3-gaming-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/c5d404c6-4d1c.jpg
+
+[Variant 1]
+    Name       : G3 Gaming Series
+    Base Price : ₹17,116
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/c5d404c6-4d1c.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-g3-gaming-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : G5 Gaming Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-g5-gaming-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e3cede7e-5903.jpg
+
+[Variant 1]
+    Name       : G5 Gaming Series
+    Base Price : ₹17,258
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e3cede7e-5903.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-g5-gaming-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : G7 Gaming Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-g7-gaming-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/503e660b-6aa8.jpg
+
+[Variant 1]
+    Name       : G7 Gaming Series
+    Base Price : ₹25,724
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/503e660b-6aa8.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-g7-gaming-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Latitude 3000 2-in-1 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-latitude-3000-2-in-1-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/bb456f41-e7f3.jpg
+
+[Variant 1]
+    Name       : Latitude 3000 2-in-1 Series
+    Base Price : ₹9,180
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/bb456f41-e7f3.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-latitude-3000-2-in-1-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Latitude 5000 2-in-1 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-latitude-5000-2-in-1-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/7b38f10e-bffe.jpg
+
+[Variant 1]
+    Name       : Latitude 5000 2-in-1 Series
+    Base Price : ₹10,710
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/7b38f10e-bffe.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-latitude-5000-2-in-1-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Latitude 7000 2-in-1 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-latitude-7000-2-in-1-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a181fca5-42c2.jpg
+
+[Variant 1]
+    Name       : Latitude 7000 2-in-1 Series
+    Base Price : ₹11,730
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a181fca5-42c2.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-latitude-7000-2-in-1-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Latitude 9000 2-in-1 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-latitude-9000-2-in-1-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/08cb59fc-43c3.jpg
+
+[Variant 1]
+    Name       : Latitude 9000 2-in-1 Series
+    Base Price : ₹18,870
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/08cb59fc-43c3.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-latitude-9000-2-in-1-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Latitude Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-latitude-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a02c4ca9-e92f.jpg
+
+[Variant 1]
+    Name       : Latitude Series
+    Base Price : ₹9,986
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a02c4ca9-e92f.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-latitude-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Vostro Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-vostro-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/96bb7e2c-eed5.jpg
+
+[Variant 1]
+    Name       : Vostro Series
+    Base Price : ₹11,822
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/96bb7e2c-eed5.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-vostro-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Precision Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-precision-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5c446767-c612.jpg
+
+[Variant 1]
+    Name       : Precision Series
+    Base Price : ₹23,072
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5c446767-c612.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-precision-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Dell 15 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-dell-15-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e3a5c287-68f9.jpg
+
+[Variant 1]
+    Name       : Dell 15 Series
+    Base Price : ₹17,340
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e3a5c287-68f9.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-dell-15-series
+
+----------------------------------------------------------------------
+BRAND      : Dell
+MODEL NAME : Dell Chromebook Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-dell-chromebook-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/f650cb2a-a34f.jpg
+
+[Variant 1]
+    Name       : Dell Chromebook Series
+    Base Price : ₹3,131
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/f650cb2a-a34f.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-dell-chromebook-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : Spectre Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-spectre-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/df42c3b1-b67d.jpg
+
+[Variant 1]
+    Name       : Spectre Series
+    Base Price : ₹17,116
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/df42c3b1-b67d.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-spectre-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : Omen Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-omen-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b2905e0b-c3e2.jpg
+
+[Variant 1]
+    Name       : Omen Series
+    Base Price : ₹16,177
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b2905e0b-c3e2.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-omen-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : Envy Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-envy-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d5b8fe4d-ac2e.jpg
+
+[Variant 1]
+    Name       : Envy Series
+    Base Price : ₹12,862
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d5b8fe4d-ac2e.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-envy-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : Victus Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-victus-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/05538b33-a7bc.jpg
+
+[Variant 1]
+    Name       : Victus Series
+    Base Price : ₹24,429
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/05538b33-a7bc.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-victus-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : Pavilion Gaming Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-pavilion-gaming-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/09a5fad8-7560.jpg
+
+[Variant 1]
+    Name       : Pavilion Gaming Series
+    Base Price : ₹23,746
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/09a5fad8-7560.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-pavilion-gaming-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : Pavilion Power Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-pavilion-power-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/4743bbb4-94ae.jpg
+
+[Variant 1]
+    Name       : Pavilion Power Series
+    Base Price : ₹6,436
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/4743bbb4-94ae.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-pavilion-power-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : Pavilion Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-pavilion-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e21c1388-ddcd.jpg
+
+[Variant 1]
+    Name       : Pavilion Series
+    Base Price : ₹6,814
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e21c1388-ddcd.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-pavilion-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : Elitebook Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-elitebook-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/fb80ea02-02a8.jpg
+
+[Variant 1]
+    Name       : Elitebook Series
+    Base Price : ₹15,331
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/fb80ea02-02a8.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-elitebook-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : Probook Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-probook-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e18b2a7a-64b9.jpg
+
+[Variant 1]
+    Name       : Probook Series
+    Base Price : ₹10,914
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e18b2a7a-64b9.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-probook-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : ZBook 8 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-zbook-8-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/64498243-ea8a.jpg
+
+[Variant 1]
+    Name       : ZBook 8 Series
+    Base Price : ₹35,700
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/64498243-ea8a.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-zbook-8-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : ZBook Firefly Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-zbook-firefly-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/6a4e7d58-af1c.jpg
+
+[Variant 1]
+    Name       : ZBook Firefly Series
+    Base Price : ₹40,800
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/6a4e7d58-af1c.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-zbook-firefly-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : ZBook Fury Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-zbook-fury-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ccbe3357-ea85.jpg
+
+[Variant 1]
+    Name       : ZBook Fury Series
+    Base Price : ₹45,900
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ccbe3357-ea85.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-zbook-fury-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : ZBook Power Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-zbook-power-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/eeb278a4-ccce.jpg
+
+[Variant 1]
+    Name       : ZBook Power Series
+    Base Price : ₹45,900
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/eeb278a4-ccce.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-zbook-power-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : ZBook Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-zbook-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e09deb88-7de8.jpg
+
+[Variant 1]
+    Name       : ZBook Series
+    Base Price : ₹23,185
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e09deb88-7de8.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-zbook-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : ZBook Studio Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-zbook-studio-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/bca21f37-250d.jpg
+
+[Variant 1]
+    Name       : ZBook Studio Series
+    Base Price : ₹45,900
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/bca21f37-250d.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-zbook-studio-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : ZBook X Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-zbook-x-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/7660cc81-dd74.jpg
+
+[Variant 1]
+    Name       : ZBook X Series
+    Base Price : ₹40,800
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/7660cc81-dd74.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-zbook-x-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : OmniBook 3 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-omnibook-3-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/15965b39-e7e3.jpg
+
+[Variant 1]
+    Name       : OmniBook 3 Series
+    Base Price : ₹30,600
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/15965b39-e7e3.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-omnibook-3-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : OmniBook 5 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-omnibook-5-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/1adc4d1e-bbcb.jpg
+
+[Variant 1]
+    Name       : OmniBook 5 Series
+    Base Price : ₹30,600
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/1adc4d1e-bbcb.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-omnibook-5-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : OmniBook 7 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-omnibook-7-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/f010751e-efa4.jpg
+
+[Variant 1]
+    Name       : OmniBook 7 Series
+    Base Price : ₹35,700
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/f010751e-efa4.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-omnibook-7-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : OmniBook Ultra Flip Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-omnibook-ultra-flip-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d49ebdd9-2070.jpg
+
+[Variant 1]
+    Name       : OmniBook Ultra Flip Series
+    Base Price : ₹56,100
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d49ebdd9-2070.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-omnibook-ultra-flip-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : OmniBook Ultra Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-omnibook-ultra-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/192900ce-5652.jpg
+
+[Variant 1]
+    Name       : OmniBook Ultra Series
+    Base Price : ₹51,000
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/192900ce-5652.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-omnibook-ultra-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : OmniBook X Flip Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-omnibook-x-flip-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2044a9d1-6667.jpg
+
+[Variant 1]
+    Name       : OmniBook X Flip Series
+    Base Price : ₹45,900
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2044a9d1-6667.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-omnibook-x-flip-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : OmniBook X Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-omnibook-x-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/79026211-7e93.jpg
+
+[Variant 1]
+    Name       : OmniBook X Series
+    Base Price : ₹40,800
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/79026211-7e93.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-omnibook-x-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : 200 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-200-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/31637a15-1a82.jpg
+
+[Variant 1]
+    Name       : 200 Series
+    Base Price : ₹9,782
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/31637a15-1a82.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-200-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : HP 14 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-hp-14-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/6bf76586-8bac.jpg
+
+[Variant 1]
+    Name       : HP 14 Series
+    Base Price : ₹11,944
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/6bf76586-8bac.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-hp-14-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : HP 15 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-hp-15-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d14cf13e-7100.jpg
+
+[Variant 1]
+    Name       : HP 15 Series
+    Base Price : ₹13,658
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d14cf13e-7100.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-hp-15-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : HP 17 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-hp-17-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a8950e8c-065f.jpg
+
+[Variant 1]
+    Name       : HP 17 Series
+    Base Price : ₹11,138
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a8950e8c-065f.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-hp-17-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : HP 300 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-hp-300-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/89aafd51-d0be.jpg
+
+[Variant 1]
+    Name       : HP 300 Series
+    Base Price : ₹11,322
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/89aafd51-d0be.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-hp-300-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : HP Chromebook Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-hp-chromebook-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/8202c9e8-1a66.jpg
+
+[Variant 1]
+    Name       : HP Chromebook Series
+    Base Price : ₹4,233
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/8202c9e8-1a66.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-hp-chromebook-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : HP Notebook Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-hp-notebook-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/0595c321-845a.jpg
+
+[Variant 1]
+    Name       : HP Notebook Series
+    Base Price : ₹11,434
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/0595c321-845a.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-hp-notebook-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : SlateBook Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-slatebook-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/7d23b789-fb2e.jpg
+
+[Variant 1]
+    Name       : SlateBook Series
+    Base Price : ₹2,703
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/7d23b789-fb2e.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-slatebook-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : Split Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-split-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ff0f9b76-6fd5.jpg
+
+[Variant 1]
+    Name       : Split Series
+    Base Price : ₹2,173
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ff0f9b76-6fd5.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-split-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : Stream Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-stream-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/657edb67-c0b8.jpg
+
+[Variant 1]
+    Name       : Stream Series
+    Base Price : ₹2,662
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/657edb67-c0b8.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-stream-series
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : Student Chromebooks
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-student-chromebooks
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/fcd898dc-9788.jpg
+
+[Variant 1]
+    Name       : Student Chromebooks
+    Base Price : ₹1,346
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/fcd898dc-9788.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-student-chromebooks
+
+----------------------------------------------------------------------
+BRAND      : HP
+MODEL NAME : Studio Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-studio-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ffc86d83-22a8.jpg
+
+[Variant 1]
+    Name       : Studio Series
+    Base Price : ₹5,875
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ffc86d83-22a8.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-studio-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : ROG Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-rog-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/486a4239-2e1e.jpg
+
+[Variant 1]
+    Name       : ROG Series
+    Base Price : ₹18,931
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/486a4239-2e1e.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-rog-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : ROG Strix Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-rog-strix-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ab93b374-6694.jpg
+
+[Variant 1]
+    Name       : ROG Strix Series
+    Base Price : ₹28,968
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ab93b374-6694.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-rog-strix-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : ROG Zephyrus Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-rog-zephyrus-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/67e60dfa-c058.jpg
+
+[Variant 1]
+    Name       : ROG Zephyrus Series
+    Base Price : ₹33,578
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/67e60dfa-c058.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-rog-zephyrus-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : TUF Gaming Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-tuf-gaming-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e2d7e412-7bd6.jpg
+
+[Variant 1]
+    Name       : TUF Gaming Series
+    Base Price : ₹25,500
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e2d7e412-7bd6.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-tuf-gaming-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : ZenBook Flip Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-zenbook-flip-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/80e9ec2a-ae65.jpg
+
+[Variant 1]
+    Name       : ZenBook Flip Series
+    Base Price : ₹16,116
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/80e9ec2a-ae65.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-zenbook-flip-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : ZenBook Pro Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-zenbook-pro-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e0de3521-95d9.jpg
+
+[Variant 1]
+    Name       : ZenBook Pro Series
+    Base Price : ₹26,571
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e0de3521-95d9.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-zenbook-pro-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : ZenBook S Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-zenbook-s-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/0a6c8887-a1d1.jpg
+
+[Variant 1]
+    Name       : ZenBook S Series
+    Base Price : ₹5,651
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/0a6c8887-a1d1.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-zenbook-s-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : ZenBook Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-zenbook-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/4b04d8ed-1c52.jpg
+
+[Variant 1]
+    Name       : ZenBook Series
+    Base Price : ₹9,262
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/4b04d8ed-1c52.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-zenbook-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : ZenBook U Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-zenbook-u-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/4a872004-7338.jpg
+
+[Variant 1]
+    Name       : ZenBook U Series
+    Base Price : ₹4,376
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/4a872004-7338.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-zenbook-u-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : VivoBook Flip Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-vivobook-flip-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b9b8444d-2306.jpg
+
+[Variant 1]
+    Name       : VivoBook Flip Series
+    Base Price : ₹11,138
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b9b8444d-2306.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-vivobook-flip-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : VivoBook Pro Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-vivobook-pro-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/75d47086-97a5.jpg
+
+[Variant 1]
+    Name       : VivoBook Pro Series
+    Base Price : ₹9,262
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/75d47086-97a5.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-vivobook-pro-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : VivoBook S Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-vivobook-s-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/be6ef27e-5636.jpg
+
+[Variant 1]
+    Name       : VivoBook S Series
+    Base Price : ₹7,181
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/be6ef27e-5636.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-vivobook-s-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : VivoBook Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-vivobook-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/7222fdb5-9c40.jpg
+
+[Variant 1]
+    Name       : VivoBook Series
+    Base Price : ₹9,435
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/7222fdb5-9c40.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-vivobook-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : ProArt StudioBook Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-proart-studiobook-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/4d35de3e-f395.jpg
+
+[Variant 1]
+    Name       : ProArt StudioBook Series
+    Base Price : ₹27,367
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/4d35de3e-f395.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-proart-studiobook-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : Asus A Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-asus-a-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/f2ae00a5-4f53.jpg
+
+[Variant 1]
+    Name       : Asus A Series
+    Base Price : ₹7,925
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/f2ae00a5-4f53.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-asus-a-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : Asus B Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-asus-b-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/1ec64e2d-4adf.jpg
+
+[Variant 1]
+    Name       : Asus B Series
+    Base Price : ₹7,701
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/1ec64e2d-4adf.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-asus-b-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : Asus Chromebook Flip Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-asus-chromebook-flip-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b8882aa9-70e0.jpg
+
+[Variant 1]
+    Name       : Asus Chromebook Flip Series
+    Base Price : ₹17,717
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b8882aa9-70e0.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-asus-chromebook-flip-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : Asus Chromebook Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-asus-chromebook-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/1fc7a86b-3e51.jpg
+
+[Variant 1]
+    Name       : Asus Chromebook Series
+    Base Price : ₹2,183
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/1fc7a86b-3e51.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-asus-chromebook-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : Asus E Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-asus-e-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/17e91a2c-3f6c.jpg
+
+[Variant 1]
+    Name       : Asus E Series
+    Base Price : ₹4,376
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/17e91a2c-3f6c.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-asus-e-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : Asus F Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-asus-f-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ad3ccbd3-e553.jpg
+
+[Variant 1]
+    Name       : Asus F Series
+    Base Price : ₹10,445
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ad3ccbd3-e553.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-asus-f-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : Asus FX Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-asus-fx-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/0e7c4660-03c0.jpg
+
+[Variant 1]
+    Name       : Asus FX Series
+    Base Price : ₹5,702
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/0e7c4660-03c0.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-asus-fx-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : Asus FZ Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-asus-fz-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/c7beb7fb-7d28.jpg
+
+[Variant 1]
+    Name       : Asus FZ Series
+    Base Price : ₹8,384
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/c7beb7fb-7d28.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-asus-fz-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : Asus K Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-asus-k-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9610d855-e71a.jpg
+
+[Variant 1]
+    Name       : Asus K Series
+    Base Price : ₹10,343
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9610d855-e71a.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-asus-k-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : Asus N Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-asus-n-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e50afad7-8a31.jpg
+
+[Variant 1]
+    Name       : Asus N Series
+    Base Price : ₹6,334
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e50afad7-8a31.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-asus-n-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : Asus NX Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-asus-nx-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/aaca9459-8d62.jpg
+
+[Variant 1]
+    Name       : Asus NX Series
+    Base Price : ₹8,384
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/aaca9459-8d62.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-asus-nx-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : Asus P series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-asus-p-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/7dc48b48-ed9a.jpg
+
+[Variant 1]
+    Name       : Asus P series
+    Base Price : ₹5,651
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/7dc48b48-ed9a.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-asus-p-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : Asus Q Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-asus-q-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/da445620-1966.jpg
+
+[Variant 1]
+    Name       : Asus Q Series
+    Base Price : ₹5,651
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/da445620-1966.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-asus-q-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : Asus R Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-asus-r-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/462a47f9-e1f9.jpg
+
+[Variant 1]
+    Name       : Asus R Series
+    Base Price : ₹5,651
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/462a47f9-e1f9.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-asus-r-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : Asus V Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-asus-v-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/22d4546a-da34.jpg
+
+[Variant 1]
+    Name       : Asus V Series
+    Base Price : ₹4,376
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/22d4546a-da34.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-asus-v-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : Asus X Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-asus-x-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/46a01940-7609.jpg
+
+[Variant 1]
+    Name       : Asus X Series
+    Base Price : ₹5,804
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/46a01940-7609.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-asus-x-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : AsusPro B Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-asuspro-b-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5b233b99-bd41.jpg
+
+[Variant 1]
+    Name       : AsusPro B Series
+    Base Price : ₹13,178
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5b233b99-bd41.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-asuspro-b-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : AsusPro P Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-asuspro-p-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/220ed3b6-aa59.jpg
+
+[Variant 1]
+    Name       : AsusPro P Series
+    Base Price : ₹13,178
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/220ed3b6-aa59.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-asuspro-p-series
+
+----------------------------------------------------------------------
+BRAND      : Asus
+MODEL NAME : EeeBook Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-eeebook-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/85142e42-2961.jpg
+
+[Variant 1]
+    Name       : EeeBook Series
+    Base Price : ₹3,152
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/85142e42-2961.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-eeebook-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Predator 15 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-predator-15-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/84e012f8-183d.jpg
+
+[Variant 1]
+    Name       : Predator 15 Series
+    Base Price : ₹17,197
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/84e012f8-183d.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-predator-15-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Predator 17 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-predator-17-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e696d702-291a.jpg
+
+[Variant 1]
+    Name       : Predator 17 Series
+    Base Price : ₹18,064
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e696d702-291a.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-predator-17-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Predator 21x Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-predator-21x-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/57136186-2933.jpg
+
+[Variant 1]
+    Name       : Predator 21x Series
+    Base Price : ₹19,033
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/57136186-2933.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-predator-21x-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Predator Helios 300 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-predator-helios-300-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a25647cb-e539.jpg
+
+[Variant 1]
+    Name       : Predator Helios 300 Series
+    Base Price : ₹21,349
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a25647cb-e539.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-predator-helios-300-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Predator Helios 500 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-predator-helios-500-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/f7fbde15-4b14.jpg
+
+[Variant 1]
+    Name       : Predator Helios 500 Series
+    Base Price : ₹24,205
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/f7fbde15-4b14.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-predator-helios-500-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Predator Helios 700 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-predator-helios-700-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/1c3885d0-98e0.jpg
+
+[Variant 1]
+    Name       : Predator Helios 700 Series
+    Base Price : ₹28,662
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/1c3885d0-98e0.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-predator-helios-700-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Predator Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-predator-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/6920d6e3-2594.jpg
+
+[Variant 1]
+    Name       : Predator Series
+    Base Price : ₹14,260
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/6920d6e3-2594.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-predator-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Predator Triton 300 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-predator-triton-300-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/f26c1c0f-25e6.jpg
+
+[Variant 1]
+    Name       : Predator Triton 300 Series
+    Base Price : ₹19,135
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/f26c1c0f-25e6.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-predator-triton-300-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Predator Triton 500 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-predator-triton-500-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5f378c6a-193d.jpg
+
+[Variant 1]
+    Name       : Predator Triton 500 Series
+    Base Price : ₹21,553
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5f378c6a-193d.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-predator-triton-500-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Predator Triton 700 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-predator-triton-700-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/98bc14bf-80ff.jpg
+
+[Variant 1]
+    Name       : Predator Triton 700 Series
+    Base Price : ₹21,930
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/98bc14bf-80ff.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-predator-triton-700-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Predator Triton 900 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-predator-triton-900-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/3ada2338-d62c.jpg
+
+[Variant 1]
+    Name       : Predator Triton 900 Series
+    Base Price : ₹24,715
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/3ada2338-d62c.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-predator-triton-900-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Nitro 5 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-nitro-5-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/1648eace-28bf.jpg
+
+[Variant 1]
+    Name       : Nitro 5 Series
+    Base Price : ₹15,698
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/1648eace-28bf.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-nitro-5-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Nitro 5 Spin Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-nitro-5-spin-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/dc6cffd7-8321.jpg
+
+[Variant 1]
+    Name       : Nitro 5 Spin Series
+    Base Price : ₹15,402
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/dc6cffd7-8321.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-nitro-5-spin-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Nitro 7 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-nitro-7-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a185138d-55ab.jpg
+
+[Variant 1]
+    Name       : Nitro 7 Series
+    Base Price : ₹16,228
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a185138d-55ab.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-nitro-7-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Nitro Spin Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-nitro-spin-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/50219d33-364b.jpg
+
+[Variant 1]
+    Name       : Nitro Spin Series
+    Base Price : ₹13,586
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/50219d33-364b.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-nitro-spin-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Swift 3 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-swift-3-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/56b6d52f-9324.jpg
+
+[Variant 1]
+    Name       : Swift 3 Series
+    Base Price : ₹9,353
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/56b6d52f-9324.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-swift-3-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Swift 3x Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-swift-3x-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/6200ecf2-12db.jpg
+
+[Variant 1]
+    Name       : Swift 3x Series
+    Base Price : ₹21,940
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/6200ecf2-12db.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-swift-3x-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Swift 5 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-swift-5-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/92249865-156f.jpg
+
+[Variant 1]
+    Name       : Swift 5 Series
+    Base Price : ₹20,002
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/92249865-156f.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-swift-5-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Swift 7 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-swift-7-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/84037798-d1ab.jpg
+
+[Variant 1]
+    Name       : Swift 7 Series
+    Base Price : ₹19,298
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/84037798-d1ab.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-swift-7-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Swift Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-swift-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d778e1b7-cb31.jpg
+
+[Variant 1]
+    Name       : Swift Series
+    Base Price : ₹11,873
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d778e1b7-cb31.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-swift-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Swift X Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-swift-x-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9ad84d61-3b90.jpg
+
+[Variant 1]
+    Name       : Swift X Series
+    Base Price : ₹18,554
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9ad84d61-3b90.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-swift-x-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Spin 1 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-spin-1-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a75805c9-a3cd.jpg
+
+[Variant 1]
+    Name       : Spin 1 Series
+    Base Price : ₹4,325
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a75805c9-a3cd.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-spin-1-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Spin 3 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-spin-3-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/97f728a4-896c.jpg
+
+[Variant 1]
+    Name       : Spin 3 Series
+    Base Price : ₹8,486
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/97f728a4-896c.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-spin-3-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Spin 5 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-spin-5-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/08152b1b-2890.jpg
+
+[Variant 1]
+    Name       : Spin 5 Series
+    Base Price : ₹10,037
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/08152b1b-2890.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-spin-5-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Spin 7 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-spin-7-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e91e11f5-10c9.jpg
+
+[Variant 1]
+    Name       : Spin 7 Series
+    Base Price : ₹17,585
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e91e11f5-10c9.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-spin-7-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Spin Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-spin-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/965118bb-28b0.jpg
+
+[Variant 1]
+    Name       : Spin Series
+    Base Price : ₹11,291
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/965118bb-28b0.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-spin-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Aspire 3 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-aspire-3-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/923eb087-0f51.jpg
+
+[Variant 1]
+    Name       : Aspire 3 Series
+    Base Price : ₹8,486
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/923eb087-0f51.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-aspire-3-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Aspire 5 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-aspire-5-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a4fd3a6b-c0f9.jpg
+
+[Variant 1]
+    Name       : Aspire 5 Series
+    Base Price : ₹14,015
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a4fd3a6b-c0f9.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-aspire-5-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Aspire 7 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-aspire-7-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/33dd7571-a84e.jpg
+
+[Variant 1]
+    Name       : Aspire 7 Series
+    Base Price : ₹17,483
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/33dd7571-a84e.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-aspire-7-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Aspire E Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-aspire-e-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/0fde39c1-74df.jpg
+
+[Variant 1]
+    Name       : Aspire E Series
+    Base Price : ₹9,425
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/0fde39c1-74df.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-aspire-e-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Aspire One Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-aspire-one-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ca93e2d4-3849.jpg
+
+[Variant 1]
+    Name       : Aspire One Series
+    Base Price : ₹3,641
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ca93e2d4-3849.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-aspire-one-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Aspire Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-aspire-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/aaf8d729-1bbf.jpg
+
+[Variant 1]
+    Name       : Aspire Series
+    Base Price : ₹7,823
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/aaf8d729-1bbf.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-aspire-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : ConceptD 3 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-conceptd-3-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5b5c9cf3-fee0.jpg
+
+[Variant 1]
+    Name       : ConceptD 3 Series
+    Base Price : ₹27,265
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5b5c9cf3-fee0.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-conceptd-3-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : ConceptD 5 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-conceptd-5-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d8bace13-33df.jpg
+
+[Variant 1]
+    Name       : ConceptD 5 Series
+    Base Price : ₹28,856
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d8bace13-33df.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-conceptd-5-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : ConceptD 7 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-conceptd-7-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ca1f9f98-a5c7.jpg
+
+[Variant 1]
+    Name       : ConceptD 7 Series
+    Base Price : ₹31,283
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ca1f9f98-a5c7.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-conceptd-7-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : ConceptD 9 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-conceptd-9-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/38ba21cb-a518.jpg
+
+[Variant 1]
+    Name       : ConceptD 9 Series
+    Base Price : ₹32,416
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/38ba21cb-a518.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-conceptd-9-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Acer Chromebook Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-acer-chromebook-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b5ad822f-f6ff.jpg
+
+[Variant 1]
+    Name       : Acer Chromebook Series
+    Base Price : ₹3,937
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b5ad822f-f6ff.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-acer-chromebook-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Extensa Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-extensa-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/4cf2b6c1-b2bb.jpg
+
+[Variant 1]
+    Name       : Extensa Series
+    Base Price : ₹5,100
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/4cf2b6c1-b2bb.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-extensa-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Switch 5 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-switch-5-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/552e2446-f6a3.jpg
+
+[Variant 1]
+    Name       : Switch 5 Series
+    Base Price : ₹11,852
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/552e2446-f6a3.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-switch-5-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : Switch Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-switch-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/0f5bb04d-c626.jpg
+
+[Variant 1]
+    Name       : Switch Series
+    Base Price : ₹11,291
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/0f5bb04d-c626.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-switch-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : TravelMate P2 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-travelmate-p2-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b479e65e-d9a5.jpg
+
+[Variant 1]
+    Name       : TravelMate P2 Series
+    Base Price : ₹15,300
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b479e65e-d9a5.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-travelmate-p2-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : TravelMate P4 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-travelmate-p4-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d95db692-5936.jpg
+
+[Variant 1]
+    Name       : TravelMate P4 Series
+    Base Price : ₹17,340
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/d95db692-5936.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-travelmate-p4-series
+
+----------------------------------------------------------------------
+BRAND      : Acer
+MODEL NAME : TravelMate P6 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-travelmate-p6-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a3f681b3-0fa3.jpg
+
+[Variant 1]
+    Name       : TravelMate P6 Series
+    Base Price : ₹19,380
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a3f681b3-0fa3.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-travelmate-p6-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Book Prime Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-book-prime-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/0010aa0b-bc1f.jpg
+
+[Variant 1]
+    Name       : Book Prime Series
+    Base Price : ₹25,622
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/0010aa0b-bc1f.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-book-prime-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Book Slim Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-book-slim-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/39fec93e-5b96.jpg
+
+[Variant 1]
+    Name       : Book Slim Series
+    Base Price : ₹18,605
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/39fec93e-5b96.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-book-slim-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Galaxy Book Go Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-galaxy-book-go-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/14e3856c-fab6.jpg
+
+[Variant 1]
+    Name       : Galaxy Book Go Series
+    Base Price : ₹11,077
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/14e3856c-fab6.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-galaxy-book-go-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Galaxy Book2 360 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-galaxy-book2-360-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ffbd661f-5d55.jpg
+
+[Variant 1]
+    Name       : Galaxy Book2 360 Series
+    Base Price : ₹27,887
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ffbd661f-5d55.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-galaxy-book2-360-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Galaxy Book2 Pro 360 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-galaxy-book2-pro-360-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e79c6bf9-26dc.jpg
+
+[Variant 1]
+    Name       : Galaxy Book2 Pro 360 Series
+    Base Price : ₹30,080
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e79c6bf9-26dc.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-galaxy-book2-pro-360-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Galaxy Book2 Pro Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-galaxy-book2-pro-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ba3acd1f-32f9.jpg
+
+[Variant 1]
+    Name       : Galaxy Book2 Pro Series
+    Base Price : ₹29,641
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ba3acd1f-32f9.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-galaxy-book2-pro-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Galaxy Book2 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-galaxy-book2-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/505686a2-90ee.jpg
+
+[Variant 1]
+    Name       : Galaxy Book2 Series
+    Base Price : ₹22,430
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/505686a2-90ee.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-galaxy-book2-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Galaxy Book3 360 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-galaxy-book3-360-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/7d2f8e25-9a10.jpg
+
+[Variant 1]
+    Name       : Galaxy Book3 360 Series
+    Base Price : ₹33,660
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/7d2f8e25-9a10.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-galaxy-book3-360-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Galaxy Book3 Pro 360 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-galaxybook3-pro-360-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b0060b99-a76a.jpg
+
+[Variant 1]
+    Name       : Galaxy Book3 Pro 360 Series
+    Base Price : ₹40,800
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b0060b99-a76a.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-galaxybook3-pro-360-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Galaxy Book3 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-galaxy-book3-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/65a09ffc-46c8.jpg
+
+[Variant 1]
+    Name       : Galaxy Book3 Series
+    Base Price : ₹30,600
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/65a09ffc-46c8.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-galaxy-book3-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Galaxy Book3 Ultra Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-galaxy-book3-ultra-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a13e160f-40a7.jpg
+
+[Variant 1]
+    Name       : Galaxy Book3 Ultra Series
+    Base Price : ₹56,100
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a13e160f-40a7.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-galaxy-book3-ultra-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Galaxy Book4 Edge Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-galaxy-book-4-edge-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b1569bac-cf69.jpg
+
+[Variant 1]
+    Name       : Galaxy Book4 Edge Series
+    Base Price : ₹30,600
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b1569bac-cf69.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-galaxy-book-4-edge-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Galaxy Book5 360 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-galaxy-book-5-360-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e44a9ede-ecb9.jpg
+
+[Variant 1]
+    Name       : Galaxy Book5 360 Series
+    Base Price : ₹44,329
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e44a9ede-ecb9.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-galaxy-book-5-360-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Galaxy Book5 Pro 360 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-galaxy-book-5-pro-360-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/20173e9a-97e6.jpg
+
+[Variant 1]
+    Name       : Galaxy Book5 Pro 360 Series
+    Base Price : ₹50,898
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/20173e9a-97e6.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-galaxy-book-5-pro-360-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Galaxy Book5 Pro Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-galaxy-book-5-pro-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e934543a-bc92.jpg
+
+[Variant 1]
+    Name       : Galaxy Book5 Pro Series
+    Base Price : ₹47,614
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e934543a-bc92.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-galaxy-book-5-pro-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Galaxy Book5 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-galaxy-book-5-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/3f543bad-ed79.jpg
+
+[Variant 1]
+    Name       : Galaxy Book5 Series
+    Base Price : ₹42,942
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/3f543bad-ed79.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-galaxy-book-5-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Galaxy Book6 Pro Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-galaxy-book6-pro-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/801fac2e-fabc.jpg
+
+[Variant 1]
+    Name       : Galaxy Book6 Pro Series
+    Base Price : ₹56,100
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/801fac2e-fabc.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-galaxy-book6-pro-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Galaxy Book6 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-galaxy-book6-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/080b98ba-72bf.jpg
+
+[Variant 1]
+    Name       : Galaxy Book6 Series
+    Base Price : ₹51,000
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/080b98ba-72bf.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-galaxy-book6-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Galaxy Book6 Ultra Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-galaxy-book6-ultra-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5d509b3d-eb57.jpg
+
+[Variant 1]
+    Name       : Galaxy Book6 Ultra Series
+    Base Price : ₹61,200
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5d509b3d-eb57.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-galaxy-book6-ultra-series
+
+----------------------------------------------------------------------
+BRAND      : Samsung
+MODEL NAME : Others Samsung Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-others-samsung-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/da34afb6-f920.jpg
+
+[Variant 1]
+    Name       : Others Samsung Series
+    Base Price : ₹4,111
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/da34afb6-f920.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-others-samsung-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface 2 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-2-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ae276b8b-211b.jpg
+
+[Variant 1]
+    Name       : Surface 2 Series
+    Base Price : ₹4,988
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ae276b8b-211b.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-2-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface 3 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-3-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b99d60e8-97f7.jpg
+
+[Variant 1]
+    Name       : Surface 3 Series
+    Base Price : ₹5,600
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b99d60e8-97f7.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-3-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface Book 2 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-book-2-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/be4f558b-42f8.jpg
+
+[Variant 1]
+    Name       : Surface Book 2 Series
+    Base Price : ₹14,545
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/be4f558b-42f8.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-book-2-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface Book 3 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-book-3-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/35f4e6d4-a3c3.jpg
+
+[Variant 1]
+    Name       : Surface Book 3 Series
+    Base Price : ₹17,768
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/35f4e6d4-a3c3.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-book-3-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface Book Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-book-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5da9e1fd-f9f2.jpg
+
+[Variant 1]
+    Name       : Surface Book Series
+    Base Price : ₹12,597
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5da9e1fd-f9f2.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-book-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface Go 2 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-go-2-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/de7e6b9a-7b6a.jpg
+
+[Variant 1]
+    Name       : Surface Go 2 Series
+    Base Price : ₹9,058
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/de7e6b9a-7b6a.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-go-2-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface Go Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-go-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/8357551e-f73d.jpg
+
+[Variant 1]
+    Name       : Surface Go Series
+    Base Price : ₹3,631
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/8357551e-f73d.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-go-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface Laptop 2 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-laptop-2-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/590ffe7b-c033.jpg
+
+[Variant 1]
+    Name       : Surface Laptop 2 Series
+    Base Price : ₹14,545
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/590ffe7b-c033.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-laptop-2-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface Laptop 3 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-laptop-3-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/12722115-4b74.jpg
+
+[Variant 1]
+    Name       : Surface Laptop 3 Series
+    Base Price : ₹17,768
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/12722115-4b74.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-laptop-3-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface Laptop 4 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-laptop-4-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/04ab7c03-3fee.jpg
+
+[Variant 1]
+    Name       : Surface Laptop 4 Series
+    Base Price : ₹19,727
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/04ab7c03-3fee.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-laptop-4-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface Laptop Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-laptop-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5b1f1ed0-3f34.jpg
+
+[Variant 1]
+    Name       : Surface Laptop Series
+    Base Price : ₹12,597
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5b1f1ed0-3f34.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-laptop-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface Pro 2 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-pro-2-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ba6c7ba0-f050.jpg
+
+[Variant 1]
+    Name       : Surface Pro 2 Series
+    Base Price : ₹8,568
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/ba6c7ba0-f050.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-pro-2-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface Pro 3 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-pro-3-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/bf0d8b9a-d0df.jpg
+
+[Variant 1]
+    Name       : Surface Pro 3 Series
+    Base Price : ₹10,475
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/bf0d8b9a-d0df.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-pro-3-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface Pro 4 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-pro-4-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/18ca1e42-ba12.jpg
+
+[Variant 1]
+    Name       : Surface Pro 4 Series
+    Base Price : ₹13,066
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/18ca1e42-ba12.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-pro-4-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface Pro 5 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-pro-5-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/02d9f0b7-3b66.jpg
+
+[Variant 1]
+    Name       : Surface Pro 5 Series
+    Base Price : ₹14,413
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/02d9f0b7-3b66.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-pro-5-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface Pro 6 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-pro-6-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/1349754b-8b1b.jpg
+
+[Variant 1]
+    Name       : Surface Pro 6 Series
+    Base Price : ₹16,657
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/1349754b-8b1b.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-pro-6-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface Pro 7 Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-pro-7-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/c2555bf1-c4de.jpg
+
+[Variant 1]
+    Name       : Surface Pro 7 Series
+    Base Price : ₹20,369
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/c2555bf1-c4de.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-pro-7-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface Pro Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-pro-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/03823bb4-a77e.jpg
+
+[Variant 1]
+    Name       : Surface Pro Series
+    Base Price : ₹7,670
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/03823bb4-a77e.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-pro-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface Pro X Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-pro-x-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/4aa705aa-c1a2.jpg
+
+[Variant 1]
+    Name       : Surface Pro X Series
+    Base Price : ₹23,633
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/4aa705aa-c1a2.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-pro-x-series
+
+----------------------------------------------------------------------
+BRAND      : Microsoft
+MODEL NAME : Surface Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-surface-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/199ad82d-9d9b.jpg
+
+[Variant 1]
+    Name       : Surface Series
+    Base Price : ₹4,896
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/199ad82d-9d9b.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-surface-series
+
+----------------------------------------------------------------------
+BRAND      : Xiaomi
+MODEL NAME : Mi Air Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-mi-air-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2f67dc72-7806.jpg
+
+[Variant 1]
+    Name       : Mi Air Series
+    Base Price : ₹9,282
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2f67dc72-7806.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-mi-air-series
+
+----------------------------------------------------------------------
+BRAND      : Xiaomi
+MODEL NAME : Mi Notebook
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-mi-notebook
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/00a8ac92-5526.jpg
+
+[Variant 1]
+    Name       : Mi Notebook
+    Base Price : ₹16,351
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/00a8ac92-5526.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-mi-notebook
+
+----------------------------------------------------------------------
+BRAND      : Xiaomi
+MODEL NAME : Mi Pro Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-mi-pro-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2e4e84e5-82a3.jpg
+
+[Variant 1]
+    Name       : Mi Pro Series
+    Base Price : ₹12,719
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2e4e84e5-82a3.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-mi-pro-series
+
+----------------------------------------------------------------------
+BRAND      : Xiaomi
+MODEL NAME : RedmiBook Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-redmibook-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b98bc8a5-db3c.jpg
+
+[Variant 1]
+    Name       : RedmiBook Series
+    Base Price : ₹14,127
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b98bc8a5-db3c.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-redmibook-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : Alpha Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-msi-alpha-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/6420c9f2-02fb.jpg
+
+[Variant 1]
+    Name       : Alpha Series
+    Base Price : ₹17,595
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/6420c9f2-02fb.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-msi-alpha-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : Bravo Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-bravo-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/90d02b1f-4ef5.jpg
+
+[Variant 1]
+    Name       : Bravo Series
+    Base Price : ₹18,309
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/90d02b1f-4ef5.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-bravo-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : Creator Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-creator-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b6671d61-4b9a.jpg
+
+[Variant 1]
+    Name       : Creator Series
+    Base Price : ₹20,369
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b6671d61-4b9a.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-creator-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : Delta Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-delta-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/910e4bdc-e763.jpg
+
+[Variant 1]
+    Name       : Delta Series
+    Base Price : ₹18,309
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/910e4bdc-e763.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-delta-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : GE Raider Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-ge-raider-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/91a7c3f7-6430.jpg
+
+[Variant 1]
+    Name       : GE Raider Series
+    Base Price : ₹25,153
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/91a7c3f7-6430.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-ge-raider-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : GF Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-gf-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/610bd627-42f4.jpg
+
+[Variant 1]
+    Name       : GF Series
+    Base Price : ₹21,236
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/610bd627-42f4.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-gf-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : GL Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-gl-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/aa885668-9a45.jpg
+
+[Variant 1]
+    Name       : GL Series
+    Base Price : ₹24,164
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/aa885668-9a45.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-gl-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : GP Leopard Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-gp-leopard-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/f9b70967-db12.jpg
+
+[Variant 1]
+    Name       : GP Leopard Series
+    Base Price : ₹24,164
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/f9b70967-db12.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-gp-leopard-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : GS Steath Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-gs-steath-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/8e67950f-4840.jpg
+
+[Variant 1]
+    Name       : GS Steath Series
+    Base Price : ₹21,236
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/8e67950f-4840.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-gs-steath-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : GT Titan Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-gt-titan-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5e40b8c7-6f30.jpg
+
+[Variant 1]
+    Name       : GT Titan Series
+    Base Price : ₹21,236
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/5e40b8c7-6f30.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-gt-titan-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : Gaming Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-gaming-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9212e7e1-a429.jpg
+
+[Variant 1]
+    Name       : Gaming Series
+    Base Price : ₹7,987
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9212e7e1-a429.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-gaming-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : Modern Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-modern-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/4b9db59b-ffd0.jpg
+
+[Variant 1]
+    Name       : Modern Series
+    Base Price : ₹22,165
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/4b9db59b-ffd0.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-modern-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : Prestige Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-prestige-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/c266aed4-3c9b.jpg
+
+[Variant 1]
+    Name       : Prestige Series
+    Base Price : ₹22,165
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/c266aed4-3c9b.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-prestige-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : Summit Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-summit-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/40a0d17c-8b96.jpg
+
+[Variant 1]
+    Name       : Summit Series
+    Base Price : ₹27,673
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/40a0d17c-8b96.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-summit-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : WE Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-we-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9023aa5e-0f3d.jpg
+
+[Variant 1]
+    Name       : WE Series
+    Base Price : ₹9,129
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9023aa5e-0f3d.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-we-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : WF Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-wf-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e5aeeaf9-6916.jpg
+
+[Variant 1]
+    Name       : WF Series
+    Base Price : ₹9,129
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/e5aeeaf9-6916.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-wf-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : WP Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-wp-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/20c5213f-02dd.jpg
+
+[Variant 1]
+    Name       : WP Series
+    Base Price : ₹9,129
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/20c5213f-02dd.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-wp-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : WS Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-ws-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9d073b38-f3ce.jpg
+
+[Variant 1]
+    Name       : WS Series
+    Base Price : ₹9,129
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/9d073b38-f3ce.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-ws-series
+
+----------------------------------------------------------------------
+BRAND      : MSI
+MODEL NAME : WT Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-wt-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/89c227df-6994.jpg
+
+[Variant 1]
+    Name       : WT Series
+    Base Price : ₹9,129
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/89c227df-6994.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-wt-series
+
+----------------------------------------------------------------------
+BRAND      : Nokia
+MODEL NAME : Nokia PureBook Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-nokia-purebook-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/f737be42-92b0.jpg
+
+[Variant 1]
+    Name       : Nokia PureBook Series
+    Base Price : ₹17,452
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/f737be42-92b0.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-nokia-purebook-series
+
+----------------------------------------------------------------------
+BRAND      : LG
+MODEL NAME : LG Gram Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-lg-gram-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/260071b4-ef46.jpg
+
+[Variant 1]
+    Name       : LG Gram Series
+    Base Price : ₹8,670
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/260071b4-ef46.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-lg-gram-series
+
+----------------------------------------------------------------------
+BRAND      : Avita
+MODEL NAME : Admiror Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-admiror-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2e4f824e-5977.jpg
+
+[Variant 1]
+    Name       : Admiror Series
+    Base Price : ₹11,026
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/2e4f824e-5977.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-admiror-series
+
+----------------------------------------------------------------------
+BRAND      : Avita
+MODEL NAME : Cosmos Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-cosmos-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/571ee55b-3992.jpg
+
+[Variant 1]
+    Name       : Cosmos Series
+    Base Price : ₹8,558
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/571ee55b-3992.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-cosmos-series
+
+----------------------------------------------------------------------
+BRAND      : Avita
+MODEL NAME : Essential Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-essential-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/35a9fffe-b06f.jpg
+
+[Variant 1]
+    Name       : Essential Series
+    Base Price : ₹3,590
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/35a9fffe-b06f.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-essential-series
+
+----------------------------------------------------------------------
+BRAND      : Avita
+MODEL NAME : Liber Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-liber-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/8b10756c-f6a8.jpg
+
+[Variant 1]
+    Name       : Liber Series
+    Base Price : ₹8,293
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/8b10756c-f6a8.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-liber-series
+
+----------------------------------------------------------------------
+BRAND      : Avita
+MODEL NAME : Magus Lite
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-magus-lite
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/056ec8ea-9ee4.jpg
+
+[Variant 1]
+    Name       : Magus Lite
+    Base Price : ₹1,907
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/056ec8ea-9ee4.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-magus-lite
+
+----------------------------------------------------------------------
+BRAND      : Avita
+MODEL NAME : Pura Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-pura-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/09d4686b-66d9.jpg
+
+[Variant 1]
+    Name       : Pura Series
+    Base Price : ₹7,507
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/09d4686b-66d9.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-pura-series
+
+----------------------------------------------------------------------
+BRAND      : Other
+MODEL NAME : Other Acer Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-other-acer-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a6ceb593-90cd.jpg
+
+[Variant 1]
+    Name       : Other Acer Series
+    Base Price : ₹4,325
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/a6ceb593-90cd.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-other-acer-series
+
+----------------------------------------------------------------------
+BRAND      : Other
+MODEL NAME : Other Asus Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-other-asus-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/fa72b19c-7c37.jpg
+
+[Variant 1]
+    Name       : Other Asus Series
+    Base Price : ₹4,376
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/fa72b19c-7c37.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-other-asus-series
+
+----------------------------------------------------------------------
+BRAND      : Other
+MODEL NAME : Other Dell Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-other-dell-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/0da459cd-1d35.jpg
+
+[Variant 1]
+    Name       : Other Dell Series
+    Base Price : ₹1,295
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/0da459cd-1d35.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-other-dell-series
+
+----------------------------------------------------------------------
+BRAND      : Other
+MODEL NAME : Other HP Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-other-hp-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/031e9b82-a306.jpg
+
+[Variant 1]
+    Name       : Other HP Series
+    Base Price : ₹4,784
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/031e9b82-a306.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-other-hp-series
+
+----------------------------------------------------------------------
+BRAND      : Other
+MODEL NAME : Other LG Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-other-lg-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b26b94aa-9248.jpg
+
+[Variant 1]
+    Name       : Other LG Series
+    Base Price : ₹6,232
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/b26b94aa-9248.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-other-lg-series
+
+----------------------------------------------------------------------
+BRAND      : Other
+MODEL NAME : Other Laptop Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-other-laptop-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/532d7a4a-3ad8.jpg
+
+[Variant 1]
+    Name       : Other Laptop Series
+    Base Price : ₹3,091
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/532d7a4a-3ad8.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-other-laptop-series
+
+----------------------------------------------------------------------
+BRAND      : Other
+MODEL NAME : Other Lenovo Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-other-lenovo-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/6e162610-8f56.jpg
+
+[Variant 1]
+    Name       : Other Lenovo Series
+    Base Price : ₹4,498
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/6e162610-8f56.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-other-lenovo-series
+
+----------------------------------------------------------------------
+BRAND      : Other
+MODEL NAME : Other Microsoft Series
+MODEL URL  : https://www.cashify.in/sell-old-laptop/used-other-microsoft-series
+IMAGE URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/38ddb184-3ecb.jpg
+
+[Variant 1]
+    Name       : Other Microsoft Series
+    Base Price : ₹10,934
+    RAM        : N/A
+    Storage    : N/A
+    Image URL  : https://s3ng.cashify.in/cashify/product/img/xhdpi/38ddb184-3ecb.jpg
+    URL        : https://www.cashify.in/sell-old-laptop/used-other-microsoft-series

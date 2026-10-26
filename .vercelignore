@@ -1,0 +1,38 @@
+# Large APK and binary artifacts
+*.apk
+*.zip
+*.tar.gz
+
+# Android apps source
+android-admin-app/
+android-agent-app/
+android-caller-app/
+android-customer-app/
+
+# Database dumps and large backup archives
+database_backups/
+database_backup_active_system/
+dataset used/
+backups/
+scratch/
+cashify_final_transfer_package/
+
+# Heavy local exports and spreadsheets
+CashALL-*.apk
+CashALL_*.xlsx
+Cashify_*.xlsx
+CashALL_*.csv
+CashALL_Product_Images_Master.json
+keywords-*.csv
+truly_missing_from_package.json
+missing_models_final_report.json
+scraped_cashify_leftovers_data.json
+all_live_cashify_brand_models.json
+all_leftovers_resolved_matches.json
+matched_live_leftovers.json
+strict_live_matches.json
+page_debug.html
+
+# Logs
+*.log
+scraper_log.txt

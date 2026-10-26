@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <defs>
+    <linearGradient id="valBg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFBEB" />
+      <stop offset="100%" stop-color="#FEF3C7" />
+    </linearGradient>
+    <linearGradient id="valBar" x1="0" y1="0" x2="40" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFD400" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+  </defs>
+  <!-- Background Badge -->
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#valBg)" stroke="#FDE68A" stroke-width="2" />
+  <!-- Receipt / Phone Card Outline -->
+  <rect x="16" y="12" width="32" height="40" rx="6" fill="#18181B" stroke="#27272A" stroke-width="1.5" />
+  <!-- Screen Header -->
+  <rect x="20" y="16" width="24" height="8" rx="2" fill="#27272A" />
+  <!-- Green pulse dot -->
+  <circle cx="24" cy="20" r="1.5" fill="#10B981" />
+  <rect x="28" y="19" width="12" height="2" rx="1" fill="#71717A" />
+  <!-- Value line item 1 -->
+  <rect x="20" y="28" width="16" height="2.5" rx="1" fill="#A1A1AA" />
+  <rect x="38" y="28" width="6" height="2.5" rx="1" fill="#FFD400" />
+  <!-- Value line item 2 -->
+  <rect x="20" y="34" width="12" height="2" rx="1" fill="#71717A" />
+  <rect x="36" y="34" width="8" height="2" rx="1" fill="#10B981" />
+  <!-- Price Pill Highlight -->
+  <rect x="18" y="40" width="28" height="8" rx="4" fill="url(#valBar)" />
+  <text x="32" y="46" font-family="system-ui, sans-serif" font-size="6.5" font-weight="900" fill="#18181B" text-anchor="middle">₹ LOCK</text>
+  <!-- Sparkle Accent -->
+  <path d="M46 10L47.5 13.5L51 15L47.5 16.5L46 20L44.5 16.5L41 15L44.5 13.5Z" fill="#F59E0B" />
+</svg>

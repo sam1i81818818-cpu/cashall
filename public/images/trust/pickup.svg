@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" rx="24" fill="#0A0A0A" />
+  <rect x="1" y="1" width="118" height="118" rx="23" stroke="#262626" stroke-width="2" />
+  <!-- Yellow road glow -->
+  <ellipse cx="60" cy="94" rx="42" ry="7" fill="#FFD400" fill-opacity="0.25" />
+  <!-- Delivery Van Body -->
+  <path d="M22 48C22 43.5817 25.5817 40 30 40H74V76H22V48Z" fill="#FFD400" />
+  <path d="M74 46H86.5858C88.7076 46 90.7424 46.8429 92.2426 48.3431L97.6569 53.7574C99.1571 55.2576 100 57.2924 100 59.4142V76H74V46Z" fill="#E6BF00" />
+  <!-- Cab Window -->
+  <path d="M78 49H86.2C87.4 49 88.5 49.5 89.3 50.3L94.7 55.7C95.5 56.5 96 57.6 96 58.8V62H78V49Z" fill="#171717" />
+  <!-- Express Speed Lines -->
+  <path d="M14 47H24M10 55H20M14 63H22" stroke="#FFD400" stroke-width="3" stroke-linecap="round" />
+  <!-- Headlight -->
+  <rect x="97" y="66" width="3" height="6" rx="1.5" fill="#FFFFFF" />
+  <!-- Chassis Base -->
+  <rect x="22" y="74" width="78" height="4" fill="#171717" />
+  <!-- Wheels -->
+  <circle cx="38" cy="78" r="11" fill="#171717" stroke="#404040" stroke-width="2" />
+  <circle cx="38" cy="78" r="5" fill="#FFD400" />
+  <circle cx="84" cy="78" r="11" fill="#171717" stroke="#404040" stroke-width="2" />
+  <circle cx="84" cy="78" r="5" fill="#FFD400" />
+  <!-- CashALL Logo Accent on Van -->
+  <circle cx="50" cy="56" r="6" fill="#171717" />
+  <path d="M47 56H53M50 53V59" stroke="#FFD400" stroke-width="1.8" stroke-linecap="round" />
+</svg>

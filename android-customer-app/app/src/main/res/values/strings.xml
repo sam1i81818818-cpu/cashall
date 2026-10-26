@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CashALL</string>
+    <string name="offline_title">You\'re Offline</string>
+    <string name="offline_desc">Please check your internet connection to access CashALL device selling, quotes, and tracking.</string>
+    <string name="retry">Retry</string>
+</resources>

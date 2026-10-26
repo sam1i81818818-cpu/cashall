@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_model": "cashall_recommerce",
+  "name_for_human": "CashALL Device Recommerce & Buyback",
+  "description_for_model": "CashALL is India's leading consumer electronics recommerce and buyback platform. Allows users to calculate guaranteed resale prices and book free doorstep pickup for old mobile phones, used laptops, and tablets across Kolkata, Howrah, Hooghly, Barrackpore, Ranchi, Patna, Gorakhpur, and Ballia. Features instant UPI payouts before handover, certified NIST 800-88 data wiping, and zero convenience fees.",
+  "description_for_human": "Calculate instant resale value and sell your old smartphone, laptop, or tablet for instant cash with free doorstep pickup.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://www.cashall.in/api/v1/openapi.json"
+  },
+  "logo_url": "https://www.cashall.in/photos/CashALL_logo.png",
+  "contact_email": "support@cashall.in",
+  "legal_info_url": "https://www.cashall.in/legal"
+}

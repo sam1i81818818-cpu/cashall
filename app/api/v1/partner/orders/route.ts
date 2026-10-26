@@ -1,0 +1,81 @@
+import { NextRequest, NextResponse } from "next/server";
+
+export const dynamic = "force-dynamic";
+
+import { apiWrapper } from "@/lib/utils/api-wrapper";
+import { verifyAuthToken, requireRole } from "@/lib/middlewares/auth";
+import { prisma } from "@/lib/db";
+import { formatAddress } from "@/lib/address";
+
+export const GET = apiWrapper(async (req: NextRequest) => {
+  const decodedUser = await verifyAuthToken(req);
+  requireRole(["PARTNER", "ADMIN", "SUPER_ADMIN"], decodedUser.role);
+
+  const { searchParams } = new URL(req.url);
+  const paramPhone = searchParams.get("phone");
+  const targetPhone = (paramPhone || decodedUser.phone || "").replace(/\D/g, "");
+
+  // Find partner profile associated with phone number
+  const partner = targetPhone
+    ? await prisma.partner.findFirst({
+        where: { phone: targetPhone },
+      })
+    : null;
+
+  // Query pickups assigned to this partner or return all assigned pickups if partner filter not specified
+  const pickups = await prisma.pickup.findMany({
+    where: partner ? { partnerId: partner.id } : {},
+    include: {
+      order: {
+        include: {
+          user: { select: { id: true, name: true, phone: true } },
+          address: true,
+          quote: {
+            include: {
+              variant: {
+                include: { model: { include: { brand: true } } },
+              },
+            },
+          },
+          qcReports: true,
+          payments: true,
+        },
+      },
+    },
+    orderBy: { createdAt: "desc" },
+  });
+
+  const orders = pickups.map((p) => ({
+    id: p.order.id,
+    orderNumber: p.order.orderNumber,
+    customerName: p.order.user.name || p.order.address?.fullName || "CashALL Customer",
+    customerPhone: p.order.address?.phone || p.order.user.phone,
+    addressText: formatAddress(p.order.address),
+    pickupDate: p.order.pickupDate,
+    pickupTimeSlot: p.order.pickupTimeSlot,
+    createdAt: p.order.createdAt,
+    deviceName: `${p.order.quote.variant.model.brand.name} ${p.order.quote.variant.model.name}`,
+    storage: p.order.quote.variant.storage,
+    estimatedPrice: p.order.quote.estimatedPrice,
+    finalPrice: p.order.finalPrice,
+    status: p.order.status,
+    cancellationReason: (p.order as any).cancellationReason || (p.notes?.startsWith("Order Cancelled:") ? p.notes.replace(/^Order Cancelled:\s*/i, "") : null) || null,
+    identityStatus: "PENDING",
+    imeiStatus: "PENDING",
+    hasQcReport: p.order.qcReports.length > 0,
+    paymentStatus: p.order.payments[0]?.status || "PENDING",
+    isSigned: false,
+  }));
+
+  return NextResponse.json(
+    {
+      success: true,
+      orders,
+    },
+    {
+      headers: {
+        "Cache-Control": "public, s-maxage=15, stale-while-revalidate=30",
+      },
+    }
+  );
+});

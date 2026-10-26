@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" rx="24" fill="#0A0A0A" />
+  <rect x="1" y="1" width="118" height="118" rx="23" stroke="#262626" stroke-width="2" />
+  <!-- Support Glow -->
+  <ellipse cx="60" cy="60" rx="34" ry="34" fill="#FFD400" fill-opacity="0.15" />
+  <!-- Headset Arc -->
+  <path d="M34 62C34 47.6406 45.6406 36 60 36C74.3594 36 86 47.6406 86 62V68" stroke="#FFD400" stroke-width="4.5" stroke-linecap="round" />
+  <!-- Left Ear Cushion -->
+  <rect x="28" y="56" width="12" height="24" rx="6" fill="#FFD400" />
+  <!-- Right Ear Cushion -->
+  <rect x="80" y="56" width="12" height="24" rx="6" fill="#FFD400" />
+  <!-- Microphone Arm & Head -->
+  <path d="M86 74V82C86 86.4 82.4 90 78 90H64" stroke="#FFD400" stroke-width="3.5" stroke-linecap="round" />
+  <circle cx="60" cy="90" r="5" fill="#FFFFFF" />
+  <!-- Friendly Agent Face Outline -->
+  <circle cx="60" cy="60" r="16" fill="#1C1917" stroke="#FFD400" stroke-width="2" />
+  <path d="M53 58C53 58 54 55 57 55" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
+  <path d="M67 58C67 58 66 55 63 55" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
+  <!-- Smile -->
+  <path d="M54 66C56 69 64 69 66 66" stroke="#FFD400" stroke-width="2.5" stroke-linecap="round" />
+</svg>
