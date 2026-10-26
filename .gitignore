@@ -51,6 +51,7 @@ next-env.d.ts
 database_backups/
 backups/
 database_backup_active_system/
+DATABASE_HANDOVER_PACKAGE/
 
 # internal scripts & scratch
 scratch/
