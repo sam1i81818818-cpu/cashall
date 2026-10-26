@@ -314,7 +314,88 @@ export function Footer() {
               </li>
             </ul>
           </div>
+        </div>
 
+        {/* DEEP SEO INTERNAL LINKING MATRIX */}
+        <div className="pt-8 mb-8 border-t border-neutral-800/80">
+          <h3 className="text-xs font-bold text-gray-300 uppercase tracking-wider mb-3">Popular Brands &amp; Devices for Buyback</h3>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-gray-400 mb-5">
+            <Link href="/sell-old-mobile-phone/apple" className="hover:text-brand-yellow transition-colors">Sell iPhone</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-mobile-phone/samsung" className="hover:text-brand-yellow transition-colors">Sell Samsung Phone</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-mobile-phone/oneplus" className="hover:text-brand-yellow transition-colors">Sell OnePlus Phone</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-mobile-phone/xiaomi" className="hover:text-brand-yellow transition-colors">Sell Xiaomi / Redmi</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-mobile-phone/vivo" className="hover:text-brand-yellow transition-colors">Sell Vivo Phone</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-mobile-phone/oppo" className="hover:text-brand-yellow transition-colors">Sell Oppo Phone</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-mobile-phone/realme" className="hover:text-brand-yellow transition-colors">Sell Realme Phone</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-mobile-phone/google" className="hover:text-brand-yellow transition-colors">Sell Google Pixel</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-mobile-phone/motorola" className="hover:text-brand-yellow transition-colors">Sell Motorola Phone</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-laptop/apple" className="hover:text-brand-yellow transition-colors">Sell MacBook</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-laptop/dell" className="hover:text-brand-yellow transition-colors">Sell Dell Laptop</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-laptop/hp" className="hover:text-brand-yellow transition-colors">Sell HP Laptop</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-laptop/lenovo" className="hover:text-brand-yellow transition-colors">Sell Lenovo Laptop</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-laptop/asus" className="hover:text-brand-yellow transition-colors">Sell Asus Laptop</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-tablet" className="hover:text-brand-yellow transition-colors">Sell iPad &amp; Tablet</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/rent/ps5" className="hover:text-brand-yellow transition-colors">Rent PS5 Console</Link>
+          </div>
+
+          <h3 className="text-xs font-bold text-gray-300 uppercase tracking-wider mb-3">Popular Models Buyback Value</h3>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-gray-400 mb-5">
+            <Link href="/sell-old-mobile-phone/apple/apple-iphone-15-pro-max" className="hover:text-brand-yellow transition-colors">Sell iPhone 15 Pro Max</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-mobile-phone/apple/apple-iphone-15" className="hover:text-brand-yellow transition-colors">Sell iPhone 15</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-mobile-phone/apple/apple-iphone-14" className="hover:text-brand-yellow transition-colors">Sell iPhone 14</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-mobile-phone/apple/apple-iphone-13" className="hover:text-brand-yellow transition-colors">Sell iPhone 13</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-mobile-phone/apple/apple-iphone-12" className="hover:text-brand-yellow transition-colors">Sell iPhone 12</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-mobile-phone/apple/apple-iphone-11" className="hover:text-brand-yellow transition-colors">Sell iPhone 11</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-mobile-phone/samsung/samsung-galaxy-s24-ultra" className="hover:text-brand-yellow transition-colors">Sell Galaxy S24 Ultra</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-mobile-phone/samsung/samsung-galaxy-s23-ultra" className="hover:text-brand-yellow transition-colors">Sell Galaxy S23 Ultra</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-mobile-phone/oneplus/oneplus-12" className="hover:text-brand-yellow transition-colors">Sell OnePlus 12</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-laptop/apple/apple-macbook-air-m1" className="hover:text-brand-yellow transition-colors">Sell MacBook Air M1</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-old-laptop/apple/apple-macbook-air-m2" className="hover:text-brand-yellow transition-colors">Sell MacBook Air M2</Link>
+          </div>
+
+          <h3 className="text-xs font-bold text-gray-300 uppercase tracking-wider mb-3">Service Areas &amp; Doorstep Hubs</h3>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-gray-400">
+            <Link href="/sell-phone-in-kolkata" className="hover:text-brand-yellow transition-colors">Sell Phone Kolkata</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-phone-in-howrah" className="hover:text-brand-yellow transition-colors">Sell Phone Howrah</Link>
+            <span className="text-neutral-700">•</span>
+            <Link href="/sell-phone-in-gorakhpur" className="hover:text-brand-yellow transition-colors">Sell Phone Gorakhpur</Link>
+            <span className="text-neutral-700">•</span>
+            <span className="text-neutral-400">Salt Lake Sector V</span>
+            <span className="text-neutral-700">•</span>
+            <span className="text-neutral-400">New Town Action Area</span>
+            <span className="text-neutral-700">•</span>
+            <span className="text-neutral-400">Barrackpore</span>
+            <span className="text-neutral-700">•</span>
+            <span className="text-neutral-400">Hooghly / Serampore</span>
+            <span className="text-neutral-700">•</span>
+            <span className="text-neutral-400">Behala &amp; Jadavpur</span>
+          </div>
         </div>
 
         {/* COMPANY LEGAL INFORMATION */}

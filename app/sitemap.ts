@@ -292,9 +292,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     brandSlugMap.set(b.id, b.slug.toLowerCase());
   }
 
-  // Model Pages (Using Canonical Recommerce URLs)
+  // Model Pages (Full Catalog Canonical URLs - Over 2,700+ Models)
   const popularModels = INITIAL_MODELS.filter((m) => m.active && m.slug);
-  const modelPages: MetadataRoute.Sitemap = popularModels.slice(0, 1000).map((m) => {
+  const modelPages: MetadataRoute.Sitemap = popularModels.map((m) => {
     const brandSlug = m.brandSlug?.toLowerCase() || brandSlugMap.get(m.brandId) || "apple";
     const category = (m.category || "MOBILE").toUpperCase();
     const basePath =
@@ -307,8 +307,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return {
       url: `${baseUrl}/${basePath}/${brandSlug}/${m.slug.toLowerCase()}`,
       lastModified: now,
-      changeFrequency: "weekly",
-      priority: m.popular ? 0.85 : 0.75,
+      changeFrequency: "weekly" as const,
+      priority: m.popular ? 0.9 : 0.8,
     };
   });
 

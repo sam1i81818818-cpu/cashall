@@ -1,52 +1,68 @@
 # CashALL (https://www.cashall.in) Official Robots.txt
-# Strict Bandwidth Protection & Anti-Scraper Configuration
+# High-Velocity Search Engine & Crawler Optimization
 
-# 1. Completely Block Aggressive Scrapers and Bandwidth-Draining Bots
-User-agent: Bytespider
-User-agent: CCBot
-User-agent: Amazonbot
-User-agent: PetalBot
-User-agent: SemrushBot
-User-agent: AhrefsBot
-User-agent: DotBot
-User-agent: MJ12bot
-User-agent: Diffbot
-User-agent: Timpibot
-User-agent: Webzio-Extended
-User-agent: BLEXBot
-User-agent: DataForSeoBot
-User-agent: MegaIndex
-User-agent: Claude-Web
-Disallow: /
-
-# 2. General Crawlers Policy (Google, Bing, etc.)
 User-agent: *
 Allow: /
-Disallow: /api/
-Disallow: /download/
-Disallow: /download
 Disallow: /admin/
 Disallow: /partner/
 Disallow: /agent/
 Disallow: /support/
+Disallow: /api/
 Disallow: /checkout/
 Disallow: /track/
 Disallow: /order/
 Disallow: /orders/
 Disallow: /quote/
-Disallow: /quote
 Disallow: /account/
-Disallow: /account
+Disallow: /my-account/
+Disallow: /profile/
 Disallow: /privacy-request/
-Disallow: /privacy-request
-Disallow: /photos/
 Disallow: /*.apk$
-Disallow: /*.csv$
-Disallow: /*.json$
-Disallow: /*.txt$
-Disallow: /*.pdf$
-Crawl-delay: 10
 
-# 3. Canonical Sitemaps & Host
+# Googlebot, Bingbot & Search Engine Crawlers (Explicit Full Access, Zero Crawl-Delay)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# AI & Answer Engine Crawlers (AEO / GEO / Perplexity / SearchGPT / Claude Citation)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Canonical Sitemaps & Host
 Sitemap: https://www.cashall.in/sitemap.xml
 Host: https://www.cashall.in

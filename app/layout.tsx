@@ -286,6 +286,13 @@ export const metadata: Metadata = {
     },
   },
 
+  alternates: {
+    canonical: "https://www.cashall.in",
+    types: {
+      "application/rss+xml": "https://www.cashall.in/feed.xml",
+    },
+  },
+
   openGraph: {
     type: "website",
     locale: "en_IN",
