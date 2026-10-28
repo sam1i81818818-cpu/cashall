@@ -41,6 +41,8 @@ import {
   ChevronDown,
   CalendarDays,
   RotateCcw,
+  Database,
+  X,
 } from "lucide-react";
 import { CustomerAnswersModal } from "@/components/admin/CustomerAnswersModal";
 import { ReQuotationModal } from "@/components/admin/ReQuotationModal";
@@ -355,8 +357,35 @@ export default function AdminOrdersPage() {
     cancelled: number;
   } | null>(null);
   const [isExportingCSV, setIsExportingCSV] = useState<"admin" | "cleaned" | null>(null);
+  const [activeExportMenu, setActiveExportMenu] = useState<"admin" | "cleaned" | null>(null);
+  const [exportScope, setExportScope] = useState<"recent" | "selected_date" | "full">("recent");
+  const [exportDateType, setExportDateType] = useState<"single" | "range">("single");
+  const [exportDateMode, setExportDateMode] = useState<"placed" | "pickup">("placed");
+  const [exportSingleDate, setExportSingleDate] = useState<string>(() => formatISTIso(getNowIST()));
+  const [exportStartDate, setExportStartDate] = useState<string>(() => formatISTIso(getNowIST()));
+  const [exportEndDate, setExportEndDate] = useState<string>(() => formatISTIso(getNowIST()));
+  const exportDropdownRef = useRef<HTMLDivElement>(null);
+
   const [displayLimit, setDisplayLimit] = useState(300);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+
+  // Close export dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        exportDropdownRef.current &&
+        !exportDropdownRef.current.contains(event.target as Node)
+      ) {
+        setActiveExportMenu(null);
+      }
+    }
+    if (activeExportMenu) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [activeExportMenu]);
 
   // Operational Filters State
   const [selectedFilter, setSelectedFilter] = useState<OrderFilterType>("ALL");
@@ -741,25 +770,33 @@ export default function AdminOrdersPage() {
     }
   }, []);
 
-  // Fetch entire database records for CSV exports (all 247+ orders without truncating)
-  const fetchAllOrdersForExport = useCallback(async (): Promise<Order[]> => {
-    const token = getAdminToken();
-    const res = await fetch(`/api/v1/admin/orders?export=true&t=${Date.now()}`, {
-      cache: "no-store",
-      headers: {
-        "Cache-Control": "no-cache, no-store, must-revalidate",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+  // Fetch database records for CSV exports (supports limit, date ranges, or full database)
+  const fetchAllOrdersForExport = useCallback(
+    async (params?: { limit?: number; startDate?: string; endDate?: string }): Promise<Order[]> => {
+      const token = getAdminToken();
+      const queryParts = ["export=true", `t=${Date.now()}`, "nocache=true"];
+      if (params?.limit) queryParts.push(`limit=${params.limit}`);
+      if (params?.startDate) queryParts.push(`startDate=${params.startDate}`);
+      if (params?.endDate) queryParts.push(`endDate=${params.endDate}`);
 
-    if (!res.ok) {
-      throw new Error(`Export fetch failed with status ${res.status}`);
-    }
+      const res = await fetch(`/api/v1/admin/orders?${queryParts.join("&")}`, {
+        cache: "no-store",
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-    const json = await res.json();
-    const raw = json.data?.orders || json.orders || [];
-    return raw.map(mapRawOrderToOrder);
-  }, []);
+      if (!res.ok) {
+        throw new Error(`Export fetch failed with status ${res.status}`);
+      }
+
+      const json = await res.json();
+      const raw = json.data?.orders || json.orders || [];
+      return raw.map(mapRawOrderToOrder);
+    },
+    []
+  );
 
   // Debounced database search across entire history
   useEffect(() => {
@@ -1361,150 +1398,535 @@ export default function AdminOrdersPage() {
     return null;
   };
 
-  // 1. Export Admin Data CSV (Complete raw operational dataset across all database records)
-  const handleDownloadAdminDataCSV = async () => {
-    setIsExportingCSV("admin");
+  const sanitizeCsvField = (val: any): string => {
+    if (val === null || val === undefined || val === "") return "—";
+    const s = String(val).replace(/[\r\n]+/g, " ").trim();
+    return `"${s.replace(/"/g, '""')}"`;
+  };
+
+  const triggerCsvBlobDownload = (csvContent: string, filename: string) => {
+    const blob = new Blob(["\uFEFF" + csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", filename);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
+
+  const filterOrdersByDateRange = (
+    orderList: Order[],
+    startIsoDate: string,
+    endIsoDate: string,
+    mode: "placed" | "pickup"
+  ): Order[] => {
+    const startParts = startIsoDate.split("-").map((n) => parseInt(n, 10));
+    const endParts = endIsoDate.split("-").map((n) => parseInt(n, 10));
+    if (startParts.length !== 3 || endParts.length !== 3) return orderList;
+
+    const startVal = startParts[0] * 10000 + startParts[1] * 100 + startParts[2];
+    const endVal = endParts[0] * 10000 + endParts[1] * 100 + endParts[2];
+
+    return orderList.filter((ord) => {
+      const comp =
+        mode === "pickup"
+          ? extractPickupTargetDate(ord.pickupDate, ord.createdAt)
+          : parseDateToIST(ord.createdAt || null);
+
+      if (!comp) return false;
+      const compVal = comp.year * 10000 + comp.month * 100 + comp.day;
+      return compVal >= startVal && compVal <= endVal;
+    });
+  };
+
+  const exportAdminData = (
+    targetOrders: Order[],
+    scope: "recent" | "selected_date" | "full",
+    startDate: string,
+    endDate: string
+  ) => {
+    const todayStr = new Date().toISOString().slice(0, 10);
+    let filename = `CashALL_Admin_Data_${todayStr}.csv`;
+    if (scope === "recent") {
+      filename = `CashALL_Admin_Data_Recent_50_${todayStr}.csv`;
+    } else if (scope === "selected_date") {
+      filename = `CashALL_Admin_Data_${startDate === endDate ? startDate : `${startDate}_to_${endDate}`}.csv`;
+    } else if (scope === "full") {
+      filename = `CashALL_Admin_Data_Full_${todayStr}.csv`;
+    }
+
+    const headers = [
+      "Order Number",
+      "Order Date",
+      "Order Time",
+      "Pickup Date & Slot",
+      "Completion Date",
+      "Completion Time",
+      "Customer Name",
+      "Phone",
+      "Email",
+      "Location",
+      "Pin Code",
+      "Device Name",
+      "Box Status",
+      "IMEI Number",
+      "Estimated Quote (INR)",
+      "Final Settled Payout (INR)",
+      "Bank UTR",
+      "Assigned Agent",
+      "Order Status",
+      "Cancellation Reason",
+      "Payment Status",
+    ];
+
+    const rows = targetOrders.map((ord) => {
+      const completionIso = getOrderCompletionIso(ord);
+      return [
+        ord.orderNumber,
+        sanitizeCsvField(formatCsvDate(ord.createdAt)),
+        sanitizeCsvField(formatCsvTime(ord.createdAt)),
+        sanitizeCsvField(formatPickupDateTimeSlot(ord.pickupDate, ord.pickupTimeSlot, ord.createdAt)),
+        sanitizeCsvField(formatCsvDate(completionIso)),
+        sanitizeCsvField(formatCsvTime(completionIso)),
+        sanitizeCsvField(ord.customerName || "Customer"),
+        sanitizeCsvField(ord.customerPhone || "—"),
+        sanitizeCsvField(ord.customerEmail || "—"),
+        sanitizeCsvField(ord.location || "—"),
+        sanitizeCsvField(getOrderPincode(ord)),
+        sanitizeCsvField(ord.deviceName || "Mobile Device"),
+        getOrderBoxStatus(ord),
+        ord.imeiNumber || (ord as any).imeiRecords?.[0]?.code || "—",
+        ord.quotedPrice || ord.estimatedPrice || 0,
+        ord.finalPrice || ord.revisedPrice || ord.estimatedPrice || 0,
+        ord.utr && !ord.utr.startsWith("PAID-") && ord.utr !== "623480124575" ? ord.utr : "—",
+        sanitizeCsvField(ord.agentName || "Assigned Agent"),
+        ord.status,
+        ["CANCELLED", "REJECTED"].includes(ord.status)
+          ? sanitizeCsvField(ord.cancellationReason || "Order cancelled")
+          : "—",
+        ord.paymentStatus || "PAID",
+      ];
+    });
+
+    const csvString = [headers.join(","), ...rows.map((e) => e.join(","))].join("\r\n");
+    triggerCsvBlobDownload(csvString, filename);
+  };
+
+  const exportCleanedData = (
+    targetOrders: Order[],
+    scope: "recent" | "selected_date" | "full",
+    startDate: string,
+    endDate: string
+  ) => {
+    const todayStr = new Date().toISOString().slice(0, 10);
+    let filename = `CashALL_Cleaned_Data_${todayStr}.csv`;
+    if (scope === "recent") {
+      filename = `CashALL_Cleaned_Data_Recent_50_${todayStr}.csv`;
+    } else if (scope === "selected_date") {
+      filename = `CashALL_Cleaned_Data_${startDate === endDate ? startDate : `${startDate}_to_${endDate}`}.csv`;
+    } else if (scope === "full") {
+      filename = `CashALL_Cleaned_Data_Full_${todayStr}.csv`;
+    }
+
+    const headers = [
+      "ORDER NUMBER",
+      "ORDER DATE",
+      "ORDER TIME",
+      "COMPLETION DATE",
+      "COMPLETION TIME",
+      "PIN CODE",
+      "DEVICE NAME",
+      "BOX STATUS",
+      "IMEI/SERIAL NUMBER",
+      "ESTIMATED QUOTE (INR)",
+      "FINAL SETTLED PAYOUT (INR)",
+      "ASSIGNED AGENT",
+      "ORDER STATUS",
+      "CANCELLATION REASON",
+    ];
+
+    const rows = targetOrders.map((ord) => {
+      const completionIso = getOrderCompletionIso(ord);
+      return [
+        ord.orderNumber,
+        sanitizeCsvField(formatCsvDate(ord.createdAt)),
+        sanitizeCsvField(formatCsvTime(ord.createdAt)),
+        sanitizeCsvField(formatCsvDate(completionIso)),
+        sanitizeCsvField(formatCsvTime(completionIso)),
+        sanitizeCsvField(getOrderPincode(ord)),
+        sanitizeCsvField(ord.deviceName || "Mobile Device"),
+        getOrderBoxStatus(ord),
+        ord.imeiNumber || (ord as any).imeiRecords?.[0]?.code || "—",
+        ord.quotedPrice || ord.estimatedPrice || 0,
+        ord.finalPrice || ord.revisedPrice || ord.estimatedPrice || 0,
+        sanitizeCsvField(ord.agentName && ord.agentName !== "CashALL Logistics" ? ord.agentName : "—"),
+        ord.status,
+        ["CANCELLED", "REJECTED"].includes(ord.status)
+          ? sanitizeCsvField(ord.cancellationReason || "Order cancelled")
+          : "—",
+      ];
+    });
+
+    const csvString = [headers.join(","), ...rows.map((e) => e.join(","))].join("\r\n");
+    triggerCsvBlobDownload(csvString, filename);
+  };
+
+  const handleExecuteExport = async (type: "admin" | "cleaned") => {
+    setIsExportingCSV(type);
     try {
       let targetOrders: Order[] = [];
-      try {
+      const startDate = exportDateType === "single" ? exportSingleDate : exportStartDate;
+      const endDate = exportDateType === "single" ? exportSingleDate : exportEndDate;
+
+      if (exportScope === "recent") {
+        try {
+          targetOrders = await fetchAllOrdersForExport({ limit: 50 });
+        } catch (err) {
+          console.warn("Could not fetch recent 50 from server, falling back to loaded orders:", err);
+          targetOrders = orders.slice(0, 50);
+        }
+        if (targetOrders.length > 50) {
+          targetOrders = targetOrders.slice(0, 50);
+        }
+      } else if (exportScope === "selected_date") {
+        if (exportDateMode === "placed") {
+          try {
+            targetOrders = await fetchAllOrdersForExport({ startDate, endDate });
+          } catch (err) {
+            console.warn("Could not fetch date-filtered orders from server, falling back to client filter:", err);
+            targetOrders = filterOrdersByDateRange(orders, startDate, endDate, "placed");
+          }
+        } else {
+          // Pickup date: fetch all records and filter by pickup target date
+          const allOrders = await fetchAllOrdersForExport();
+          targetOrders = filterOrdersByDateRange(allOrders, startDate, endDate, "pickup");
+        }
+      } else {
+        // Full Data - All records in database no matter how long
         targetOrders = await fetchAllOrdersForExport();
-      } catch (err) {
-        console.warn("Could not fetch full export data, falling back to loaded orders:", err);
-        targetOrders = orders;
       }
 
       if (targetOrders.length === 0) {
-        alert("No orders available to export.");
+        alert("No orders matched the selected criteria for export.");
         return;
       }
-      const headers = [
-        "Order Number",
-        "Order Date",
-        "Order Time",
-        "Pickup Date & Slot",
-        "Completion Date",
-        "Completion Time",
-        "Customer Name",
-        "Phone",
-        "Email",
-        "Location",
-        "Pin Code",
-        "Device Name",
-        "Box Status",
-        "IMEI Number",
-        "Estimated Quote (INR)",
-        "Final Settled Payout (INR)",
-        "Bank UTR",
-        "Assigned Agent",
-        "Order Status",
-        "Cancellation Reason",
-        "Payment Status",
-      ];
-      const rows = targetOrders.map((ord) => {
-        const completionIso = getOrderCompletionIso(ord);
-        return [
-          ord.orderNumber,
-          `"${formatCsvDate(ord.createdAt)}"`,
-          `"${formatCsvTime(ord.createdAt)}"`,
-          `"${formatPickupDateTimeSlot(ord.pickupDate, ord.pickupTimeSlot, ord.createdAt).replace(/"/g, '""')}"`,
-          `"${formatCsvDate(completionIso)}"`,
-          `"${formatCsvTime(completionIso)}"`,
-          `"${(ord.customerName || "Customer").replace(/"/g, '""')}"`,
-          ord.customerPhone || "—",
-          ord.customerEmail || "—",
-          `"${(ord.location || "—").replace(/"/g, '""')}"`,
-          `"${getOrderPincode(ord)}"`,
-          `"${ord.deviceName.replace(/"/g, '""')}"`,
-          getOrderBoxStatus(ord),
-          ord.imeiNumber || (ord as any).imeiRecords?.[0]?.code || "—",
-          ord.quotedPrice || ord.estimatedPrice || 0,
-          ord.finalPrice || ord.revisedPrice || ord.estimatedPrice || 0,
-          ord.utr && !ord.utr.startsWith("PAID-") && ord.utr !== "623480124575" ? ord.utr : "—",
-          `"${(ord.agentName || "Assigned Agent").replace(/"/g, '""')}"`,
-          ord.status,
-          ["CANCELLED", "REJECTED"].includes(ord.status)
-            ? `"${(ord.cancellationReason || "Order cancelled").replace(/"/g, '""')}"`
-            : "—",
-          ord.paymentStatus || "PAID",
-        ];
-      });
-      const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map((e) => e.join(","))].join("\n");
-      const encodedUri = encodeURI(csvContent);
-      const link = document.createElement("a");
-      link.setAttribute("href", encodedUri);
-      link.setAttribute("download", `CashALL_Admin_Data_${new Date().toISOString().slice(0, 10)}.csv`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+
+      if (type === "admin") {
+        exportAdminData(targetOrders, exportScope, startDate, endDate);
+      } else {
+        exportCleanedData(targetOrders, exportScope, startDate, endDate);
+      }
+
+      setActiveExportMenu(null);
+    } catch (e: any) {
+      console.error("Export error:", e);
+      alert(`Export failed: ${e.message || "Unknown error"}`);
     } finally {
       setIsExportingCSV(null);
     }
   };
 
-  // 2. Export Cleaned Data CSV (Specific clean business fields across all database records)
-  const handleDownloadCleanedDataCSV = async () => {
-    setIsExportingCSV("cleaned");
-    try {
-      let targetOrders: Order[] = [];
-      try {
-        targetOrders = await fetchAllOrdersForExport();
-      } catch (err) {
-        console.warn("Could not fetch full export data, falling back to loaded orders:", err);
-        targetOrders = orders;
-      }
+  const renderExportDropdown = (type: "admin" | "cleaned") => {
+    const totalCount = dbCounts?.all || counts.all || orders.length;
+    const isExportingThis = isExportingCSV === type;
 
-      if (targetOrders.length === 0) {
-        alert("No orders available to export.");
-        return;
-      }
-      const headers = [
-        "ORDER NUMBER",
-        "ORDER DATE",
-        "ORDER TIME",
-        "COMPLETION DATE",
-        "COMPLETION TIME",
-        "PIN CODE",
-        "DEVICE NAME",
-        "BOX STATUS",
-        "IMEI/SERIAL NUMBER",
-        "ESTIMATED QUOTE (INR)",
-        "FINAL SETTLED PAYOUT (INR)",
-        "ASSIGNED AGENT",
-        "ORDER STATUS",
-        "CANCELLATION REASON",
-      ];
-      const rows = targetOrders.map((ord) => {
-        const completionIso = getOrderCompletionIso(ord);
-        return [
-          ord.orderNumber,
-          `"${formatCsvDate(ord.createdAt)}"`,
-          `"${formatCsvTime(ord.createdAt)}"`,
-          `"${formatCsvDate(completionIso)}"`,
-          `"${formatCsvTime(completionIso)}"`,
-          `"${getOrderPincode(ord)}"`,
-          `"${(ord.deviceName || "Mobile Device").replace(/"/g, '""')}"`,
-          getOrderBoxStatus(ord),
-          ord.imeiNumber || (ord as any).imeiRecords?.[0]?.code || "—",
-          ord.quotedPrice || ord.estimatedPrice || 0,
-          ord.finalPrice || ord.revisedPrice || ord.estimatedPrice || 0,
-          `"${(ord.agentName && ord.agentName !== "CashALL Logistics" ? ord.agentName : "—").replace(/"/g, '""')}"`,
-          ord.status,
-          ["CANCELLED", "REJECTED"].includes(ord.status)
-            ? `"${(ord.cancellationReason || "Order cancelled").replace(/"/g, '""')}"`
-            : "—",
-        ];
-      });
-      const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map((e) => e.join(","))].join("\n");
-      const encodedUri = encodeURI(csvContent);
-      const link = document.createElement("a");
-      link.setAttribute("href", encodedUri);
-      link.setAttribute("download", `CashALL_Cleaned_Data_${new Date().toISOString().slice(0, 10)}.csv`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } finally {
-      setIsExportingCSV(null);
-    }
+    return (
+      <div
+        ref={exportDropdownRef}
+        className="absolute right-0 top-full mt-2 z-50 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 p-4 animate-in fade-in zoom-in-95 duration-150"
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+          <div className="flex items-center gap-2">
+            <div className={`p-1.5 rounded-lg ${type === "admin" ? "bg-amber-100 text-amber-800" : "bg-emerald-100 text-emerald-800"}`}>
+              {type === "admin" ? <Download className="w-4 h-4" /> : <FileSpreadsheet className="w-4 h-4" />}
+            </div>
+            <div>
+              <h3 className="text-xs font-black text-slate-900 tracking-tight">
+                {type === "admin" ? "Export Admin Data" : "Export Cleaned Data"}
+              </h3>
+              <p className="text-[10px] text-slate-500 font-medium">Select download range (.csv)</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => setActiveExportMenu(null)}
+            className="text-slate-400 hover:text-slate-700 p-1 rounded-md hover:bg-slate-100 transition"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* Radio Options */}
+        <div className="mt-3 space-y-2">
+          {/* 1. Recent 50 Orders */}
+          <div
+            onClick={() => setExportScope("recent")}
+            className={`p-2.5 rounded-xl border cursor-pointer transition-all ${
+              exportScope === "recent"
+                ? "border-amber-400 bg-amber-50/60 ring-2 ring-amber-200/60"
+                : "border-slate-200 hover:border-slate-300 bg-slate-50/50"
+            }`}
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name={`exportScope-${type}`}
+                  checked={exportScope === "recent"}
+                  onChange={() => setExportScope("recent")}
+                  className="text-amber-500 focus:ring-amber-400 h-3.5 w-3.5 cursor-pointer"
+                />
+                <div className="flex items-center gap-1.5">
+                  <Clock className="w-3.5 h-3.5 text-amber-600" />
+                  <span className="text-xs font-bold text-slate-800">Recent (50 Orders)</span>
+                </div>
+              </div>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">
+                Latest 50
+              </span>
+            </div>
+            <p className="text-[11px] text-slate-500 mt-1 pl-5.5">
+              Quick download of the 50 most recently placed orders.
+            </p>
+          </div>
+
+          {/* 2. Selected Date */}
+          <div
+            onClick={() => setExportScope("selected_date")}
+            className={`p-2.5 rounded-xl border cursor-pointer transition-all ${
+              exportScope === "selected_date"
+                ? "border-amber-400 bg-amber-50/60 ring-2 ring-amber-200/60"
+                : "border-slate-200 hover:border-slate-300 bg-slate-50/50"
+            }`}
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name={`exportScope-${type}`}
+                  checked={exportScope === "selected_date"}
+                  onChange={() => setExportScope("selected_date")}
+                  className="text-amber-500 focus:ring-amber-400 h-3.5 w-3.5 cursor-pointer"
+                />
+                <div className="flex items-center gap-1.5">
+                  <Calendar className="w-3.5 h-3.5 text-blue-600" />
+                  <span className="text-xs font-bold text-slate-800">Selected Date</span>
+                </div>
+              </div>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800">
+                Custom Date
+              </span>
+            </div>
+            <p className="text-[11px] text-slate-500 mt-1 pl-5.5">
+              Download orders for a specific date or date range.
+            </p>
+
+            {/* Date Picker Controls */}
+            {exportScope === "selected_date" && (
+              <div className="mt-2.5 pt-2.5 border-t border-amber-200/60 pl-5.5 space-y-2.5" onClick={(e) => e.stopPropagation()}>
+                {/* Presets */}
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const today = formatISTIso(getNowIST());
+                      setExportSingleDate(today);
+                      setExportStartDate(today);
+                      setExportEndDate(today);
+                      setExportDateType("single");
+                    }}
+                    className="text-[10px] font-bold px-2 py-0.5 rounded bg-white hover:bg-slate-100 border border-slate-200 text-slate-700"
+                  >
+                    Today
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const yest = formatISTIso(addDaysIST(getNowIST(), -1));
+                      setExportSingleDate(yest);
+                      setExportStartDate(yest);
+                      setExportEndDate(yest);
+                      setExportDateType("single");
+                    }}
+                    className="text-[10px] font-bold px-2 py-0.5 rounded bg-white hover:bg-slate-100 border border-slate-200 text-slate-700"
+                  >
+                    Yesterday
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const now = getNowIST();
+                      const past7 = formatISTIso(addDaysIST(now, -7));
+                      const today = formatISTIso(now);
+                      setExportStartDate(past7);
+                      setExportEndDate(today);
+                      setExportDateType("range");
+                    }}
+                    className="text-[10px] font-bold px-2 py-0.5 rounded bg-white hover:bg-slate-100 border border-slate-200 text-slate-700"
+                  >
+                    Last 7 Days
+                  </button>
+                </div>
+
+                {/* Single vs Range Toggle */}
+                <div className="flex items-center gap-3 text-[11px]">
+                  <label className="flex items-center gap-1 text-slate-700 font-medium cursor-pointer">
+                    <input
+                      type="radio"
+                      name={`dateModeType-${type}`}
+                      checked={exportDateType === "single"}
+                      onChange={() => setExportDateType("single")}
+                      className="text-amber-500 h-3 w-3"
+                    />
+                    <span>Single Date</span>
+                  </label>
+                  <label className="flex items-center gap-1 text-slate-700 font-medium cursor-pointer">
+                    <input
+                      type="radio"
+                      name={`dateModeType-${type}`}
+                      checked={exportDateType === "range"}
+                      onChange={() => setExportDateType("range")}
+                      className="text-amber-500 h-3 w-3"
+                    />
+                    <span>Date Range</span>
+                  </label>
+                </div>
+
+                {/* Date Inputs */}
+                {exportDateType === "single" ? (
+                  <div>
+                    <label className="block text-[10px] font-bold text-slate-500 mb-1">Select Date:</label>
+                    <input
+                      type="date"
+                      value={exportSingleDate}
+                      onChange={(e) => {
+                        setExportSingleDate(e.target.value);
+                        setExportStartDate(e.target.value);
+                        setExportEndDate(e.target.value);
+                      }}
+                      className="w-full text-xs bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-800 font-semibold focus:outline-none focus:border-amber-500"
+                    />
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <label className="block text-[10px] font-bold text-slate-500 mb-1">From:</label>
+                      <input
+                        type="date"
+                        value={exportStartDate}
+                        onChange={(e) => setExportStartDate(e.target.value)}
+                        className="w-full text-xs bg-white border border-slate-300 rounded-lg px-2 py-1.5 text-slate-800 font-semibold focus:outline-none focus:border-amber-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-slate-500 mb-1">To:</label>
+                      <input
+                        type="date"
+                        value={exportEndDate}
+                        onChange={(e) => setExportEndDate(e.target.value)}
+                        className="w-full text-xs bg-white border border-slate-300 rounded-lg px-2 py-1.5 text-slate-800 font-semibold focus:outline-none focus:border-amber-500"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* Filter By Mode */}
+                <div className="flex items-center justify-between text-[10px] pt-1">
+                  <span className="text-slate-500 font-medium">Filter By:</span>
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => setExportDateMode("placed")}
+                      className={`px-2 py-0.5 rounded font-bold transition ${
+                        exportDateMode === "placed"
+                          ? "bg-slate-800 text-white"
+                          : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                      }`}
+                    >
+                      Order Date
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setExportDateMode("pickup")}
+                      className={`px-2 py-0.5 rounded font-bold transition ${
+                        exportDateMode === "pickup"
+                          ? "bg-slate-800 text-white"
+                          : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                      }`}
+                    >
+                      Pickup Date
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* 3. Full Data (No Matter How Long) */}
+          <div
+            onClick={() => setExportScope("full")}
+            className={`p-2.5 rounded-xl border cursor-pointer transition-all ${
+              exportScope === "full"
+                ? "border-amber-400 bg-amber-50/60 ring-2 ring-amber-200/60"
+                : "border-slate-200 hover:border-slate-300 bg-slate-50/50"
+            }`}
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name={`exportScope-${type}`}
+                  checked={exportScope === "full"}
+                  onChange={() => setExportScope("full")}
+                  className="text-amber-500 focus:ring-amber-400 h-3.5 w-3.5 cursor-pointer"
+                />
+                <div className="flex items-center gap-1.5">
+                  <Database className="w-3.5 h-3.5 text-emerald-600" />
+                  <span className="text-xs font-bold text-slate-800">Full Data</span>
+                </div>
+              </div>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+                All {totalCount}+ Orders
+              </span>
+            </div>
+            <p className="text-[11px] text-slate-500 mt-1 pl-5.5">
+              Download 100% full dataset no matter how long, with zero records truncated.
+            </p>
+          </div>
+        </div>
+
+        {/* Actions */}
+        <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-end gap-2">
+          <button
+            type="button"
+            onClick={() => setActiveExportMenu(null)}
+            className="text-xs font-bold text-slate-500 hover:text-slate-800 px-3 py-1.5 rounded-lg hover:bg-slate-100 transition"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            disabled={isExportingThis}
+            onClick={() => handleExecuteExport(type)}
+            className={`flex items-center gap-1.5 text-xs font-black px-4 py-2 rounded-lg transition shadow-xs disabled:opacity-50 ${
+              type === "admin"
+                ? "bg-amber-400 hover:bg-amber-500 text-amber-950 border border-amber-500"
+                : "bg-emerald-600 hover:bg-emerald-700 text-white border border-emerald-700"
+            }`}
+          >
+            {isExportingThis ? (
+              <Loader2 className="w-3.5 h-3.5 animate-spin" />
+            ) : (
+              <Download className="w-3.5 h-3.5" />
+            )}
+            <span>{isExportingThis ? "Preparing CSV..." : "Download CSV"}</span>
+          </button>
+        </div>
+      </div>
+    );
   };
 
   const handleDownloadPDF = () => {
@@ -1533,33 +1955,55 @@ export default function AdminOrdersPage() {
           <div className="flex items-center gap-2 sm:gap-3 flex-wrap w-full sm:w-auto">
             <SoundControlBadge />
 
-            <button
-              onClick={handleDownloadAdminDataCSV}
-              disabled={isExportingCSV !== null}
-              title="Download Full Raw Admin Data CSV (All Database Records)"
-              className="flex items-center gap-1.5 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-xs font-bold px-3.5 py-2 rounded-lg transition shadow-xs disabled:opacity-50"
-            >
-              {isExportingCSV === "admin" ? (
-                <Loader2 className="w-4 h-4 animate-spin text-amber-600" />
-              ) : (
-                <Download className="w-4 h-4 text-slate-500" />
-              )}
-              <span>{isExportingCSV === "admin" ? "Exporting All..." : "Admin Data"}</span>
-            </button>
+            {/* 1. ADMIN DATA DROPDOWN EXPORT */}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setActiveExportMenu(activeExportMenu === "admin" ? null : "admin")}
+                disabled={isExportingCSV !== null}
+                title="Download Raw Operational Admin Data CSV"
+                className={`flex items-center gap-1.5 border text-xs font-bold px-3.5 py-2 rounded-lg transition shadow-xs disabled:opacity-50 ${
+                  activeExportMenu === "admin"
+                    ? "bg-amber-400 text-amber-950 border-amber-500 ring-2 ring-amber-200"
+                    : "bg-white hover:bg-slate-50 text-slate-700 border-slate-200"
+                }`}
+              >
+                {isExportingCSV === "admin" ? (
+                  <Loader2 className="w-4 h-4 animate-spin text-amber-800" />
+                ) : (
+                  <Download className="w-4 h-4 text-slate-500" />
+                )}
+                <span>Admin Data</span>
+                <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${activeExportMenu === "admin" ? "rotate-180" : ""}`} />
+              </button>
 
-            <button
-              onClick={handleDownloadCleanedDataCSV}
-              disabled={isExportingCSV !== null}
-              title="Download Cleaned Summary CSV (All Database Records)"
-              className="flex items-center gap-1.5 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-xs font-bold px-3.5 py-2 rounded-lg transition shadow-xs disabled:opacity-50"
-            >
-              {isExportingCSV === "cleaned" ? (
-                <Loader2 className="w-4 h-4 animate-spin text-amber-600" />
-              ) : (
-                <FileSpreadsheet className="w-4 h-4 text-slate-500" />
-              )}
-              <span>{isExportingCSV === "cleaned" ? "Exporting All..." : "Cleaned Data"}</span>
-            </button>
+              {activeExportMenu === "admin" && renderExportDropdown("admin")}
+            </div>
+
+            {/* 2. CLEANED DATA DROPDOWN EXPORT */}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setActiveExportMenu(activeExportMenu === "cleaned" ? null : "cleaned")}
+                disabled={isExportingCSV !== null}
+                title="Download Cleaned Business Summary CSV"
+                className={`flex items-center gap-1.5 border text-xs font-bold px-3.5 py-2 rounded-lg transition shadow-xs disabled:opacity-50 ${
+                  activeExportMenu === "cleaned"
+                    ? "bg-emerald-500 text-white border-emerald-600 ring-2 ring-emerald-200"
+                    : "bg-white hover:bg-slate-50 text-slate-700 border-slate-200"
+                }`}
+              >
+                {isExportingCSV === "cleaned" ? (
+                  <Loader2 className="w-4 h-4 animate-spin text-emerald-800" />
+                ) : (
+                  <FileSpreadsheet className="w-4 h-4 text-slate-500" />
+                )}
+                <span>Cleaned Data</span>
+                <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${activeExportMenu === "cleaned" ? "rotate-180" : ""}`} />
+              </button>
+
+              {activeExportMenu === "cleaned" && renderExportDropdown("cleaned")}
+            </div>
 
             <button
               onClick={handleDownloadPDF}

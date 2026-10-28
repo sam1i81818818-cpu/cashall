@@ -17,19 +17,22 @@ export const GET = apiWrapper(async (req: NextRequest) => {
   const isExport = searchParams.get("export") === "true";
   const rawQuery = searchParams.get("query")?.trim() || "";
   const isSearching = Boolean(rawQuery);
+  const limitParam = searchParams.get("limit");
   const limit = isExport
-    ? 10000
+    ? (limitParam ? parseInt(limitParam, 10) : 10000)
     : isSearching
-    ? Math.min(parseInt(searchParams.get("limit") || "300", 10), 1000)
-    : Math.min(parseInt(searchParams.get("limit") || "300", 10), 1000);
+    ? Math.min(parseInt(limitParam || "300", 10), 1000)
+    : Math.min(parseInt(limitParam || "300", 10), 1000);
   const status = searchParams.get("status");
   const category = searchParams.get("category");
   const noCache = searchParams.get("nocache") === "true";
+  const startDateStr = searchParams.get("startDate");
+  const endDateStr = searchParams.get("endDate");
 
-  const cacheKey = `${page}_${limit}_${status || ""}_${category || ""}_${rawQuery}_${isExport}`;
+  const cacheKey = `${page}_${limit}_${status || ""}_${category || ""}_${rawQuery}_${isExport}_${startDateStr || ""}_${endDateStr || ""}`;
 
-  // 15-second in-memory cache for ultra-fast subsequent navigation (bypass when searching or nocache)
-  if (!noCache && !isSearching && cachedOrdersData && cachedOrdersData.key === cacheKey && Date.now() - cachedOrdersData.timestamp < 15000) {
+  // 15-second in-memory cache for ultra-fast subsequent navigation (bypass when searching, nocache, or export)
+  if (!noCache && !isSearching && !isExport && cachedOrdersData && cachedOrdersData.key === cacheKey && Date.now() - cachedOrdersData.timestamp < 15000) {
     return NextResponse.json(cachedOrdersData.payload, {
       headers: { "Cache-Control": "private, s-maxage=5, stale-while-revalidate=15" },
     });
@@ -38,6 +41,25 @@ export const GET = apiWrapper(async (req: NextRequest) => {
   const skip = isExport || isSearching ? 0 : (page - 1) * limit;
 
   const andConditions: any[] = [];
+
+  if (startDateStr || endDateStr) {
+    const dateRangeCondition: any = {};
+    if (startDateStr) {
+      const startIst = new Date(`${startDateStr}T00:00:00+05:30`);
+      if (!isNaN(startIst.getTime())) {
+        dateRangeCondition.gte = startIst;
+      }
+    }
+    if (endDateStr) {
+      const endIst = new Date(`${endDateStr}T23:59:59.999+05:30`);
+      if (!isNaN(endIst.getTime())) {
+        dateRangeCondition.lte = endIst;
+      }
+    }
+    if (dateRangeCondition.gte || dateRangeCondition.lte) {
+      andConditions.push({ createdAt: dateRangeCondition });
+    }
+  }
 
   if (status) {
     andConditions.push({ status });
