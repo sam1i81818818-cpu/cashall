@@ -119,6 +119,7 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
 
     const quotedPrice = order.quote?.estimatedPrice || finalPrice;
     const requotedPrice = order.qcReports?.[0]?.revisedPrice || order.finalPrice || quotedPrice;
+    const imei = body.imei || order.imeiRecords?.[0]?.code || order.qcReports?.[0]?.imeiNumber || undefined;
 
     // Send PDF invoice email via multi-tier SMTP
     const mailRes = await EmailService.sendInvoicePdfEmail({
@@ -128,6 +129,7 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
       customerPhone: order.user?.phone ? `+91 ${order.user.phone}` : "+91 6289477287",
       customerAddress,
       deviceName: fullDeviceName,
+      imei,
       quotedPrice,
       requotedPrice,
       finalPrice,
