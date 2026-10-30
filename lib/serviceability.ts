@@ -72,6 +72,11 @@ export const RANCHI_PINCODES: string[] = [
   "834001", "834002", "834003"
 ];
 
+// 9. Muzaffarpur, Bihar (3 PIN codes)
+export const MUZAFFARPUR_PINCODES: string[] = [
+  "842001", "842002", "843003"
+];
+
 export const SERVICEABLE_DISTRICTS: ServiceableDistrict[] = [
   {
     id: "dist-kolkata",
@@ -123,6 +128,13 @@ export const SERVICEABLE_DISTRICTS: ServiceableDistrict[] = [
     pincodes: PATNA_PINCODES,
   },
   {
+    id: "dist-muzaffarpur",
+    name: "Muzaffarpur",
+    state: "Bihar",
+    count: MUZAFFARPUR_PINCODES.length,
+    pincodes: MUZAFFARPUR_PINCODES,
+  },
+  {
     id: "dist-ranchi",
     name: "Ranchi",
     state: "Jharkhand",
@@ -154,6 +166,9 @@ export const NAMED_LOCALITIES: Record<string, string> = {
   "834003": "Kanke / Morabadi",
   "800003": "Patna City",
   "800020": "Ram Krishna Nagar / Kankarbagh",
+  "842001": "Motijheel / Sutapatti / Head Post Office",
+  "842002": "Mithanpura / Ramna / Gannipur",
+  "843003": "Bhagwanpur / Saraiya Ganj",
 };
 
 // ==============================================================================

@@ -62,10 +62,11 @@ const SERVICEABLE_STATES: ServiceableStateConfig[] = [
   {
     state: "Bihar",
     badge: "Doorstep Service Active",
-    image: "/images/locations/kolkata.jpg",
-    description: "Patna Central & Surrounding Districts",
+    image: "/images/locations/patna.jpg",
+    description: "Patna & Muzaffarpur Express Hubs",
     districts: [
-      { name: "Patna", tag: "Express Doorstep", image: "/images/locations/kolkata.jpg" },
+      { name: "Patna", tag: "Express Doorstep", image: "/images/locations/patna.jpg" },
+      { name: "Muzaffarpur", tag: "Express Doorstep Active", image: "/images/locations/muzaffarpur.jpg" },
     ],
   },
   {

@@ -82,7 +82,7 @@ const POPULAR_BRANDS = [
 const SERVICE_REGIONS = [
   { state: "West Bengal", cities: "Kolkata, Howrah, Hooghly, Barrackpore", eta: "Within 2 to 4 Hours" },
   { state: "Uttar Pradesh", cities: "Gorakhpur, Ballia", eta: "Same Day / 24 Hours" },
-  { state: "Bihar", cities: "Patna", eta: "Same Day / 24 Hours" },
+  { state: "Bihar", cities: "Patna, Muzaffarpur", eta: "Same Day / 24 Hours" },
   { state: "Jharkhand", cities: "Ranchi", eta: "Same Day / 24 Hours" },
 ];
 
@@ -101,7 +101,7 @@ const FAQS = [
   },
   {
     q: "Can I sell my used phone in Ranchi, Patna, Kolkata, and UP?",
-    a: "Yes! CashALL offers free doorstep pickup across Kolkata, Howrah, Hooghly, Barrackpore, Ranchi (Jharkhand), Patna (Bihar), Gorakhpur (UP), and Ballia (UP). Our agent visits your address, inspects your device, and makes payment immediately."
+    a: "Yes! CashALL offers free doorstep pickup across Kolkata, Howrah, Hooghly, Barrackpore, Ranchi (Jharkhand), Patna & Muzaffarpur (Bihar), Gorakhpur (UP), and Ballia (UP). Our agent visits your address, inspects your device, and makes payment immediately."
   },
   {
     q: "Is CashALL safe? What happens to my private data?",
@@ -146,6 +146,7 @@ export default function SellUsedPhonePage() {
       { "@type": "City", "name": "Howrah" },
       { "@type": "City", "name": "Ranchi" },
       { "@type": "City", "name": "Patna" },
+      { "@type": "City", "name": "Muzaffarpur" },
       { "@type": "City", "name": "Gorakhpur" },
       { "@type": "City", "name": "Ballia" }
     ],

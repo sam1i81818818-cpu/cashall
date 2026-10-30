@@ -233,7 +233,7 @@ export function RecommerceSeoBlock() {
                   </h3>
                 </div>
                 <p className="text-xs text-neutral-600 leading-relaxed">
-                  Serving Kolkata, Howrah, Hooghly, Barrackpore, Salt Lake, New Town, Ranchi, Patna, Gorakhpur &amp; Ballia. Free same-day or 24-hour doorstep inspection by verified technicians.
+                  Serving Kolkata, Howrah, Hooghly, Barrackpore, Salt Lake, New Town, Ranchi, Patna, Muzaffarpur, Gorakhpur &amp; Ballia. Free same-day or 24-hour doorstep inspection by verified technicians.
                 </p>
               </div>
               <Link
@@ -337,6 +337,7 @@ export function RecommerceSeoBlock() {
                   { label: "Sell Old Phone Ranchi", href: "/sell-used-phone" },
                   { label: "Sell Old Phone Howrah", href: "/sell-phone-in-howrah" },
                   { label: "Sell Old Phone Patna", href: "/sell-used-phone" },
+                  { label: "Sell Old Phone Muzaffarpur", href: "/sell-used-phone" },
                   { label: "Sell Old Phone Gorakhpur", href: "/sell-phone-in-gorakhpur" },
                   { label: "Sell Old Phone Ballia", href: "/sell-used-phone" },
                 ].map((item, idx) => (

@@ -304,10 +304,10 @@ export const MASTER_FAQS: MasterFAQ[] = [
   },
   {
     id: "faq-other-cities-serviceability",
-    question: "Does CashALL service cities outside Kolkata like Ranchi, Patna, Gorakhpur, and Ballia?",
-    answer: "Yes! CashALL is actively expanding across Eastern and Northern India with dedicated service centers and logistics partners operating in Ranchi (Jharkhand), Patna (Bihar), Gorakhpur (Uttar Pradesh), Ballia (Uttar Pradesh), and West Bengal urban districts.",
+    question: "Does CashALL service cities outside Kolkata like Ranchi, Patna, Muzaffarpur, Gorakhpur, and Ballia?",
+    answer: "Yes! CashALL is actively expanding across Eastern and Northern India with dedicated service centers and logistics partners operating in Ranchi (Jharkhand), Patna & Muzaffarpur (Bihar), Gorakhpur (Uttar Pradesh), Ballia (Uttar Pradesh), and West Bengal urban districts.",
     category: "LOCAL_CITIES",
-    tags: ["ranchi", "jharkhand", "patna", "gorakhpur", "ballia", "serviceable cities", "cities"],
+    tags: ["ranchi", "jharkhand", "patna", "muzaffarpur", "gorakhpur", "ballia", "serviceable cities", "cities"],
   },
 
   // ==========================================

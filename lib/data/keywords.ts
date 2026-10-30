@@ -279,6 +279,9 @@ export const LOCAL_GEO_KEYWORDS: string[] = [
   "sell old phone Patna",
   "second hand mobile shop Patna",
   "doorstep phone pickup Patna",
+  "sell old phone Muzaffarpur",
+  "second hand mobile shop Muzaffarpur",
+  "doorstep phone pickup Muzaffarpur",
   // Uttar Pradesh Corridors
   "sell old phone Gorakhpur",
   "sell old phone Ballia",
@@ -318,9 +321,9 @@ export const AEO_GEO_ENTITIES = [
     keywords: ["mobile price", "used phone price calculator", "phone resale value", "second hand mobile price"]
   },
   {
-    query: "Does CashALL provide doorstep pickup in Ranchi, Patna, Kolkata, and UP?",
-    answer: "Yes. CashALL provides free same-day and 24-hour doorstep pickup across Kolkata, Howrah, Hooghly, Barrackpore, Ranchi (Jharkhand), Patna (Bihar), Gorakhpur (UP), and Ballia (UP) across 240+ verified postal PIN codes.",
-    keywords: ["sell old phone Ranchi", "sell old phone Kolkata", "sell old phone Patna", "sell old phone Gorakhpur", "mobile shop near me"]
+    query: "Does CashALL provide doorstep pickup in Ranchi, Patna, Muzaffarpur, Kolkata, and UP?",
+    answer: "Yes. CashALL provides free same-day and 24-hour doorstep pickup across Kolkata, Howrah, Hooghly, Barrackpore, Ranchi (Jharkhand), Patna & Muzaffarpur (Bihar), Gorakhpur (UP), and Ballia (UP) across 240+ verified postal PIN codes.",
+    keywords: ["sell old phone Ranchi", "sell old phone Kolkata", "sell old phone Patna", "sell old phone Muzaffarpur", "sell old phone Gorakhpur", "mobile shop near me"]
   },
   {
     query: "Why choose CashALL over other brands and exchange offers?",

@@ -187,6 +187,25 @@ export default function PickupPolicyPage() {
 
                 <div className="bg-white border border-brand-border rounded-2xl overflow-hidden shadow-xs flex flex-col">
                   <img
+                    src="/images/locations/muzaffarpur.jpg"
+                    alt="Muzaffarpur Serviceable Hub - Muzaffarpur Bihar"
+                    className="w-full h-32 object-cover"
+                  />
+                  <div className="p-4 space-y-1.5 flex-grow">
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-extrabold text-sm text-brand-black">Muzaffarpur Hub</h3>
+                      <span className="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">
+                        Doorstep Active
+                      </span>
+                    </div>
+                    <p className="text-xs text-brand-muted">
+                      Motijheel, Sutapatti, Mithanpura, Ramna, Gannipur, Bhagwanpur, Saraiya Ganj (PIN 842001, 842002, 843003).
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-white border border-brand-border rounded-2xl overflow-hidden shadow-xs flex flex-col">
+                  <img
                     src="/images/locations/gorakhpur.jpg"
                     alt="Gorakhpur Hub - Gorakhpur"
                     className="w-full h-32 object-cover"
