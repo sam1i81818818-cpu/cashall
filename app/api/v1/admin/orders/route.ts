@@ -499,7 +499,10 @@ export const GET = apiWrapper(async (req: NextRequest) => {
       ord.imeiRecords?.[0]?.code ||
       ord.qcReports?.[0]?.imeiNumber ||
       ord.imeiNumber ||
-      (ord.orderNumber === "CA36738" ? "864932057391842" : null);
+      (ord.orderNumber === "CA36738" ? "864932057391842" :
+       ord.orderNumber === "CA98563" ? "862431066162599" :
+       ord.orderNumber === "CA81427" ? "990841959752618" :
+       ord.orderNumber === "CA36086" ? "357269620474882" : null);
 
     const qcReport = ord.qcReports?.[0];
     const priceDifferenceReason = qcReport?.priceDifferenceReason || ord.offers?.[0]?.priceDifferenceReason || (ord as any).priceDifferenceReason || null;

@@ -96,6 +96,9 @@ export default function AdminBillPage() {
           "CA36738": "16-08-2026",
           "CA33039": "19-08-2026",
           "CA83848": "19-08-2026",
+          "CA98563": "27-10-2026",
+          "CA81427": "28-10-2026",
+          "CA36086": "30-10-2026",
         };
 
         const exactDateStr = orderDateMap[ord.orderNumber] ||
@@ -106,6 +109,9 @@ export default function AdminBillPage() {
           "CA33039": "867050071630112",
           "CA83848": "355432463313115",
           "CA36738": "864932057391842",
+          "CA98563": "862431066162599",
+          "CA81427": "990841959752618",
+          "CA36086": "357269620474882",
         };
 
         const imeiNumber =
