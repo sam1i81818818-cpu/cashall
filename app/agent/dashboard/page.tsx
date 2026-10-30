@@ -293,15 +293,20 @@ export default function AgentDashboardPage() {
 
         // 1. Attempt Exotel Secure Cloud Call (Masks agent number, auto-records)
         const token =
-          (typeof window !== "undefined" ? localStorage.getItem("cashall_agent_token") : "") ||
-          "";
+          (typeof window !== "undefined"
+            ? localStorage.getItem("cashall_agent_token") || localStorage.getItem("cashall_token")
+            : "") || "";
 
+        const agentSessionData = agentSessionRef.current || agentSession;
         const res = await fetch("/api/v1/telephony/call", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
+            "x-agent-id": agentSessionData?.id || "",
+            "x-agent-phone": agentSessionData?.phone || "",
           },
+          credentials: "include",
           body: JSON.stringify({
             orderNumber: orderNumber || undefined,
             customerPhone: cleanPhone,
@@ -321,8 +326,29 @@ export default function AgentDashboardPage() {
           console.warn("Exotel gateway notice, falling back to direct dial:", data.error);
           setNotification({
             type: "error",
-            msg: `${data.error}. Opening device dialer...`,
+            msg: `${data.error || "Telephony notice"}. Opening device dialer...`,
           });
+
+          // Ensure backup call log is saved so calling date & time displays in admin panel
+          fetch("/api/v1/support/recordings", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              role: "AGENT",
+              actorRole: "AGENT",
+              callType: "AGENT_PICKUP_CALL",
+              supportPersonName: agentSessionData?.name || "Field Agent",
+              supportPersonPhone: agentSessionData?.phone || "",
+              customerName: customerName || "Customer",
+              customerPhone: cleanPhone,
+              deviceName: deviceName || "Mobile Device",
+              quoteId: orderNumber || "",
+              durationSeconds: 1,
+              callOutcome: "DIALER_FALLBACK",
+              callNotes: "Agent opened device dialer to call customer",
+            }),
+          }).catch(() => {});
+
           if (typeof window !== "undefined" && (window as any).CashAllAgentNative?.callCustomer) {
             (window as any).CashAllAgentNative.callCustomer(
               cleanPhone,
@@ -336,6 +362,25 @@ export default function AgentDashboardPage() {
         }
       } catch (err: any) {
         console.error("Call initiation error, falling back to dialer:", err);
+        const agentSessionData = agentSessionRef.current || agentSession;
+        fetch("/api/v1/support/recordings", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            role: "AGENT",
+            actorRole: "AGENT",
+            callType: "AGENT_PICKUP_CALL",
+            supportPersonName: agentSessionData?.name || "Field Agent",
+            supportPersonPhone: agentSessionData?.phone || "",
+            customerName: customerName || "Customer",
+            customerPhone: cleanPhone,
+            deviceName: deviceName || "Mobile Device",
+            quoteId: orderNumber || "",
+            durationSeconds: 1,
+            callOutcome: "DIALER_FALLBACK",
+            callNotes: "Agent opened device dialer to call customer",
+          }),
+        }).catch(() => {});
         window.location.href = `tel:${cleanPhone}`;
       } finally {
         setTimeout(() => setCallingOrderId(null), 4000);

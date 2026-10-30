@@ -197,9 +197,10 @@ export const GET = apiWrapper(async (req: NextRequest) => {
   let orders: any[] = [];
   let total = 0;
   let rawAgentLogs: any[] = [];
+  let rawTelephonyCalls: any[] = [];
 
   try {
-    [total, orders, rawAgentLogs] = await Promise.all([
+    [total, orders, rawAgentLogs, rawTelephonyCalls] = await Promise.all([
       prisma.order.count({ where }),
       prisma.order.findMany({
         where,
@@ -244,7 +245,7 @@ export const GET = apiWrapper(async (req: NextRequest) => {
       }),
       prisma.auditLog.findMany({
         where: {
-          action: { in: ["AGENT_CALL_LOGGED", "AGENT_CALL_RECORDING"] },
+          action: { in: ["AGENT_CALL_LOGGED", "AGENT_CALL_RECORDING", "TELEPHONY_CALL_INITIATED"] },
         },
         select: {
           id: true,
@@ -253,13 +254,30 @@ export const GET = apiWrapper(async (req: NextRequest) => {
           createdAt: true,
         },
         orderBy: { createdAt: "desc" },
-        take: 50,
+        take: 300,
+      }),
+      prisma.telephonyCall.findMany({
+        where: {
+          direction: "OUTBOUND",
+        },
+        select: {
+          id: true,
+          orderNumber: true,
+          orderId: true,
+          agentName: true,
+          fromNumber: true,
+          toNumber: true,
+          customerName: true,
+          createdAt: true,
+        },
+        orderBy: { createdAt: "desc" },
+        take: 300,
       }),
     ]);
   } catch (dbErr) {
     console.warn("DB findMany with agent relation failed, falling back without agent relation:", dbErr);
     try {
-      [total, orders, rawAgentLogs] = await Promise.all([
+      [total, orders, rawAgentLogs, rawTelephonyCalls] = await Promise.all([
         prisma.order.count({ where }),
         prisma.order.findMany({
           where,
@@ -303,7 +321,7 @@ export const GET = apiWrapper(async (req: NextRequest) => {
         }),
         prisma.auditLog.findMany({
           where: {
-            action: { in: ["AGENT_CALL_LOGGED", "AGENT_CALL_RECORDING"] },
+            action: { in: ["AGENT_CALL_LOGGED", "AGENT_CALL_RECORDING", "TELEPHONY_CALL_INITIATED"] },
           },
           select: {
             id: true,
@@ -312,7 +330,24 @@ export const GET = apiWrapper(async (req: NextRequest) => {
             createdAt: true,
           },
           orderBy: { createdAt: "desc" },
-          take: 50,
+          take: 300,
+        }),
+        prisma.telephonyCall.findMany({
+          where: {
+            direction: "OUTBOUND",
+          },
+          select: {
+            id: true,
+            orderNumber: true,
+            orderId: true,
+            agentName: true,
+            fromNumber: true,
+            toNumber: true,
+            customerName: true,
+            createdAt: true,
+          },
+          orderBy: { createdAt: "desc" },
+          take: 300,
         }),
       ]);
     } catch (fallbackErr) {
@@ -334,24 +369,34 @@ export const GET = apiWrapper(async (req: NextRequest) => {
     );
   };
 
-  // Process agent call logs to match against orders
+  // Process agent call logs from both TelephonyCall and AuditLog to match against orders
   let agentCalls: any[] = [];
   try {
-    agentCalls = (rawAgentLogs || [])
-      .map((log: any) => {
-        let data: any = {};
-        try {
-          data = JSON.parse(log.newValuesJson || "{}");
-        } catch {}
-        return {
-          orderNumber: (data.quoteId || data.orderNumber || "").toUpperCase().trim(),
-          customerPhone: (data.customerPhone || "").replace(/\D/g, "").slice(-10),
-          agentName: data.supportPersonName || data.agentName || null,
-          agentPhone: data.supportPersonPhone || data.agentPhone || null,
-          calledAt: data.callTimeIST || new Date(log.createdAt).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
-        };
-      })
-      .filter((c: any) => !isSupportStaff(c.agentName, c.agentPhone));
+    const telephonyCalls = (rawTelephonyCalls || []).map((c: any) => ({
+      orderNumber: (c.orderNumber || "").toUpperCase().trim(),
+      customerPhone: (c.toNumber || "").replace(/\D/g, "").slice(-10),
+      agentName: c.agentName || null,
+      agentPhone: (c.fromNumber || "").replace(/\D/g, ""),
+      calledAt: new Date(c.createdAt).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+      source: "TelephonyCall",
+    }));
+
+    const auditCalls = (rawAgentLogs || []).map((log: any) => {
+      let data: any = {};
+      try {
+        data = JSON.parse(log.newValuesJson || "{}");
+      } catch {}
+      return {
+        orderNumber: (data.quoteId || data.orderNumber || "").toUpperCase().trim(),
+        customerPhone: (data.customerPhone || "").replace(/\D/g, "").slice(-10),
+        agentName: data.supportPersonName || data.agentName || null,
+        agentPhone: data.supportPersonPhone || data.agentPhone || null,
+        calledAt: data.callTimeIST || new Date(log.createdAt).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+        source: "AuditLog",
+      };
+    });
+
+    agentCalls = [...telephonyCalls, ...auditCalls].filter((c: any) => !isSupportStaff(c.agentName, c.agentPhone));
   } catch (logErr) {
     console.warn("Could not process agent call logs for orders:", logErr);
   }
@@ -383,22 +428,37 @@ export const GET = apiWrapper(async (req: NextRequest) => {
     let agentCalledBy: string | null = null;
 
     const matchedCall = agentCalls.find((c) => {
-      const matchesOrder =
-        (orderNumClean && c.orderNumber === orderNumClean) ||
-        (quoteNumClean && c.orderNumber === quoteNumClean) ||
-        (ordIdClean && c.orderNumber === ordIdClean) ||
-        (customerPhoneDigits && c.customerPhone && (c.customerPhone === customerPhoneDigits || c.customerPhone.endsWith(customerPhoneDigits) || customerPhoneDigits.endsWith(c.customerPhone)));
+      const matchOrderNum = orderNumClean && c.orderNumber && c.orderNumber === orderNumClean;
+      const matchQuoteNum = quoteNumClean && c.orderNumber && c.orderNumber === quoteNumClean;
+      const matchOrdId = ordIdClean && c.orderNumber && c.orderNumber === ordIdClean;
+      const matchPhone = customerPhoneDigits && c.customerPhone && (
+        c.customerPhone === customerPhoneDigits ||
+        c.customerPhone.endsWith(customerPhoneDigits) ||
+        customerPhoneDigits.endsWith(c.customerPhone)
+      );
 
+      const matchesOrder = matchOrderNum || matchQuoteNum || matchOrdId || matchPhone;
       if (!matchesOrder) return false;
 
       // Ensure caller is not support staff
       if (isSupportStaff(c.agentName, c.agentPhone)) return false;
 
-      // If assigned agent name is available (and not generic dummy), verify match if agent name is specific
+      // If matched directly by Order Number or Quote Number, it's a definitive order call!
+      if (matchOrderNum || matchQuoteNum || matchOrdId) {
+        return true;
+      }
+
+      // If matched only by customer phone, verify agent consistency if an agent name exists
       if (agentName && agentName !== "CashALL Logistics" && c.agentName && c.agentName !== "Field Agent") {
         const cNameLower = c.agentName.toLowerCase();
         const aNameLower = agentName.toLowerCase();
-        return cNameLower.includes(aNameLower) || aNameLower.includes(cNameLower);
+        const cFirstName = cNameLower.split(" ")[0];
+        const aFirstName = aNameLower.split(" ")[0];
+        return (
+          cNameLower.includes(aNameLower) ||
+          aNameLower.includes(cNameLower) ||
+          (cFirstName.length >= 3 && aFirstName.length >= 3 && cFirstName === aFirstName)
+        );
       }
 
       return true;

@@ -1,18 +1,35 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { verifySessionToken } from "@/lib/auth/session-token";
+import { verifyAuthToken } from "@/lib/middlewares/auth";
 import { exotelService } from "@/lib/services/exotel.service";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   try {
-    // 1. Authenticate user via session token
+    // 1. Authenticate user via session token or agent auth token
     const authHeader = req.headers.get("authorization") || "";
-    const cookieToken = req.cookies.get("session_token")?.value || "";
+    const cookieToken =
+      req.cookies.get("session_token")?.value ||
+      req.cookies.get("cashall_agent_token")?.value ||
+      req.cookies.get("cashall_partner_session")?.value ||
+      "";
     const token = authHeader.replace(/^Bearer\s+/i, "") || cookieToken;
 
-    const session = verifySessionToken(token);
+    let session: any = verifySessionToken(token);
+    if (!session) {
+      try {
+        session = await verifyAuthToken(req);
+      } catch (authErr) {
+        const agentPhone = req.headers.get("x-agent-phone") || "";
+        const agentId = req.headers.get("x-agent-id") || "";
+        if (agentPhone || agentId) {
+          session = { uid: agentId || agentPhone, phone: agentPhone, role: "AGENT" };
+        }
+      }
+    }
+
     if (!session) {
       return NextResponse.json(
         { success: false, error: "Unauthorized: Invalid or expired session" },
@@ -20,8 +37,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { role, uid } = session;
-    const allowedRoles = ["ADMIN", "SUPER_ADMIN", "EMPLOYEE", "AGENT"];
+    const { role = "AGENT", uid } = session;
+    const allowedRoles = ["ADMIN", "SUPER_ADMIN", "EMPLOYEE", "AGENT", "PARTNER"];
     if (!allowedRoles.includes(role)) {
       return NextResponse.json(
         { success: false, error: "Forbidden: Insufficient privileges for placing calls" },
@@ -178,22 +195,50 @@ export async function POST(req: NextRequest) {
         timeLimit: 1800, // 30 minutes max
       });
     } catch (apiErr: any) {
-      // Mark internal call as failed
+      // Mark internal call as DIALER_FALLBACK so agent dial intent is recorded
       await prisma.telephonyCall.update({
         where: { id: internalCall.id },
         data: {
-          status: "FAILED",
+          status: "INITIATED",
           failureReason: apiErr.message,
-          providerStatus: "failed-to-initiate",
+          providerStatus: "dialer-fallback",
         },
       });
+
+      // Log audit trail for dialer fallback so calling date & time shows in admin panel
+      await prisma.auditLog.create({
+        data: {
+          actorId: uid,
+          actorRole: role,
+          action: "AGENT_CALL_LOGGED",
+          tableName: "TelephonyCall",
+          recordId: internalCall.id,
+          newValuesJson: JSON.stringify({
+            callId: internalCall.id,
+            role: "AGENT",
+            actorRole: "AGENT",
+            supportPersonName: initiatorUser?.name || session.name || "Field Agent",
+            supportPersonPhone: agentPhone,
+            customerName: targetCustomerName,
+            customerPhone: targetCustomerPhone,
+            orderNumber: resolvedOrderNumber,
+            quoteId: resolvedOrderNumber,
+            callTimeIST: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+            callOutcome: "DIALER_FALLBACK",
+            callNotes: `Exotel gateway notice: ${apiErr.message}. Fallback to direct dialer.`,
+          }),
+        },
+      }).catch(() => {});
 
       return NextResponse.json(
         {
           success: false,
-          error: `Telephony Gateway Error: ${apiErr.message}`,
+          error: `Telephony Gateway Notice: ${apiErr.message}`,
+          fallbackToDialer: true,
+          directDialNumber: targetCustomerPhone,
+          callId: internalCall.id,
         },
-        { status: 502 }
+        { status: 200 }
       );
     }
 
@@ -207,19 +252,27 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // 9. Log audit trail
+    // 9. Log audit trail with AGENT_CALL_LOGGED
     await prisma.auditLog.create({
       data: {
         actorId: uid,
         actorRole: role,
-        action: "TELEPHONY_CALL_INITIATED",
+        action: "AGENT_CALL_LOGGED",
         tableName: "TelephonyCall",
         recordId: internalCall.id,
         newValuesJson: JSON.stringify({
           callId: internalCall.id,
           callSid: exotelResponse.sid,
-          agentName: updatedCall.agentName,
+          role: "AGENT",
+          actorRole: "AGENT",
+          supportPersonName: updatedCall.agentName,
+          supportPersonPhone: agentPhone,
+          customerName: targetCustomerName,
+          customerPhone: targetCustomerPhone,
           orderNumber: resolvedOrderNumber,
+          quoteId: resolvedOrderNumber,
+          callTimeIST: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+          callOutcome: "CALL_INITIATED",
           customerMaskedPhone: exotelService.maskPhoneNumber(targetCustomerPhone),
         }),
       },

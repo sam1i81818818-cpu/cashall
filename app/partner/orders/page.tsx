@@ -185,6 +185,28 @@ export default function PartnerOrdersPage() {
                   <span>{ord.customerName}</span>
                   <a
                     href={`tel:${ord.customerPhone}`}
+                    onClick={() => {
+                      try {
+                        fetch("/api/v1/support/recordings", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({
+                            role: "AGENT",
+                            actorRole: "AGENT",
+                            callType: "AGENT_PICKUP_CALL",
+                            supportPersonName: partnerUser?.name || "Field Agent",
+                            supportPersonPhone: partnerUser?.phone || "",
+                            customerName: ord.customerName,
+                            customerPhone: ord.customerPhone,
+                            deviceName: ord.deviceName,
+                            quoteId: ord.orderNumber,
+                            durationSeconds: 1,
+                            callOutcome: "CALL_INITIATED",
+                            callNotes: "Partner initiated call to customer",
+                          }),
+                        }).catch(() => {});
+                      } catch (e) {}
+                    }}
                     className="flex items-center gap-1 bg-brand-yellow/10 text-brand-yellow px-2.5 py-1 rounded-lg border border-brand-yellow/30 text-[11px] font-bold"
                   >
                     <Phone className="w-3 h-3" />
