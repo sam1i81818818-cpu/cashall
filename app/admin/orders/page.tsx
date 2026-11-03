@@ -366,7 +366,7 @@ export default function AdminOrdersPage() {
   const [exportEndDate, setExportEndDate] = useState<string>(() => formatISTIso(getNowIST()));
   const exportDropdownRef = useRef<HTMLDivElement>(null);
 
-  const [displayLimit, setDisplayLimit] = useState(300);
+  const [displayLimit, setDisplayLimit] = useState(1000);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   // Close export dropdown when clicking outside
@@ -586,7 +586,7 @@ export default function AdminOrdersPage() {
     });
   }, [dateFilteredOrders, selectedFilter, searchQuery]);
 
-  const fetchOrders = useCallback(async (isSilent = false, limitParam = 300, queryParam = "") => {
+  const fetchOrders = useCallback(async (isSilent = false, limitParam = 1000, queryParam = "") => {
     if (!isSilent) {
       setIsSyncing(true);
       if (ordersRef.current.length === 0) setLoading(true);
@@ -599,7 +599,7 @@ export default function AdminOrdersPage() {
     // 1. Fetch from Database API (Bypass browser GET caching)
     try {
       const token = getAdminToken();
-      const effectiveLimit = trimmedQuery ? 300 : limitParam;
+      const effectiveLimit = trimmedQuery ? 1000 : limitParam;
       const queryStr = trimmedQuery ? `&query=${encodeURIComponent(trimmedQuery)}&nocache=true` : "";
       const res = await fetch(`/api/v1/admin/orders?limit=${effectiveLimit}${queryStr}&t=${Date.now()}`, {
         cache: "no-store",
@@ -822,7 +822,7 @@ export default function AdminOrdersPage() {
 
     const timer = setTimeout(() => {
       lastExecutedSearchRef.current = trimmed;
-      fetchOrders(false, 300, trimmed);
+      fetchOrders(false, 1000, trimmed);
     }, 400);
 
     return () => clearTimeout(timer);

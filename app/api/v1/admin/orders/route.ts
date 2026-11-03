@@ -21,8 +21,8 @@ export const GET = apiWrapper(async (req: NextRequest) => {
   const limit = isExport
     ? (limitParam ? parseInt(limitParam, 10) : 10000)
     : isSearching
-    ? Math.min(parseInt(limitParam || "300", 10), 1000)
-    : Math.min(parseInt(limitParam || "300", 10), 1000);
+    ? Math.min(parseInt(limitParam || "1000", 10), 5000)
+    : Math.min(parseInt(limitParam || "1000", 10), 5000);
   const status = searchParams.get("status");
   const category = searchParams.get("category");
   const noCache = searchParams.get("nocache") === "true";

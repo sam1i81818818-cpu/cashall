@@ -17,6 +17,15 @@ let dbUrl =
   process.env.DATABASE_URL ||
   "";
 
+// Active Primary Supabase PostgreSQL connection
+const ACTIVE_DB_URL =
+  "postgresql://postgres.zluotshjqsoefejhbded:TGb4RMP%2FsP%2FnD%237@aws-0-ap-south-1.pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=5&pool_timeout=30&sslmode=require";
+
+// Auto-redirect if environment URL points to deprecated 'yhwgobqmowhhzohlraea' or is missing
+if (!dbUrl || dbUrl.includes("yhwgobqmowhhzohlraea")) {
+  dbUrl = ACTIVE_DB_URL;
+}
+
 if (!dbUrl) {
   // Fail securely when database environment variable is not configured
   throw new Error(
